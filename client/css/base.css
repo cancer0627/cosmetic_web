@@ -86,12 +86,14 @@
     margin: 3px 0 0 3px;
 }
 
+/*main_body*/
 #main_body {
     width: 1010px;
     margin: 0 auto;
-    height: 720px;
+    min-height: 720px;
 }
 
+/*footer*/
 #footer {
     width: 1010px;
     margin: 0 auto;
