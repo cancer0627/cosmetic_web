@@ -1,0 +1,59 @@
+#logo {
+    padding: 45px 0 80px 0;
+    height: 90px;
+    /*background-color: aliceblue;*/
+}
+
+#logo > img, #login > img {
+    float: left;
+}
+
+#logo > span {
+    display: inline-block;
+    font-size: 30px;
+    padding: 33px 0 0 33px;
+}
+
+#login > div {
+    display: inline-block;
+    width: 440px;
+}
+
+#login > div > img {
+    display: block;
+    margin: 0 auto;
+}
+#login .login_input{
+    padding: 25px 0 75px 0;
+}
+#login .login_input > li {
+    padding: 25px 0;
+    height: 31px;
+}
+
+#login .login_input > li > span {
+    float: left;
+    font-size: 24px;
+}
+
+#login .login_input > li > input {
+    float: left;
+    padding: 6px;
+    font-size: 15px;
+    width: 340px;
+    border: 1px solid #000;
+}
+
+#login .login_input > li > p {
+    float: right;
+    padding: 20px;
+}
+
+#login .login_input + button {
+    margin: 0 auto;
+    display: block;
+    background-color: #d41a39;
+    padding: 15px 55px;
+    font-size: 24px;
+    color: white;
+}
