@@ -3,7 +3,6 @@
 }
 
 #logo {
-    padding-top: 45px;
     height: 135px;
 }
 
@@ -88,7 +87,7 @@
 .register_input .yanzheng > div {
     float: left;
     margin-left: 15px;
-    height: 31px;
+    height: 35px;
     width: 120px;
     background-color: #aaaaaa;
 }
