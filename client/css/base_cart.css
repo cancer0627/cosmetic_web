@@ -1,0 +1,179 @@
+/*用户*/
+#logo {
+    position: relative;
+    width: 1010px;
+    margin: 0 auto;
+}
+
+#logo > img + div {
+    position: absolute;
+    right: 0;
+    top: -20px;
+}
+
+#logo > div:last-child {
+    position: absolute;
+    right: 0;
+    top: 40px;
+    width: 281px;
+}
+
+#logo > div:last-child > span {
+    position: absolute;
+    display: inline-block;
+    width: 100px;
+    font-size: 12px;
+    color: #9c9b9b;
+    text-align: center;
+}
+
+#logo + hr {
+    margin: 50px 0 20px;
+    width: 100%;
+    border-top: 5px solid #ccc;
+}
+
+/*全部商品*/
+#main_body #all_goods {
+    padding: 20px 0;
+}
+
+#main_body #all_goods > div > input {
+    margin: 15px 0 15px 30px;
+}
+
+#main_body #all_goods > div > span {
+    color: #363636;
+    font-size: 12px;
+    display: inline-block;
+}
+
+#main_body #all_goods > div:first-child > span {
+    color: #d41a39;
+    font-size: 20px;
+    display: inline-block;
+    padding: 5px 30px;
+}
+
+#main_body #all_goods > div > img {
+    display: block;
+}
+
+/*购物车列表*/
+#all_goods > ul {
+
+}
+
+#all_goods > ul > li {
+    padding: 10px 30px;
+    border: 1px solid #000;
+    position: relative;
+}
+
+#all_goods > ul > li > span {
+    position: absolute;
+    width: 100px;
+    text-align: center;
+}
+
+#all_goods > ul > li > div > img {
+    margin: 10px 0;
+}
+
+#all_goods > ul > li > div > span {
+    position: absolute;
+    font-size: 12px;
+}
+
+#all_goods > ul > li > div > div {
+    position: absolute;
+    font-size: 12px;
+    left: 545px;
+    top: 69px;
+}
+
+#all_goods > ul > li > div > div > button {
+    padding: 10px;
+    font-size: 12px;
+    border: 1px solid #000;
+    display: inline-block;
+}
+
+#all_goods > ul > li > div > div > input {
+    display: inline-block;
+    font-size: 12px;
+    width: 20px;
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+#all_goods > ul > li > div > button {
+    position: absolute;
+    left: 915px;
+    top: 80px;
+}
+
+/*结算*/
+#all_goods > div:last-child {
+    background-color: #f8bdc7;
+    position: relative;
+    height: 43px;
+}
+
+#all_goods > div:last-child > span {
+    position: absolute;
+}
+
+#all_goods > div:last-child > button {
+    color: white;
+    font-size: 18px;
+    padding: 10px 30px;
+    background-color: #d41a39;
+    position: absolute;
+    right: 0;
+}
+
+/*最近浏览*/
+#main_body #liulan {
+    padding: 20px 0;
+}
+
+#main_body #liulan > div > span {
+    color: #d41a39;
+    font-size: 20px;
+    display: inline-block;
+    padding: 5px 30px;
+}
+
+#main_body #liulan > div > img {
+    display: block;
+}
+
+#main_body #liulan > ul {
+    text-align: center;
+    margin: 20px 0 40px;
+}
+
+#main_body #liulan > ul > li {
+    display: inline-block;
+    width: 239px;
+    padding: 4px 4px 20px;
+    text-align: left;
+    position: relative;
+    background-color: #e5e5e5;
+}
+
+#main_body #liulan > ul > li > p {
+    padding: 7px 10px;
+    font-size: 12px;
+}
+
+#main_body #liulan > ul > li > span {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    color: #9f0404;
+    font-size: 12px;
+}
