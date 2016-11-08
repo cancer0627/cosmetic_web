@@ -1,0 +1,229 @@
+#main_body > p {
+    padding: 27px 15px;
+    font-size: 12px;
+}
+
+/*个人中心*/
+#main_body > p + div {
+    background-color: #e5e5e5;
+    position: relative;
+    padding: 5px;
+}
+
+/*个人中心列表*/
+#main_body #personal_list {
+    display: inline-block;
+    position: absolute;
+    box-shadow: 0 0 10px #aaa;
+    top: 5px;
+    left: 5px;
+}
+
+#main_body #personal_list > p {
+    color: white;
+    background-color: #d41a39;
+    font-size: 18px;
+    padding: 10px 40px;
+}
+
+#main_body #personal_list > li {
+    margin: 10px 20px;
+    border-bottom: 3px dotted #000;
+    height: 22px;
+    padding: 10px 0;
+}
+
+#main_body #personal_list > li:last-child {
+    margin-bottom: 20px;
+}
+
+#main_body #personal_list > li > img {
+    float: left;
+}
+
+#main_body #personal_list > li > span {
+    font-size: 14px;
+    float: left;
+    margin-left: 10px;
+    color: #434242;
+}
+
+/*个人中心详情*/
+#main_body #person_details {
+    display: inline-block;
+    margin-left: 200px;
+    width: 800px;
+}
+
+#main_body #person_details > div {
+    margin: 20px 0;
+    position: relative;
+    width: 750px;
+}
+
+#main_body #person_details > div > p {
+    position: absolute;
+    left: 120px;
+    color: #3e3d3d;
+}
+
+#main_body #person_details > div:first-child > div {
+    position: absolute;
+    left: 350px;
+    top: 20px;
+    background-color: #9c9b9b;
+    border: 3px solid #9c9b9b;
+}
+
+#main_body #person_details > div:first-child > div > input {
+    font-size: 14px;
+    padding: 10px;
+    background-color: white;
+    width: 250px;
+}
+
+#main_body #person_details > div:first-child > div > button {
+    font-size: 14px;
+    padding: 10px 15px;
+    color: white;
+}
+
+#main_body #person_details > div > div > span {
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+/*选择框*/
+#person_details > div:first-child + div {
+    float: none;
+    text-align: center;
+    border: 1px solid #000;
+}
+
+#person_details > div:first-child + div > span {
+    display: inline-block;
+    padding: 10px 50px;
+}
+
+/*待收货列表*/
+#main_body #daishouhuo_list > li {
+    border: 1px solid #000;
+    position: relative;
+    padding: 10px;
+    width: 732px;
+}
+
+#main_body #daishouhuo_list > li > span {
+    position: absolute;
+}
+
+#main_body #daishouhuo_list > li > div {
+    margin-left: 200px;
+    /*margin-top: 100px;*/
+    position: relative;
+    display: inline-block;
+    width: 600px;
+    height: 180px;
+}
+
+#main_body #daishouhuo_list > li > div > span {
+    position: absolute;
+}
+
+#main_body #daishouhuo_list > li > div > span:last-child {
+    color: white;
+    padding: 10px 25px;
+    background-color: #d41a39;
+}
+
+#main_body #daishouhuo_list > li > img {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+/*订单选择*/
+#main_body #daishouhuo_sel {
+    margin-left: 200px;
+    width: 800px;
+    position: relative;
+}
+
+#main_body #daishouhuo_sel > input {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+#main_body #daishouhuo_sel > span {
+    display: inline-block;
+}
+
+#main_body #daishouhuo_sel > button {
+    padding: 0 20px;
+    border: 1px solid #000;
+    margin-left: 20px;
+    display: inline-block;
+}
+
+#main_body #daishouhuo_sel > div {
+    position: absolute;
+    top: 0;
+    right: 40px;
+}
+
+#main_body #daishouhuo_sel > div > button {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #000;
+}
+
+#main_body #daishouhuo_sel > div > input {
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    width: 30px;
+    border: 1px solid #000;
+}
+
+/*热卖单品*/
+#main_body #hot_goods {
+    padding: 20px 0;
+}
+
+#main_body #hot_goods > div > span {
+    color: #d41a39;
+    font-size: 20px;
+    display: inline-block;
+    padding: 5px 30px;
+}
+
+#main_body #hot_goods > div > img {
+    display: block;
+}
+
+#main_body #hot_goods > ul {
+    text-align: center;
+    margin: 20px 0 40px;
+}
+
+#main_body #hot_goods > ul > li {
+    display: inline-block;
+    width: 239px;
+    padding: 4px 4px 20px;
+    text-align: left;
+    position: relative;
+    background-color: #e5e5e5;
+}
+
+#main_body #hot_goods > ul > li > p {
+    padding: 7px 10px;
+    font-size: 12px;
+}
+
+#main_body #hot_goods > ul > li > span {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    color: #9f0404;
+    font-size: 12px;
+}
