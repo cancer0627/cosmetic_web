@@ -1,0 +1,211 @@
+/*用户*/
+#logo {
+    position: relative;
+    width: 1010px;
+    margin: 0 auto;
+}
+
+#logo > img + div {
+    position: absolute;
+    right: 0;
+    top: -20px;
+}
+
+#logo > div:last-child {
+    position: absolute;
+    right: 100px;
+    top: 40px;
+    width: 281px;
+}
+
+#logo > div:last-child > span {
+    position: absolute;
+    display: inline-block;
+    width: 100px;
+    font-size: 12px;
+    color: #9c9b9b;
+    text-align: center;
+}
+
+#logo + hr {
+    margin: 50px 0 20px;
+    width: 100%;
+    border-top: 5px solid #ccc;
+}
+
+/*标题样式*/
+#main_body > div {
+    padding: 20px 0;
+}
+
+#main_body > div > div:first-child > span {
+    color: #d41a39;
+    font-size: 18px;
+    display: inline-block;
+    padding: 5px 30px;
+    font-weight: bold;
+}
+
+#main_body > div > div:first-child > img {
+    display: block;
+}
+
+/*地址*/
+#local_mod ul {
+    margin: 20px 0;
+}
+
+#local_mod ul > li {
+    font-size: 12px;
+    padding: 12px 0 12px 150px;
+
+}
+
+#local_mod ul > li:first-child {
+    background-image: url("../img/personal/local.png");
+}
+
+#local_mod ul > li > a {
+    float: right;
+    margin-right: 50px;
+}
+
+#local_mod ul + button {
+    display: inline-block;
+    left: 200px;
+    position: relative;
+    background-color: #e2e2e2;
+    padding: 5px 10px;
+    border: 1px solid #b0afaf;
+}
+
+/*时间*/
+#time_mod > div > ul {
+    padding: 30px;
+}
+
+#time_mod > div > ul > li {
+    background-color: #e2e2e2;
+    display: inline-block;
+    padding: 10px;
+    margin-right: 70px;
+    border: 1px solid #303030;
+}
+
+#time_mod > div > ul > li > span {
+    color: #303030;
+}
+
+/*确认*/
+#queren_mod > div > ul {
+    margin-top: 30px;
+    padding: 10px 30px 15px;
+    border: 1px solid #000;
+}
+
+#queren_mod ul span {
+    font-size: 12px;
+    padding: 5px 0;
+    display: inline-block;
+    width: 150px;
+    text-align: center;
+}
+
+#queren_mod ul > li {
+    position: relative;
+}
+
+#queren_mod ul > li > span {
+    position: absolute;
+}
+
+#queren_mod ul > li > div {
+    width: 450px;
+    position: relative;
+}
+
+#queren_mod ul > li > div > img {
+    display: block;
+}
+
+#queren_mod ul > li > div > p {
+    float: right;
+    font-size: 12px;
+    width: 300px;
+    position: absolute;
+    left: 150px;
+}
+
+#queren_mod > div > div {
+    text-align: right;
+    border: 1px solid #000;
+    border-top: 0;
+}
+
+#queren_mod > div > div > span {
+    font-size: 12px;
+    padding: 10px 0;
+    display: inline-block;
+    width: 150px;
+    text-align: center;
+}
+
+/*发票*/
+#queren_mod > div:first-child + div {
+    float: left;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+#queren_mod > div:first-child + div > input {
+    border: 1px solid #000;
+}
+
+#queren_mod > div:first-child + div > span {
+    padding: 8px 10px;
+    display: inline-block;
+    font-size: 14px;
+}
+
+#queren_mod > div:last-child {
+    text-align: right;
+    margin-top: 30px;
+}
+
+#queren_mod > div:last-child > p > span {
+    font-size: 12px;
+    display: inline-block;
+    padding: 8px 0;
+}
+
+#queren_mod > div:last-child > p > span:last-child {
+    text-align: left;
+    width: 100px;
+    margin-left: 50px;
+    color: #d41a39;
+}
+
+/**/
+#queren_mod + div {
+    text-align: right;
+}
+
+#queren_mod + div > a {
+    font-size: 12px;
+    float: left;
+    margin-top: 15px;
+    color: #d41a39;
+}
+
+#queren_mod + div > span {
+    font-size: 12px;
+    margin: 0 30px;
+}
+
+#queren_mod + div > button {
+    font-size: 24px;
+    display: inline-block;
+    padding: 5px 30px;
+    color: white;
+    background-color: #d41a39;
+}
