@@ -1,0 +1,157 @@
+/*位置*/
+#main_body > p {
+    padding: 27px 15px;
+    font-size: 12px;
+}
+
+/*图片描述*/
+#main_body > #details_pic_mod {
+    display: inline-block;
+    text-align: center;
+    padding: 0 10px;
+}
+
+#main_body > #details_pic_mod > img {
+    box-shadow: 0 0 15px #666;
+    margin: 10px 0;
+}
+
+#main_body > #details_pic_mod > div > img {
+    padding: 5px;
+}
+
+/*细节描述*/
+#main_body > #details_mod {
+    text-align: left;
+    position: absolute;
+    left: 510px;
+    display: inline-block;
+    padding: 10px 0;
+}
+
+#main_body > #details_mod > span {
+    font-size: 24px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+#main_body > #details_mod > span:first-child {
+    font-size: 18px;
+    color: white;
+    padding: 5px 20px;
+    background-color: #9f0404;
+    margin-right: 20px;
+}
+
+#main_body > #details_mod > p {
+    font-size: 14px;
+    line-height: 25px;
+    margin-bottom: 15px;
+}
+
+#main_body > #details_mod > div > li {
+    padding: 7px 0 6px 10px;
+    position: relative;
+}
+
+#main_body > #details_mod > div > li > span {
+    font-size: 12px;
+    float: left;
+    margin-top: 2px;
+}
+
+#main_body > #details_mod > div > li > div {
+    margin-left: 45px;
+}
+
+#main_body > #details_mod > div > li > div > span {
+    display: inline-block;
+    line-height: 25px;
+    font-size: 12px;
+    margin-right: 8px;
+}
+
+#main_body > #details_mod > div > li > div > span > em {
+    color: #9f0404
+}
+
+#main_body > #details_mod > div > li:last-child em {
+    padding: 5px;
+    font-size: 20px;
+    background-color: #e9e9e9;
+    border: 1px solid #666;
+}
+
+#main_body > #details_mod > div > li:last-child input {
+    width: 30px;
+    font-size: 20px;
+    padding: 5px;
+    border-top: 1px solid #666;
+    border-bottom: 1px solid #666;
+    text-align: center;
+}
+
+#main_body > #details_mod + div {
+    /*margin-top: 20px;*/
+    padding: 50px;
+    display: block;
+    text-align: left;
+}
+
+#coudan {
+    width: 1180px;
+    margin: 20px auto;
+    padding: 20px 50px;
+    border-top: 10px solid #ccc;
+    border-bottom: 10px solid #ccc;
+    text-align: center;
+}
+
+#coudan > p {
+    position: relative;
+    left: -450px;
+    padding-bottom: 20px;
+}
+
+#coudan > div > div {
+    display: inline-block;
+    padding: 3px;
+    background-color: #eceaed;
+    width: 202px;
+    margin: 0 5px 40px;
+}
+
+#coudan > div > div > p {
+    padding: 10px 0;
+    font-size: 10px;
+}
+
+#coudan > div > button {
+    position: relative;
+    top: -50px;
+    margin: 0 10px;
+}
+
+#coudan + div {
+    width: 1010px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+#coudan + div > div:first-child {
+    background-color: #9d9c9c;
+}
+
+#coudan + div > div:first-child > span {
+    display: inline-block;
+    padding: 10px 25px;
+}
+
+#coudan + div > div:first-child + div {
+    text-align: center;
+}
+
+#coudan + div > div:first-child + div > div {
+    text-align: left;
+    display: inline-block;
+}
