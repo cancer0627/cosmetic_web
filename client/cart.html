@@ -5,6 +5,7 @@
     <title>购物车</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/base_cart.css">
+    <script defer src="js/test_cart.js"></script>
 </head>
 <body>
 <div id="t_top">
@@ -35,7 +36,7 @@
             <img src="img/jindu01.png">
             <span style="left: -45px;color: #d41a39">我的购物车</span>
             <span style="left: 45px">确认订单信息</span>
-            <span style="left: 138px">确认支付</span>
+            <span style="left: 138px">选择付款方式</span>
             <span style="left: 225px">完成交易</span>
         </div>
     </div>
@@ -47,24 +48,26 @@
                 <img width="1010" height="7" src="img/list_tiao.png">
             </div>
             <div>
-                <input type="checkbox">
+                <input id="quanxuan_ch1" type="checkbox">
                 <span>全选</span>
             </div>
-            <ul>
+            <ul id="all_goods_list">
                 <li>
-                    <input type="checkbox">
+                    <input type="checkbox" name="all_goods_ch">
                     <span style="left: 45px">选择订单</span>
-                    <span style="left: 550px">购买数量</span>
-                    <span style="left: 670px">购买单价</span>
-                    <span style="left: 770px">小计</span>
-                    <span style="left: 870px">操作</span>
+                    <span style="left: 575px">购买数量</span>
+                    <span style="left: 695px">购买单价</span>
+                    <span style="left: 790px">小计</span>
+                    <span style="left: 890px">操作</span>
                     <div>
                         <img width="105" height="105" src="img/personal/person_goods.png">
-                        <span style="left:190px;top: 40px">商品名称： 凯筣丝汀净颜立体五色遮瑕膏5g*5</span>
-                        <span style="left:190px;top: 80px">品       牌： 凯筣丝汀(Kalisetin)</span>
-                        <span style="left:190px;top: 120px">功       效： 遮瑕,装扮</span>
+                        <span style="left:190px;top: 40px">商品名称：凯筣丝汀净颜立体五色遮瑕膏5g*5</span>
+                        <span style="left:190px;top: 80px">品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌：凯筣丝汀(Kalisetin)</span>
+                        <span style="left:190px;top: 120px">功&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;效：遮瑕,装扮</span>
                         <div>
-                            <button>－</button><input type="text" value="1"><button>＋</button>
+                            <button id="btn_decrease">－</button>
+                            <input type="text" value="1">
+                            <button id="btn_increase">＋</button>
                         </div>
                         <span style="left: 695px;top: 80px">￥39.90</span>
                         <span style="left: 795px;top: 80px">￥39.90</span>
@@ -75,15 +78,14 @@
                 </li>
             </ul>
             <div>
-                <input type="checkbox">
-                <span>删除订单</span>
-                <span style="float: right;margin: 10px 0">商品总金额：<em>￥39.90</em>元</span>
+                <button>清空选中的商品</button>
+                <span style="float: right">商品总金额：<em style="color: #d41a39">￥39.90</em>元</span>
             </div>
             <div>
-                <input type="checkbox">
+                <input id="quanxuan_ch2" type="checkbox">
                 <span style="left: 45px;top: 12px">全选</span>
-                <span style="left: 550px;top: 12px">已选择 1 件商品</span>
-                <span style="left: 700px;top: 12px">共计金额 ￥39.90 元</span>
+                <span style="left: 550px;top: 12px">已选择<em style="color: #d41a39">1</em>件商品</span>
+                <span style="left: 700px;top: 12px">共计金额<em style="color: #d41a39">￥39.90</em>元</span>
                 <button>去结算</button>
             </div>
         </div>
@@ -92,7 +94,7 @@
                 <span>最近浏览</span>
                 <img width="1010" height="7" src="img/list_tiao.png">
             </div>
-            <ul>
+            <ul id="liulan_list">
                 <li>
                     <img width="239" src="img/personal/personal_hot1.png">
                     <p style="color: #343434">净颜小筑12色水凝炫彩唇液</p>

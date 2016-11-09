@@ -8,9 +8,12 @@
     border: 0;
     font-family: 微软雅黑;
     font-style: normal;
+    font-size: 12px;
+    outline: none;
 }
 
-#t_top, #f_footer {
+/*顶部*/
+#t_top {
     width: 100%;
     background-color: #d41a39;
 }
@@ -18,27 +21,24 @@
 #top {
     width: 1010px;
     margin: 0 auto;
-    height: 14px;
-    padding: 11px 0;
+    height: 15px;
+    padding: 10px 0;
 }
 
 #top > span {
     float: left;
     margin-right: 50px;
-    font-size: 12px;
     color: white;
 }
 
 #top > div {
     float: right;
     color: white;
-    font-size: 12px;
 }
 
 #top > div > a {
     display: inline-block;
     color: white;
-    font-size: 12px;
 }
 
 #top > div > div {
@@ -47,13 +47,12 @@
 }
 
 #top > div > div > span {
-    display: inline-block;
+    /*display: inline-block;*/
     color: white;
-    font-size: 12px;
 }
 
 #top > div > div > div {
-    top: 5px;
+    top: 3px;
     position: relative;
     display: inline-block;
     border: 5px solid transparent;
@@ -69,7 +68,6 @@
 }
 
 #top > div > div > a {
-    font-size: 12px;
     padding: 10px 16px;
     position: absolute;
     left: -14px;
@@ -78,14 +76,14 @@
     border: 1px solid #aaa;
     border-top: 0;
     box-shadow: 0 0 5px #ccc;
-    width: 61px;
+    width: 60px;
     display: none;
     margin-top: 5px;
 }
 
 #top > div > a:last-child > img {
     float: right;
-    margin: 3px 0 0 3px;
+    margin: 5px 0 0 3px;
 }
 
 /*main_body*/
@@ -102,6 +100,11 @@
 }
 
 /*footer*/
+#f_footer {
+    width: 100%;
+    background-color: #d41a39;
+}
+
 #footer {
     width: 1010px;
     margin: 0 auto;
@@ -116,7 +119,6 @@
 
 #footer > div > p {
     margin-top: 210px;
-    font-size: 12px;
     color: white;
 }
 
@@ -161,9 +163,8 @@
     padding: 3px 0;
 }
 
-/*首页，列表页，活动页*/
+/*首页，列表页，活动页,个人中心页*/
 #search {
-    /*margin-top: 45px;*/
     height: 105px;
     width: 1010px;
     margin: 0 auto;
@@ -171,9 +172,10 @@
 
 #search > img, #search > div {
     float: left;
-    margin-right: 120px;
+    margin-right: 115px;
 }
 
+/*搜索框*/
 #search > div > div:first-child {
     background-color: black;
     border: 4px solid #000;
@@ -195,24 +197,38 @@
     padding: 6px 25px;
 }
 
+/*链接*/
 #search > div > div:last-child {
-    margin-top: 10px;
+    margin: 10px 0;
     text-align: center;
+    width: 374px;
 }
 
+#search > div > div:last-child > a {
+    color: #676767;
+    padding: 0 3px;
+}
+
+#search > div > div:last-child > a:hover {
+    color: #d41a39;
+}
+
+/*购物车*/
 #search > div:last-child {
-    margin: 17px 0 0 0;
+    margin: 16px 0 0 0;
 }
 
-#search > div:last-child > img, #search > div:last-child > a {
+#search > div:last-child > a > img {
+    margin-right: 10px;
     float: left;
 }
 
 #search > div:last-child > a {
-    font-size: 16px;
-    margin-left: 10px;
+    font-size: 14px;
+    float: left;
 }
 
+/*导航栏*/
 #n_nav {
     width: 100%;
     background-color: black;
@@ -227,17 +243,60 @@
     color: #fff;
     display: inline-block;
     font-size: 14px;
-    padding: 11px 35px;
+    padding: 10px 35px;
 }
 
 #nav > a:hover {
     background-color: #d41a39;
 }
 
+/*图片轮播*/
 #pic {
     width: 100%;
 }
 
 #pic > img {
     width: 100%;
+}
+
+/*购物车页，订单页，支付页*/
+#logo {
+    position: relative;
+    width: 1010px;
+    margin: 0 auto;
+}
+
+#logo > img + div {
+    position: absolute;
+    right: 0;
+    top: -20px;
+}
+
+#logo > div:last-child {
+    position: absolute;
+    right: 100px;
+    top: 40px;
+    width: 281px;
+}
+
+#logo > div:last-child > span {
+    position: absolute;
+    display: inline-block;
+    width: 100px;
+    font-size: 12px;
+    color: #9c9b9b;
+    text-align: center;
+}
+
+#logo + hr {
+    margin: 50px 0 20px;
+    width: 100%;
+    border-top: 5px solid #ccc;
+}
+
+/*我的位置*/
+#main_body > p {
+    padding: 25px 35px;
+    color: #434242;
+    font-size: 15px;
 }

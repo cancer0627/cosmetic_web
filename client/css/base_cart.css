@@ -1,3 +1,7 @@
+* {
+    color: #363636;
+}
+
 /*用户*/
 #logo {
     position: relative;
@@ -33,86 +37,92 @@
     border-top: 5px solid #ccc;
 }
 
-/*全部商品*/
-#main_body #all_goods {
-    padding: 20px 0;
+/*购物车全部商品*/
+#all_goods {
+    padding: 30px 0;
 }
 
-#main_body #all_goods > div > input {
-    margin: 15px 0 15px 30px;
-}
-
-#main_body #all_goods > div > span {
-    color: #363636;
-    font-size: 12px;
-    display: inline-block;
-}
-
-#main_body #all_goods > div:first-child > span {
+/*标题样式*/
+#all_goods > div:first-child > span {
     color: #d41a39;
     font-size: 20px;
     display: inline-block;
     padding: 5px 30px;
 }
 
-#main_body #all_goods > div > img {
+#all_goods > div:first-child > img {
     display: block;
 }
 
-/*购物车列表*/
-#all_goods > ul {
-
+/*全选订单*/
+#all_goods > div:first-child + div > input {
+    margin: 15px 0 15px 30px;
 }
 
-#all_goods > ul > li {
+/*购物车列表*/
+#all_goods_list > li {
     padding: 10px 30px;
     border: 1px solid #000;
     position: relative;
 }
 
-#all_goods > ul > li > span {
+#all_goods_list > li > span {
     position: absolute;
     width: 100px;
-    text-align: center;
+    text-align: left;
 }
 
-#all_goods > ul > li > div > img {
+#all_goods_list > li > div > img {
     margin: 10px 0;
 }
 
-#all_goods > ul > li > div > span {
+#all_goods_list > li > div > span {
     position: absolute;
-    font-size: 12px;
 }
 
-#all_goods > ul > li > div > div {
+#all_goods_list > li > div > div {
     position: absolute;
     font-size: 12px;
     left: 545px;
-    top: 69px;
+    top: 77px;
 }
 
-#all_goods > ul > li > div > div > button {
-    padding: 10px;
-    font-size: 12px;
-    border: 1px solid #000;
-    display: inline-block;
+#all_goods_list > li > div > div > button {
+    padding: 3px 8px;
+    border: 1px solid #9c9b9b;
+    float: left;
 }
 
-#all_goods > ul > li > div > div > input {
-    display: inline-block;
-    font-size: 12px;
+#all_goods_list > li > div > div > input {
     width: 20px;
-    padding: 10px;
+    float: left;
+    padding: 3px 15px;
     text-align: center;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
+    border-top: 1px solid #9c9b9b;
+    border-bottom: 1px solid #9c9b9b;
 }
 
-#all_goods > ul > li > div > button {
+#all_goods_list > li > div > button {
     position: absolute;
     left: 915px;
     top: 80px;
+}
+
+/*删除订单*/
+#all_goods_list + div > button {
+    margin: 25px 30px;
+    border: 1px solid #000;
+    padding: 4px 10px;
+}
+
+#all_goods_list + div > button:hover {
+    background-color: #d41a39;
+    color: white;
+}
+
+#all_goods_list + div > span {
+    margin: 30px 0;
+    display: inline-block;
 }
 
 /*结算*/
@@ -120,6 +130,10 @@
     background-color: #f8bdc7;
     position: relative;
     height: 43px;
+}
+
+#all_goods > div:last-child > input {
+    margin: 15px 0 15px 30px;
 }
 
 #all_goods > div:last-child > span {
@@ -136,27 +150,29 @@
 }
 
 /*最近浏览*/
-#main_body #liulan {
-    padding: 20px 0;
+#liulan {
+    padding: 30px 0;
 }
 
-#main_body #liulan > div > span {
+/*标题样式*/
+#liulan > div:first-child > span {
     color: #d41a39;
     font-size: 20px;
     display: inline-block;
     padding: 5px 30px;
 }
 
-#main_body #liulan > div > img {
+#liulan > div:first-child > img {
     display: block;
 }
 
-#main_body #liulan > ul {
+/*最近浏览列表*/
+#liulan_list {
     text-align: center;
-    margin: 20px 0 40px;
+    margin: 20px 0;
 }
 
-#main_body #liulan > ul > li {
+#liulan_list > li {
     display: inline-block;
     width: 239px;
     padding: 4px 4px 20px;
@@ -165,15 +181,13 @@
     background-color: #e5e5e5;
 }
 
-#main_body #liulan > ul > li > p {
-    padding: 7px 10px;
-    font-size: 12px;
+#liulan_list > li > p {
+    padding: 8px 10px;
 }
 
-#main_body #liulan > ul > li > span {
+#liulan_list > li > span {
     position: absolute;
     right: 20px;
     bottom: 20px;
     color: #9f0404;
-    font-size: 12px;
 }

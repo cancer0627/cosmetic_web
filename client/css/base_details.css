@@ -1,9 +1,3 @@
-/*位置*/
-#main_body > p {
-    padding: 27px 15px;
-    font-size: 12px;
-}
-
 /*图片描述*/
 #main_body > #details_pic_mod {
     display: inline-block;
@@ -98,6 +92,16 @@
     text-align: left;
 }
 
+/*分享*/
+#details_mod + div > a {
+    margin: 10px 30px 10px 0px;
+}
+
+#details_mod + div > span {
+    padding: 0 10px;
+}
+
+/*凑单*/
 #coudan {
     width: 1180px;
     margin: 20px auto;
@@ -109,8 +113,13 @@
 
 #coudan > p {
     position: relative;
-    left: -450px;
+    left: -350px;
+    font-size: 18px;
     padding-bottom: 20px;
+}
+
+#coudan > p > em {
+    color: #9f0404;
 }
 
 #coudan > div > div {
@@ -154,4 +163,27 @@
 #coudan + div > div:first-child + div > div {
     text-align: left;
     display: inline-block;
+}
+
+#picture_mod > div:first-child {
+    background-color: #e9e9e9;
+}
+
+#picture_mod > div > p {
+    padding: 10px 0;
+}
+
+#picture_mod > div:first-child + div {
+    text-align: center;
+}
+
+#picture_mod > div:first-child + div > div {
+    text-align: left;
+    margin: 0 40px;
+
+}
+
+#picture_mod > div:first-child + div > div > p {
+    font-size: 14px;
+    padding: 10px 0;
 }

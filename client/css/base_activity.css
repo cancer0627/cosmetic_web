@@ -1,8 +1,3 @@
-#main_body > p {
-    padding: 27px 15px;
-    font-size: 12px;
-}
-
 #main_body > div > p {
     padding: 30px 15px 10px;
 }

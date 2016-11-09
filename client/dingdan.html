@@ -5,6 +5,7 @@
     <title>订单</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/base_dingdan.css">
+    <script defer src="js/test_dingdan.js"></script>
 </head>
 <body>
 <div id="t_top">
@@ -20,7 +21,7 @@
                 <div></div>
                 <a class="personal">个人中心</a>
             </div>
-            | <a href="#">美妆收藏<img src="img/icon/favourite.png"> </a>
+            | <a href="#">美妆收藏<img src="img/icon/favourite.png"></a>
         </div>
     </div>
 </div>
@@ -35,7 +36,7 @@
             <img src="img/jindu02.png">
             <span style="left: -45px;color: #d41a39">我的购物车</span>
             <span style="left: 45px;color: #d41a39">确认订单信息</span>
-            <span style="left: 138px">确认支付</span>
+            <span style="left: 138px">选择付款方式</span>
             <span style="left: 225px">完成交易</span>
         </div>
     </div>
@@ -45,17 +46,17 @@
             <div>
                 <span>1、确认收货地址</span>
                 <img width="1010" height="7" src="img/list_tiao.png">
-                <ul>
+                <ul id="local_list">
                     <li>
-                        <input type="radio">
+                        <input type="radio" name="loc" checked>
                         <span>黑龙江省 哈尔滨市 南岗区 建设街51号  （XX收） 18564512352</span>
                         <span>默认地址</span>
                         <a href="#">修改本地址</a>
                     </li>
                     <li>
-                        <input type="radio">
+                        <input type="radio" name="loc">
                         <span>黑龙江省 哈尔滨市 道里区 正阳和街道 河洲街26号X单元XX楼XXX室  （XXX收） 18564512212</span>
-                        <a href="#">修改本地址</a>
+                        <a href="#" style="display: none">修改本地址</a>
                     </li>
                 </ul>
                 <button>
@@ -70,16 +71,16 @@
                 <img width="1010" height="7" src="img/list_tiao.png">
                 <ul>
                     <li>
-                        <input type="radio">
+                        <input type="radio" name="tim">
                         <span>仅工作日送货</span>
                     </li>
                     <li>
-                        <input type="radio">
-                        <span>仅工作日送货</span>
+                        <input type="radio" name="tim">
+                        <span>仅周末送货</span>
                     </li>
                     <li>
-                        <input type="radio">
-                        <span>仅工作日送货</span>
+                        <input type="radio" name="tim">
+                        <span>工作日/周末/节假日均可</span>
                     </li>
                 </ul>
             </div>
@@ -122,7 +123,7 @@
             </div>
         </div>
         <div>
-            <a>返回修改购买商品</a>
+            <a href="#">返回修改购买商品</a>
             <span>应付总金额：<em style="font-size: 24px;color: #d41a39;">￥44.90</em></span>
             <button>确认支付</button>
         </div>

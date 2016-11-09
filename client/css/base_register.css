@@ -21,17 +21,24 @@
 .register_input > li {
     height: 31px;
     margin-bottom: 55px;
+}
+
+.register_input em {
     font-size: 24px;
+}
+
+.register_input > li > span {
+    font-size: 24px;
+}
+
+.register_input > li > em {
+    float: left;
 }
 
 .register_input > li > span:first-child {
     display: inline-block;
     width: 100px;
     text-align: center;
-    float: left;
-}
-
-.register_input > li > em {
     float: left;
 }
 

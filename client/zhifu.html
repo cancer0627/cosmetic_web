@@ -5,6 +5,7 @@
     <title>支付</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/base_zhifu.css">
+    <script defer src="js/test_zhifu.js"></script>
 </head>
 <body>
 <div id="t_top">
@@ -34,125 +35,118 @@
         <div>
             <img src="img/jindu03.png">
             <span style="left: -45px;color: #d41a39">我的购物车</span>
-            <span style="left: 45px">确认订单信息</span>
-            <span style="left: 138px">确认支付</span>
+            <span style="left: 45px;color: #d41a39">确认订单信息</span>
+            <span style="left: 138px;color: #d41a39">选择付款方式</span>
             <span style="left: 225px">完成交易</span>
         </div>
     </div>
     <hr>
     <div id="main_body">
-        <p>订单信息已确认，请您选择付款方式</p>
-        <p>应付金额： ￥44.90 元</p>
+        <p style="font-size: 30px">订单信息已确认，请您选择付款方式</p>
+        <p>应付金额：<em style="font-size: 18px;color: #d41a39">￥44.90</em>元</p>
         <p>收货信息：黑龙江省 哈尔滨市 南岗区 建设街51号 （XX收） 18564512352 </p>
         <p>送货时间：工作日/周末/节假日均可</p>
         <ul id="zhifu_sel">
             <li>
-                <input type="radio">
-                <span>美妆街余额支付 ￥44.90 元 （美妆街余额共计：￥200.00元）</span>
+                <input type="radio" name="zhif">
+                <span>美妆街余额支付<em style="color: #d41a39">￥44.90</em>元 （美妆街余额共计：<em style="color: #d41a39">￥200.00</em>元）</span>
             </li>
             <li>
-                <input type="radio">
                 <span>支付宝/财付通/微信支付</span>
-                <ul>
+                <ul id="dianzi_sel">
                     <li>
-                        <input type="radio">
+                        <input type="radio" name="zhif">
                         <img src="img/zhifu/zhifubao.png">
                     </li>
                     <li>
-                        <input type="radio">
-                        <img src="img/zhifu/zhifubao.png">
+                        <input type="radio" name="zhif">
+                        <img src="img/zhifu/weixin.png">
                     </li>
                     <li>
-                        <input type="radio">
-                        <img src="img/zhifu/zhifubao.png">
+                        <input type="radio" name="zhif">
+                        <img src="img/zhifu/caifutong.png">
                     </li>
                 </ul>
             </li>
             <li>
-                <input type="radio">
                 <span>银行卡支付</span>
-                <ul>
+                <ul id="card_sel">
                     <li>
-                        <input type="radio">
+                        <input type="radio" name="zhif">
                         <img src="img/zhifu/card_zhonghang.png">
                     </li>
                     <li>
-                        <input type="radio">
-                        <img src="img/zhifu/card_zhonghang.png">
+                        <input type="radio" name="zhif">
+                        <img src="img/zhifu/card_minsheng.png">
                     </li>
                     <li>
-                        <input type="radio">
-                        <img src="img/zhifu/card_zhonghang.png">
+                        <input type="radio" name="zhif">
+                        <img src="img/zhifu/card_nongye.png">
                     </li>
                     <li>
-                        <input type="radio">
-                        <img src="img/zhifu/card_zhonghang.png">
+                        <input type="radio" name="zhif">
+                        <img src="img/zhifu/card_zhaoshang.png">
                     </li>
                     <div>
                         <li>
-                            <input type="radio">
+                            <input type="radio" name="zhif">
                             <img src="img/zhifu/card_zhonghang.png">
                         </li>
                         <li>
-                            <input type="radio">
-                            <img src="img/zhifu/card_zhonghang.png">
+                            <input type="radio" name="zhif">
+                            <img src="img/zhifu/card_minsheng.png">
                         </li>
                         <li>
-                            <input type="radio">
-                            <img src="img/zhifu/card_zhonghang.png">
+                            <input type="radio" name="zhif">
+                            <img src="img/zhifu/card_nongye.png">
                         </li>
                         <li>
-                            <input type="radio">
-                            <img src="img/zhifu/card_zhonghang.png">
+                            <input type="radio" name="zhif">
+                            <img src="img/zhifu/card_zhaoshang.png">
                         </li>
                     </div>
                 </ul>
-                <div>
-                    <span>展开+</span>
-                </div>
+                <button id="card_sel_btn">展开+</button>
             </li>
             <li>
-                <input type="radio">
                 <span>网银支付</span>
-                <ul>
+                <ul id="web_sel">
                     <li>
-                        <input type="radio">
-                        <img src="img/zhifu/web_nongye.png">
+                        <input type="radio" name="zhif">
+                        <img src="img/zhifu/card_zhonghang.png">
                     </li>
                     <li>
-                        <input type="radio">
-                        <img src="img/zhifu/web_nongye.png">
+                        <input type="radio" name="zhif">
+                        <img src="img/zhifu/card_minsheng.png">
                     </li>
                     <li>
-                        <input type="radio">
-                        <img src="img/zhifu/web_nongye.png">
+                        <input type="radio" name="zhif">
+                        <img src="img/zhifu/card_nongye.png">
                     </li>
                     <li>
-                        <input type="radio">
-                        <img src="img/zhifu/web_nongye.png">
+                        <input type="radio" name="zhif">
+                        <img src="img/zhifu/card_zhaoshang.png">
                     </li>
                     <div>
                         <li>
-                            <input type="radio">
-                            <img src="img/zhifu/web_nongye.png">
+                            <input type="radio" name="zhif">
+                            <img src="img/zhifu/card_zhonghang.png">
                         </li>
                         <li>
-                            <input type="radio">
-                            <img src="img/zhifu/web_nongye.png">
+                            <input type="radio" name="zhif">
+                            <img src="img/zhifu/card_minsheng.png">
                         </li>
                         <li>
-                            <input type="radio">
-                            <img src="img/zhifu/web_nongye.png">
+                            <input type="radio" name="zhif">
+                            <img src="img/zhifu/card_nongye.png">
                         </li>
                         <li>
-                            <input type="radio">
-                            <img src="img/zhifu/web_nongye.png">
+                            <input type="radio" name="zhif">
+                            <img src="img/zhifu/card_zhaoshang.png">
                         </li>
                     </div>
                 </ul>
-                <div>
-                    <span>展开+</span>
-                </div>
+                <button id="web_sel_btn">展开+</button>
             </li>
         </ul>
     </div>
