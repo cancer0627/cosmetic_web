@@ -51,10 +51,12 @@
     float: right;
     padding: 20px;
 }
-
-#login .login_input + button {
+#login .login_input + div{
+    text-align: center;
+}
+#login .login_input + div > a {
     margin: 10px auto;
-    display: block;
+    display: inline-block;
     background-color: #d41a39;
     color: white;
     padding: 15px 20px;

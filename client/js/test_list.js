@@ -93,7 +93,7 @@ for (var i = 0; i < paixv_sel.length; i++) {
     (function (i) {
         if (paixv_sel[i].tagName == 'SPAN') {
             paixv_sel[i].onclick = function () {
-                for (var j = 2; j < paixv_sel.length; j++) {
+                for (var j = 0; j < paixv_sel.length; j++) {
                     paixv_sel[j].className = '';
                 }
                 paixv_sel[i].className = 'selected';
