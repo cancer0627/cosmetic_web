@@ -65,6 +65,7 @@
 
 #top > div > div:hover .personal {
     display: block;
+    z-index: 10;
 }
 
 #top > div > div > a {
@@ -165,12 +166,12 @@
 
 /*首页，列表页，活动页,个人中心页*/
 #search {
-    height: 105px;
+    height: 100px;
     width: 1010px;
     margin: 0 auto;
 }
 
-#search > img, #search > div {
+#search > a, #search > div {
     float: left;
     margin-right: 115px;
 }
@@ -266,7 +267,7 @@
     margin: 0 auto;
 }
 
-#logo > img + div {
+#logo > a + div {
     position: absolute;
     right: 0;
     top: -20px;
