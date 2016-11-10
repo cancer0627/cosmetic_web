@@ -25,21 +25,22 @@
     margin: 0 auto;
 }
 
-#login .login_input {
+/*login-input*/
+#login_input {
     padding: 50px 0;
 }
 
-#login .login_input > li {
-    padding: 25px 0;
+#login_input > li {
+    padding: 20px 0;
     height: 31px;
 }
 
-#login .login_input > li > span {
+#login_input > li > span {
     float: left;
     font-size: 24px;
 }
 
-#login .login_input > li > input {
+#login_input > li > input {
     float: left;
     padding: 6px;
     font-size: 15px;
@@ -47,18 +48,26 @@
     border: 1px solid #000;
 }
 
-#login .login_input > li > p {
+#login_input > li > a {
+    display: inline-block;
     float: right;
     padding: 20px;
 }
-#login .login_input + div{
-    text-align: center;
+
+#login_input > li > a:hover {
+    color: #d41a39;
+    text-decoration: underline;
 }
-#login .login_input + div > a {
-    margin: 10px auto;
+
+#login_input + div {
+    text-align: center;
+    padding: 10px;
+}
+
+#login_input + div > a {
     display: inline-block;
     background-color: #d41a39;
     color: white;
-    padding: 15px 20px;
+    padding: 15px 30px;
     font-size: 24px;
 }

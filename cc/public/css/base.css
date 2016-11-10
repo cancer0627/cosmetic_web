@@ -15,6 +15,7 @@
 /*顶部*/
 #t_top {
     width: 100%;
+    min-width: 1010px;
     background-color: #d41a39;
 }
 
@@ -47,7 +48,6 @@
 }
 
 #top > div > div > span {
-    /*display: inline-block;*/
     color: white;
 }
 
@@ -94,6 +94,7 @@
 /*main_body*/
 #m_main_body {
     width: 100%;
+    min-width: 1010px;
     padding-top: 45px;
     min-height: 720px;
 }
@@ -117,55 +118,40 @@
 }
 
 #footer > div {
-    text-align: center;
+    margin-top: 25px;
     float: left;
-    padding: 20px 0;
 }
 
 #footer > div > p {
-    margin-top: 210px;
+    text-align: center;
+    margin-top: 200px;
     color: white;
 }
 
 #footer > div > div {
-    text-align: left;
     float: left;
     margin-left: 40px;
 }
 
-#footer > div > div > li > span {
+#footer > div > div > span {
     display: block;
     color: white;
     font-size: 18px;
     padding: 15px 0;
 }
 
-#footer > div > div > li {
+#footer > div > div > p {
     color: white;
     font-size: 14px;
-    padding-top: 12px;
+    padding-top: 10px;
 }
 
-#footer > .phone, #footer > .weixin {
-    margin: 27px 0 0 50px;
-    padding: 0;
-}
-
-#footer > .phone > span, #footer > .weixin > span {
-    display: block;
-    color: white;
-    padding: 20px 0;
-    font-size: 18px;
+#footer > div:last-child {
     text-align: center;
 }
 
-#footer > .phone > img, #footer > .weixin > img {
-    margin: 0 auto;
-}
-
-#footer > .phone > p, #footer > .weixin > p {
-    margin: 0 auto;
-    padding: 3px 0;
+#footer > div:last-child > div > p {
+    padding-top: 5px;
 }
 
 /*首页，列表页，活动页,个人中心页*/
