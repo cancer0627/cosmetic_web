@@ -1,0 +1,53 @@
+#main_body > p {
+    padding: 5px 20px;
+}
+
+/*支付列表*/
+#zhifu_sel {
+    margin: 50px 0;
+}
+
+#zhifu_sel > li {
+    border: 1px solid #000;
+    padding: 10px 30px;
+}
+
+#zhifu_sel > li > ul > li {
+    display: inline-block;
+    margin-right: 40px;
+}
+
+#zhifu_sel > li > ul > li > img {
+    float: right;
+}
+
+#zhifu_sel > li:first-child + li > ul > li {
+    display: inline-block;
+    margin-right: 80px;
+}
+
+#zhifu_sel > li > ul {
+    padding: 20px 0;
+}
+
+/*隐藏*/
+#zhifu_sel > li > button {
+    padding: 2px 10px;
+    border: 1px solid #000;
+    position: relative;
+    left: 900px;
+}
+
+#zhifu_sel > li > ul > div {
+    display: none;
+    padding: 10px 0 0 0;
+}
+
+#zhifu_sel > li > ul > div > li {
+    display: inline-block;
+    margin-right: 40px;
+}
+
+#zhifu_sel > li > ul > div > li > img {
+    float: right;
+}

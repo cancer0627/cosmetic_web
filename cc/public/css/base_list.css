@@ -1,0 +1,133 @@
+#main_body > #select_div > li {
+    background-color: #eceaed;
+    position: relative;
+    margin-bottom: 12px;
+    padding: 4px;
+}
+
+#main_body > #select_div > li > span {
+    padding: 4px 15px;
+    display: inline-block;
+    font-size: 12px;
+    position: absolute;
+    top: 5px;
+}
+
+#main_body > #select_div > li > div {
+    display: inline-block;
+    margin-left: 75px;
+    width: 770px;
+}
+
+#main_body > #select_div > li > div > span {
+    padding: 4px 15px;
+    display: inline-block;
+    font-size: 12px;
+    border: 1px solid #eceaed;
+}
+
+#main_body > #select_div > li > p {
+    padding: 2px 7px;
+    position: absolute;
+    display: inline-block;
+    border: 1px solid #000;
+    right: 90px;
+    top: 4px;
+    font-size: 12px;
+}
+
+#main_body > #select_div > li > button {
+    display: inline-block;
+    padding: 2px 7px;
+    position: absolute;
+    right: 20px;
+    top: 6px;
+    font-size: 12px;
+}
+
+.selected {
+    color: #f90404;
+}
+
+/*商品模块*/
+#goods_div {
+    padding: 28px 0;
+}
+
+#goods_div > li {
+    padding: 3px;
+    width: 239px;
+    height: 335px;
+    background-color: #eceaed;
+    display: inline-block;
+    position: relative;
+    margin: 6px 1px;
+}
+
+#goods_div > li > img {
+    display: block;
+}
+
+#goods_div > li > p {
+    color: #343434;
+    padding: 3px 10px;
+    font-size: 12px;
+}
+
+#goods_div > li > div > p {
+    color: #9f0404;
+    font-size: 12px;
+    padding-left: 10px;
+    display: inline-block;
+}
+
+#goods_div > li > div > div {
+    float: right;
+    margin: 2px 10px 0 0;
+}
+
+#goods_div > li > div > div > p {
+    color: #9d9c9c;
+    font-size: 12px;
+}
+
+#goods_div > li > div:last-child {
+
+}
+
+#goods_div > li > div:last-child > button:first-child {
+    padding: 8px 15px;
+    display: inline-block;
+    font-size: 14px;
+    color: #fff;
+    background-color: #9f0404;
+    position: absolute;
+    bottom: 5px;
+    left: 13px;
+}
+
+#goods_div > li > div:last-child > button:last-child {
+    padding: 8px 20px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #f39800;
+    position: absolute;
+    bottom: 5px;
+    right: 13px;
+}
+
+#goods_div + div {
+    height: 80px;
+}
+
+#goods_div + div > div {
+    float: right;
+    margin-right: 60px;
+}
+
+#goods_div + div > div > p {
+    padding: 5px 10px;
+    float: left;
+    border: 1px solid #000;
+    margin: 0 5px;
+}
