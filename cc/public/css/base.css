@@ -98,10 +98,6 @@
     display: inline-block;
     color: white;
 }
-#top > div > a:last-child > img{
-    position: relative;
-    /*top: 4px;*/
-}
 
 /*main_body*/
 #m_main_body {

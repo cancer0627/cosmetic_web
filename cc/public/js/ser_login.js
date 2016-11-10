@@ -15,6 +15,7 @@ function sendCmd(type) {
     }, function (data, status) {
         if (data.result) {
             alert('login success!!!');
+            location.href = 'personal.html';
         }
         else {
             alert('login fail!!!');
