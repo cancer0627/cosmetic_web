@@ -34,21 +34,27 @@ router.post('/login', function (req, res) {
         res.end();
     });
 });
-/*router.post('/personal', function (req, res) {
- res.contentType('json');
- connection.query('SELECT * from users where Id="' + userid + '"', function (error, rows, fields) {
- var params = {
- userid: rows[0].Id,
- username: rows[0].UserName
- };
- console.log(params);
- res.send(JSON.stringify(params));//给客户端返回一个json格式的数据
- res.end();
- })
- });*/
+router.post('/reg', function (req, res) {
+    console.log(111111111111111111111111)
+    res.contentType('json');
+    var params = {
+        usertel: req.body.usertel,
+        username: req.body.username,
+        userpwd: req.body.userpwd,
+        usermail: req.body.usermail
+    };
+    action('reg', params.usertel, params.username, params.userpwd, params.usermail, function (result, id) {
+        params.result = result;
+        params.userid = id;
+        console.log(params);
+        res.send(JSON.stringify(params));//给客户端返回一个json格式的数据
+        res.end();
+    });
+})
+
 module.exports = router;
 
-function action(ty, name, pwd, callback) {
+function action(ty, tel, name, pwd, mail, callback) {
     var sqlCmd;
     if (ty == 'login') {
         sqlCmd = 'SELECT * from users where UserName="' + name + '" and UserPwd="' + pwd + '"';
@@ -60,6 +66,26 @@ function action(ty, name, pwd, callback) {
                 //console.log(rows[0]);
             } else {
                 //没有匹配的数据
+                callback(false);
+            }
+        });
+    }
+    else if (ty == 'reg') {
+        sqlCmd = 'SELECT * from users where UserName="' + name + '" or Tel="' + tel + '" or Email="' + mail + '"';
+        connection.query(sqlCmd, function (error, rows, fields) {
+            console.log(rows);
+            if (!rows.length) {
+                //当前用户未注册
+                var insertCmd = 'insert into users (Tel,UserName,UserPwd,Email) values ("' + tel + '","' + name + '","' + pwd + '","' + mail + '")';
+                connection.query(insertCmd, function () {
+                    connection.query(sqlCmd, function (error, rows, fields) {
+                        console.log(rows[0]);
+                        var userid = rows[0].Id;
+                        callback(true, userid);
+                    })
+                });
+            } else {
+                //当前用户已经注册
                 callback(false);
             }
         });

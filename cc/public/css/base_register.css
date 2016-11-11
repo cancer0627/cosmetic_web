@@ -96,7 +96,15 @@
     margin-left: 15px;
     height: 35px;
     width: 120px;
-    background-color: #aaaaaa;
+    background-color: #e5e5e5;
+}
+.code {
+    font-style: italic;
+    color: Red;
+    letter-spacing: 3px;
+    font-weight: bolder;
+    line-height: 35px;
+    text-align: center;
 }
 
 .register_input .yanzheng > p {
