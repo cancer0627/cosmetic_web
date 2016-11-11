@@ -94,7 +94,13 @@
     background-color: #f7f7f7;
 }
 
-#top > div > a:last-child > img, #top > div > a:last-child > span {
+#top > div > a:last-child > img {
+    display: inline-block;
+    margin-left: 3px;
+    color: white;
+}
+
+#top > div > a:last-child > span {
     display: inline-block;
     color: white;
 }
