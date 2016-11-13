@@ -23,7 +23,7 @@
     for (var i = 0; i < 7; i++) {
         inp[i] = 0;
     }
-    var url = "http://192.168.43.183:3000/";
+    var url = "http://127.0.0.1:3000/";
 
     yanz_phone_btn.onclick = function () {
         var phonenum = phone_input.value;
@@ -167,6 +167,7 @@
             alert('信息填写不全或有误，请重新填写！！！');
         }
     };
+
     function sendCmd(type) {
         var u = url + type;
         console.log(u);

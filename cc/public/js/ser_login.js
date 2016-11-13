@@ -3,7 +3,7 @@
     var userName = document.getElementById('login_input').childNodes[1].childNodes[3];
     var userPwd = document.getElementById('login_input').childNodes[3].childNodes[3];
 
-    var url = "http://192.168.43.183:3000/";
+    var url = "http://127.0.0.1:3000/";
 
     function sendCmd(type) {
         var u = url + type;
@@ -27,5 +27,4 @@
     login_btn.onclick = function () {
         sendCmd('login');
     };
-
 })();

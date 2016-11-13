@@ -64,36 +64,41 @@
     padding: 10px 30px;
     border: 1px solid #000;
     position: relative;
+    margin: 10px 0;
 }
 
-#all_goods_list > li > span {
+#all_goods_list > li > div:first-child > span {
     position: absolute;
     width: 100px;
     text-align: left;
 }
 
-#all_goods_list > li > div > img {
+#all_goods_list > li > div:last-child {
+    position: relative;
+}
+
+#all_goods_list > li > div:last-child > img {
     margin: 10px 0;
 }
 
-#all_goods_list > li > div > span {
+#all_goods_list > li > div:last-child > span {
     position: absolute;
 }
 
-#all_goods_list > li > div > div {
+#all_goods_list > li > div:last-child > div {
     position: absolute;
     font-size: 12px;
-    left: 545px;
-    top: 77px;
+    left: 515px;
+    top: 47px;
 }
 
-#all_goods_list > li > div > div > button {
+#all_goods_list > li > div:last-child > div > button {
     padding: 3px 8px;
     border: 1px solid #9c9b9b;
     float: left;
 }
 
-#all_goods_list > li > div > div > input {
+#all_goods_list > li > div:last-child > div > input {
     width: 20px;
     float: left;
     padding: 3px 15px;
@@ -102,10 +107,10 @@
     border-bottom: 1px solid #9c9b9b;
 }
 
-#all_goods_list > li > div > button {
+#all_goods_list > li > div:last-child > button {
     position: absolute;
-    left: 915px;
-    top: 80px;
+    left: 865px;
+    top: 50px;
 }
 
 /*删除订单*/

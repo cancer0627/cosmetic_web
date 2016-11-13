@@ -5,7 +5,8 @@
     <title>购物车</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/base_cart.css">
-    <script defer src="js/test_cart.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script defer src="js/ser_cart.js"></script>
 </head>
 <body>
 <div id="t_top">
@@ -17,7 +18,7 @@
             <span> | </span>
             <a href="register.html">注册会员</a>
             <span> | </span>
-            <a href="#">订单查询</a>
+            <a href="personal.html">订单查询</a>
             <span> | </span>
             <div>
                 <span>我的美妆</span>
@@ -33,7 +34,7 @@
     <div id="logo">
         <a href="index.html"><img height="70" src="img/logo.png"></a>
         <div>
-            <span>欢迎您：<em>用户32132132121</em></span>
+            <span>欢迎您：<em id="username">用户#######</em></span>
             <a href="login.html">【退出】</a>
         </div>
         <div>
@@ -55,41 +56,16 @@
                 <input id="quanxuan_ch1" type="checkbox">
                 <span>全选</span>
             </div>
-            <ul id="all_goods_list">
-                <li>
-                    <input type="checkbox" name="all_goods_ch">
-                    <span style="left: 45px">选择订单</span>
-                    <span style="left: 575px">购买数量</span>
-                    <span style="left: 695px">购买单价</span>
-                    <span style="left: 790px">小计</span>
-                    <span style="left: 890px">操作</span>
-                    <div>
-                        <img width="105" height="105" src="img/personal/person_goods.png">
-                        <span style="left:190px;top: 40px">商品名称：凯筣丝汀净颜立体五色遮瑕膏5g*5</span>
-                        <span style="left:190px;top: 80px">品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌：凯筣丝汀(Kalisetin)</span>
-                        <span style="left:190px;top: 120px">功&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;效：遮瑕,装扮</span>
-                        <div>
-                            <button id="btn_decrease">－</button>
-                            <input type="text" value="1">
-                            <button id="btn_increase">＋</button>
-                        </div>
-                        <span style="left: 695px;top: 80px">￥39.90</span>
-                        <span style="left: 795px;top: 80px">￥39.90</span>
-                        <button>
-                            <img src="img/icon/delete.png">
-                        </button>
-                    </div>
-                </li>
-            </ul>
+            <ul id="all_goods_list"></ul>
             <div>
                 <button>清空选中的商品</button>
-                <span style="float: right">商品总金额：<em style="color: #d41a39">￥39.90</em>元</span>
+                <span style="float: right">商品总金额：<em id="cart_goods_price" style="color: #d41a39">￥0</em>元</span>
             </div>
             <div>
                 <input id="quanxuan_ch2" type="checkbox">
                 <span style="left: 45px;top: 12px">全选</span>
-                <span style="left: 550px;top: 12px">已选择<em style="color: #d41a39">1</em>件商品</span>
-                <span style="left: 700px;top: 12px">共计金额<em style="color: #d41a39">￥39.90</em>元</span>
+                <span style="left: 550px;top: 12px">已选择<em id="all_goods_num" style="color: #d41a39">0</em>件商品</span>
+                <span style="left: 700px;top: 12px">共计金额<em id="all_goods_price" style="color: #d41a39">￥0</em>元</span>
                 <button>去结算</button>
             </div>
         </div>
