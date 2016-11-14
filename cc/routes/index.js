@@ -54,6 +54,43 @@ router.post('/reg', function (req, res) {
         res.end();
     });
 });
+router.post('/optimal', function (req, res) {
+    res.contentType('json');
+    var params = {
+        userid: req.body.userid,
+        goods: new Array()
+    };
+    connection.query('select * from goods where Module = "optimal"', function (error, rows, fields) {
+        if (rows.length) {
+            //console.log(rows);
+            var k = 1;
+            for (var j = 0; j < 6; j++) {
+                if (j == 0) {
+                    params.goods[0] = rows[0];
+                }
+                else {
+                    for (var i = k; i < rows.length; i++) {
+                        if (rows[i].Name === params.goods[j - 1].Name) {
+                        }
+                        else {
+                            params.goods[j] = rows[i];
+                            k = i;
+                            break;
+                        }
+                    }
+                }
+                if (params.goods[j]) {
+                    continue;
+                }
+                else {
+                    break;
+                }
+            }
+            res.send(JSON.stringify(params));//给客户端返回一个json格式的数据
+            res.end();
+        }
+    })
+});
 router.post('/cart_sel', function (req, res) {
     res.contentType('json');
     var params = {
@@ -75,7 +112,17 @@ router.post('/cart_sel', function (req, res) {
         res.send(JSON.stringify(params));//给客户端返回一个json格式的数据
         res.end();
     })
-})
+});
+router.post('/cart_del', function (req, res) {
+    res.contentType('json');
+    var params = req.body;
+    console.log(params.goods_id);
+    connection.query('delete from cart where UserId="' + params.user_id + '" and GoodsId ="' + params.goods_id + '"', function (error, rows, fields) {
+        console.log(rows);
+    });
+    res.send(JSON.stringify(params));//给客户端返回一个json格式的数据
+    res.end();
+});
 
 module.exports = router;
 

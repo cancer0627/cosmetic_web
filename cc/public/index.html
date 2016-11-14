@@ -5,8 +5,10 @@
     <title>首页</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/base_index.css">
+    <script src="js/jquery-3.1.1.min.js"></script>
     <script defer src="js/test.js"></script>
     <script defer src="js/test_index.js"></script>
+    <script defer src="js/ser_index.js"></script>
 </head>
 <body>
 <div id="t_top">
@@ -215,95 +217,103 @@
         </ul>
         <ul id="module_Optimal">
             <p>每日优选 The daily optimal</p>
-            <li style='background-image: url("img/shouye/opmital3.png");'>
+            <li class="optimal_list" style='background-image: url("img/shouye/opmital2.png");'>
                 <ul>
-                    <li style="text-align: center;font-size: 18px;color: #6c6c6c">KATE双效双用立体眉彩笔</li>
-                    <li style="font-size: 14px;line-height: 35px;color: #6c6c6c">
-                        眉毛决定你的美貌！不化妆也得画眉！佳丽宝（Kanebo）KATE双效双用立体眉彩笔(眉笔+眉粉)，一画勾勒眉形，二填补充空白！手抖族也能画出韩剧女主一字眉，给你千元纹眉即视感。洋气棕色，深色浅色发色的MM都能hold住。你的眉毛是真的眉，更是真的美！
+                    <li class="optimal_goods_name" style="text-align: center;font-size: 18px;color: #6c6c6c">
+                        CANMAKE双色立体修容粉
                     </li>
-                    <li>
-                        <div>
-                            <p>包邮政策： 满299元或2件包邮</p>
-                            <p style="color: #7e7e7e">服务政策：7天拆封无理由退货</p>
-                        </div>
-                        <div>
-                            <p>商品型号：</p>
-                            <p>BR1扁平头，0.5g</p>
-                            <p>BR1细芯圆头，0.38g</p>
-                        </div>
-                    </li>
-                    <li style="margin-top:120px;color: #9f0404;font-size: 18px">￥<em
-                            style="font-size: 48px;color: #9f0404">99</em></li>
-                    <li style="font-size: 14px"><em style="color: #ff7e00">1458</em>人已购买</li>
-                    <li><a href="#">去看看</a></li>
-                </ul>
-            </li>
-            <li style='background-image: url("img/shouye/opmital2.png");'>
-                <ul>
-                    <li style="text-align: center;font-size: 18px;color: #6c6c6c">CANMAKE双色立体修容粉</li>
-                    <li style="font-size: 14px;line-height: 30px;color: #6c6c6c">
+                    <li class="optimal_goods_describe" style="font-size: 14px;line-height: 30px;color: #6c6c6c">
                         拍照不再跪求P图也能拍出明星范！CANMAKE阴影+高光修容粉，解救你的缺陷。让你快速拥有混血娃娃的高粱鼻，双色立体修容粉，引发全民点高光！3D妆容、女神光，拍照不再跪求P图也能拍出明星范！高光+阴影2in1，量大到你想不到，妥妥用一年也用不完！解救亚洲人整体鼻梁不高的缺陷。
                     </li>
                     <li>
                         <div>
-                            <p>包邮政策： 满299元或2件包邮</p>
-                            <p style="color: #7e7e7e">服务政策：7天拆封无理由退货</p>
+                            <p class="optimal_goods_baoyou">包邮政策： 满299元或2件包邮</p>
+                            <p class="optimal_goods_fuwu" style="color: #7e7e7e">服务政策：7天拆封无理由退货</p>
                         </div>
-                        <div>
+                        <div class="optimal_goods_style">
                             <p>商品型号：</p>
                             <p>BR1扁平头，0.5g</p>
                             <p>BR1扁平头，0.5g</p>
                         </div>
                     </li>
-                    <li style="margin-top:120px;color: #9f0404;font-size: 18px">￥<em
-                            style="font-size: 48px;color: #9f0404">75</em></li>
-                    <li style="font-size: 14px"><em style="color: #ff7e00">1587</em>人已购买</li>
+                    <li style="margin-top:120px;color: #9f0404;font-size: 18px">￥<em class="optimal_goods_price"
+                                                                                     style="font-size: 48px;color: #9f0404">75</em></li>
+                    <li style="font-size: 14px"><em class="optimal_goods_buynum" style="color: #ff7e00">1587</em>人已购买</li>
                     <li><a href="#">去看看</a></li>
                 </ul>
             </li>
-            <li style='background-image: url("img/shouye/opmital3.png");'>
+            <li class="optimal_list" style='background-image: url("img/shouye/opmital2.png");'>
                 <ul>
-                    <li style="text-align: center;font-size: 18px;color: #6c6c6c">KATE双效双用立体眉彩笔</li>
-                    <li style="font-size: 14px;line-height: 35px;color: #6c6c6c">
-                        眉毛决定你的美貌！不化妆也得画眉！佳丽宝（Kanebo）KATE双效双用立体眉彩笔(眉笔+眉粉)，一画勾勒眉形，二填补充空白！手抖族也能画出韩剧女主一字眉，给你千元纹眉即视感。洋气棕色，深色浅色发色的MM都能hold住。你的眉毛是真的眉，更是真的美！
+                    <li class="optimal_goods_name" style="text-align: center;font-size: 18px;color: #6c6c6c">
+                        CANMAKE双色立体修容粉
                     </li>
-                    <li>
-                        <div>
-                            <p>包邮政策： 满299元或2件包邮</p>
-                            <p style="color: #7e7e7e">服务政策：7天拆封无理由退货</p>
-                        </div>
-                        <div>
-                            <p>商品型号：</p>
-                            <p>BR1扁平头，0.5g</p>
-                            <p>BR1细芯圆头，0.38g</p>
-                        </div>
-                    </li>
-                    <li style="margin-top:120px;color: #9f0404;font-size: 18px">￥<em
-                            style="font-size: 48px;color: #9f0404">99</em></li>
-                    <li style="font-size: 14px"><em style="color: #ff7e00">1458</em>人已购买</li>
-                    <li><a href="#">去看看</a></li>
-                </ul>
-            </li>
-            <li style='background-image: url("img/shouye/opmital4.png");'>
-                <ul>
-                    <li style="text-align: center;font-size: 18px;color: #6c6c6c">CANMAKE双色立体修容粉</li>
-                    <li style="font-size: 14px;line-height: 30px;color: #6c6c6c">
+                    <li class="optimal_goods_describe" style="font-size: 14px;line-height: 30px;color: #6c6c6c">
                         拍照不再跪求P图也能拍出明星范！CANMAKE阴影+高光修容粉，解救你的缺陷。让你快速拥有混血娃娃的高粱鼻，双色立体修容粉，引发全民点高光！3D妆容、女神光，拍照不再跪求P图也能拍出明星范！高光+阴影2in1，量大到你想不到，妥妥用一年也用不完！解救亚洲人整体鼻梁不高的缺陷。
                     </li>
                     <li>
                         <div>
-                            <p>包邮政策： 满299元或2件包邮</p>
-                            <p style="color: #7e7e7e">服务政策：7天拆封无理由退货</p>
+                            <p class="optimal_goods_baoyou">包邮政策： 满299元或2件包邮</p>
+                            <p class="optimal_goods_fuwu" style="color: #7e7e7e">服务政策：7天拆封无理由退货</p>
                         </div>
-                        <div>
+                        <div class="optimal_goods_style">
                             <p>商品型号：</p>
-                            <p>#946 经典款，6.8g/个</p>
-                            <p>#953 新晋色，6.8g/个</p>
+                            <p>BR1扁平头，0.5g</p>
+                            <p>BR1扁平头，0.5g</p>
                         </div>
                     </li>
-                    <li style="margin-top:120px;color: #9f0404;font-size: 18px">￥<em
-                            style="font-size: 48px;color: #9f0404">75</em></li>
-                    <li style="font-size: 14px"><em style="color: #ff7e00">1587</em>人已购买</li>
+                    <li style="margin-top:120px;color: #9f0404;font-size: 18px">￥<em class="optimal_goods_price"
+                                                                                     style="font-size: 48px;color: #9f0404">75</em></li>
+                    <li style="font-size: 14px"><em class="optimal_goods_buynum" style="color: #ff7e00">1587</em>人已购买</li>
+                    <li><a href="#">去看看</a></li>
+                </ul>
+            </li>
+            <li class="optimal_list" style='background-image: url("img/shouye/opmital2.png");'>
+                <ul>
+                    <li class="optimal_goods_name" style="text-align: center;font-size: 18px;color: #6c6c6c">
+                        CANMAKE双色立体修容粉
+                    </li>
+                    <li class="optimal_goods_describe" style="font-size: 14px;line-height: 30px;color: #6c6c6c">
+                        拍照不再跪求P图也能拍出明星范！CANMAKE阴影+高光修容粉，解救你的缺陷。让你快速拥有混血娃娃的高粱鼻，双色立体修容粉，引发全民点高光！3D妆容、女神光，拍照不再跪求P图也能拍出明星范！高光+阴影2in1，量大到你想不到，妥妥用一年也用不完！解救亚洲人整体鼻梁不高的缺陷。
+                    </li>
+                    <li>
+                        <div>
+                            <p class="optimal_goods_baoyou">包邮政策： 满299元或2件包邮</p>
+                            <p class="optimal_goods_fuwu" style="color: #7e7e7e">服务政策：7天拆封无理由退货</p>
+                        </div>
+                        <div class="optimal_goods_style">
+                            <p>商品型号：</p>
+                            <p>BR1扁平头，0.5g</p>
+                            <p>BR1扁平头，0.5g</p>
+                        </div>
+                    </li>
+                    <li style="margin-top:120px;color: #9f0404;font-size: 18px">￥<em class="optimal_goods_price"
+                                                                                     style="font-size: 48px;color: #9f0404">75</em></li>
+                    <li style="font-size: 14px"><em class="optimal_goods_buynum" style="color: #ff7e00">1587</em>人已购买</li>
+                    <li><a href="#">去看看</a></li>
+                </ul>
+            </li>
+            <li class="optimal_list" style='background-image: url("img/shouye/opmital2.png");'>
+                <ul>
+                    <li class="optimal_goods_name" style="text-align: center;font-size: 18px;color: #6c6c6c">
+                        CANMAKE双色立体修容粉
+                    </li>
+                    <li class="optimal_goods_describe" style="font-size: 14px;line-height: 30px;color: #6c6c6c">
+                        拍照不再跪求P图也能拍出明星范！CANMAKE阴影+高光修容粉，解救你的缺陷。让你快速拥有混血娃娃的高粱鼻，双色立体修容粉，引发全民点高光！3D妆容、女神光，拍照不再跪求P图也能拍出明星范！高光+阴影2in1，量大到你想不到，妥妥用一年也用不完！解救亚洲人整体鼻梁不高的缺陷。
+                    </li>
+                    <li>
+                        <div>
+                            <p class="optimal_goods_baoyou">包邮政策： 满299元或2件包邮</p>
+                            <p class="optimal_goods_fuwu" style="color: #7e7e7e">服务政策：7天拆封无理由退货</p>
+                        </div>
+                        <div class="optimal_goods_style">
+                            <p>商品型号：</p>
+                            <p>BR1扁平头，0.5g</p>
+                            <p>BR1扁平头，0.5g</p>
+                        </div>
+                    </li>
+                    <li style="margin-top:120px;color: #9f0404;font-size: 18px">￥<em class="optimal_goods_price"
+                                                                                     style="font-size: 48px;color: #9f0404">75</em></li>
+                    <li style="font-size: 14px"><em class="optimal_goods_buynum" style="color: #ff7e00">1587</em>人已购买</li>
                     <li><a href="#">去看看</a></li>
                 </ul>
             </li>

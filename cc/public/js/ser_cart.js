@@ -17,6 +17,8 @@
     var all_goods_ch = document.getElementsByName('all_goods_ch');
     var quanxuan_ch2 = document.getElementById('quanxuan_ch2');
     var quanxuan_ch1 = document.getElementById('quanxuan_ch1');
+    var all_goods_delete_btn = document.getElementById('all_goods_delete_btn');
+    var cart_delete_btn = document.getElementsByClassName('cart_delete_btn');
     var gd, i, j;
 
     var url = 'http://127.0.0.1:3000/';
@@ -44,10 +46,10 @@
                 var li = document.createElement('li');
                 all_goods_list.appendChild(li);
                 li.className = 'cart_list';
-                li.innerHTML = '<div> <input type="checkbox" name="all_goods_ch" checked> <span style="left: 45px">选择订单</span> <span style="left: 575px">购买数量</span> <span style="left: 695px">购买单价</span> <span style="left: 795px">小计</span> <span style="left: 890px">操作</span> </div>' +
+                li.innerHTML = '<div> <input type="checkbox" name="all_goods_ch"> <span style="left: 45px">选择订单</span> <span style="left: 575px">购买数量</span> <span style="left: 695px">购买单价</span> <span style="left: 795px">小计</span> <span style="left: 890px">操作</span> </div>' +
                     ' <div> <img class="cart_list_goods_pic" width="105" height="105" src=""> <span class="cart_list_goods_name" style="left:120px;top: 10px"></span>' +
                     ' <span class="cart_list_goods_brand" style="left:120px;top: 50px"></span> <span class="cart_list_goods_effect" style="left:120px;top: 90px"></span>' +
-                    ' <div> <button class="btn_decrease">－</button> <input class="num_inp" type="text" value="1"> <button class="btn_increase">＋</button> </div> <span class="cart_list_goods_price" style="left: 665px;top: 50px">￥</span> <span class="cart_list_goods_price_zong" style="left: 755px;top: 50px">￥</span> <button> <img src="../img/icon/delete.png"> </button> </div>'
+                    ' <div> <button class="btn_decrease">－ </button> <input class="num_inp" type="text" value="1"> <button class="btn_increase">＋</button> </div> <span class="cart_list_goods_price" style="left: 665px;top: 50px">￥</span> <span class="cart_list_goods_price_zong" style="left: 755px;top: 50px">￥</span> <button class="cart_delete_btn"> <img src="../img/icon/delete.png"> </button> </div>'
             }
             for (var i = 0; i < cart_list.length; i++) {
                 cart_list_goods_pic[i].src = 'img/goods/' + data.goods[i].GoodsUrl;
@@ -88,11 +90,26 @@
                 }
                 act_price2();
             };
+            all_goods_delete_btn.onclick = function () {
 
+            };
             for (j = 0; j < all_goods_ch.length; j++) {
                 (function (j) {
                     all_goods_ch[j].onclick = function () {
-                        //console.log(all_goods_ch[j]);
+                        var temp = 0;
+                        for (var i = 0; i < all_goods_ch.length; i++) {
+                            if (all_goods_ch[i].checked) {
+                                temp++;
+                            }
+                            if (temp == all_goods_ch.length) {
+                                quanxuan_ch2.checked = true;
+                                quanxuan_ch1.checked = true;
+                            }
+                            else {
+                                quanxuan_ch2.checked = false;
+                                quanxuan_ch1.checked = false;
+                            }
+                        }
                         act_price2();
                     };
                     num_inp[j].onchange = function () {
@@ -124,6 +141,16 @@
                             act_price1();
                             act_price2();
                         }
+                    };
+                    cart_delete_btn[j].onclick = function () {
+                        $.post(url + 'cart_del', {
+                            user_id: sessionStorage.userid,
+                            goods_id: data.goods[j].GoodsId
+                        }, function (data, status) {
+                            console.log(data);
+                            //cart_list[j].style.display = 'none';
+                            all_goods_list.removeChild(cart_list[j]);
+                        })
                     }
                 })(j)
             }
@@ -146,8 +173,6 @@
             if (all_goods_ch[i].checked) {
                 price_sum2 += gd.goods[i].Price * num_inp[i].value;
                 goods_num += parseInt(num_inp[i].value);
-            }
-            else {
             }
         }
         all_goods_price.innerHTML = '￥' + price_sum2;
