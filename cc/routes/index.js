@@ -91,6 +91,37 @@ router.post('/optimal', function (req, res) {
         }
     })
 });
+router.post('/cart_add', function (req, res) {
+    res.contentType('json');
+    var params = {
+        goodsid: req.body.goods_id,
+        userid: req.body.user_id
+    };
+    cart_add(params.goodsid, params.userid, function (result) {
+            params.result = result;
+            res.send(JSON.stringify(params));//给客户端返回一个json格式的数据
+            res.end();
+        }
+    );
+    function cart_add(g_id, u_id, callback) {
+        connection.query('select * from goods where Id="' + g_id + '"', function (error, rows, fields) {
+            var para = rows[0];
+            //console.log(para);
+            var sqlCmd='insert into cart (UserId,GoodsId,GoodsName,GoodsUrl,GoodsBrand,GoodsEffect,Num,BuyNum,Price) values (' + u_id + ',' + g_id + ',"' + para.Name +
+                '","' + para.Url + '","' + para.Brand + '","' + para.Effect + '",' + para.Num + ',' + para.BuyNum + ',' + para.Price + ')';
+            connection.query(sqlCmd, function (error, rows, fields) {
+                //console.log(sqlCmd);
+                //console.log(rows);
+                if (rows) {
+                    callback(true);
+                }
+                else {
+                    callback(false);
+                }
+            })
+        })
+    }
+});
 router.post('/cart_sel', function (req, res) {
     res.contentType('json');
     var params = {
@@ -122,6 +153,21 @@ router.post('/cart_del', function (req, res) {
     });
     res.send(JSON.stringify(params));//给客户端返回一个json格式的数据
     res.end();
+});
+router.post('/list_sel', function (req, res) {
+    res.contentType('json');
+    var params = {
+        userid: req.body.user_id,
+        sel: req.body.sel
+    };
+    console.log(params);
+    connection.query('select * from goods where Fenlei="' + params.sel + '"', function (error, rows, fields) {
+        if (rows.length) {
+            params.goods = rows;
+        }
+        res.send(JSON.stringify(params));
+        res.end();
+    })
 });
 
 module.exports = router;

@@ -52,16 +52,18 @@
 /*商品模块*/
 #goods_div {
     padding: 28px 0;
+    text-align: center;
 }
 
 #goods_div > li {
+    text-align: left;
     padding: 3px;
     width: 239px;
     height: 335px;
     background-color: #eceaed;
     display: inline-block;
     position: relative;
-    margin: 6px 1px;
+    margin: 6px 3px;
 }
 
 #goods_div > li > img {
