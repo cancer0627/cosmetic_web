@@ -15,6 +15,7 @@
     width: 442px;
     height: 199px;
     display: inline-block;
+    background-repeat: no-repeat;
     margin: 0 20px;
 }
 
@@ -122,6 +123,7 @@
 
 #sales_bang .bangs > li {
     padding: 3px;
+    /*text-align: left;*/
     background-color: #eceaed;
     width: 239px;
     position: relative;
