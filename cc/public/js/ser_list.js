@@ -112,18 +112,30 @@
     /*------------------------------------------------------------*/
     if (sessionStorage.username) {
         if (sessionStorage.fenlei) {
+            for (var i = 0; i < goods_div.childNodes.length; i++) {
+                goods_div.removeChild(goods_div.childNodes[0]);
+            }
             $.post(url + 'list_sel', {
                 user_id: sessionStorage.userid,
                 sel: sessionStorage.fenlei
             }, act)
         }
         else {
+            for (var i = 0; i < goods_div.childNodes.length; i++) {
+                goods_div.removeChild(goods_div.childNodes[0]);
+            }
             $.post(url + 'list_sel', {
                 user_id: sessionStorage.userid,
                 sel: '底妆'
             }, act)
         }
         search_btn.onclick = function () {
+            var n = goods_div.childNodes.length;
+            console.log(goods_div.childNodes.length)
+            for (var i = 0; i < n; i++) {
+                goods_div.removeChild(goods_div.childNodes[0]);
+            }
+            console.log(goods_div.childNodes.length)
             $.post(url + 'list_sel', {
                 user_id: sessionStorage.userid,
                 sel: $.trim(search_input.value)
@@ -176,6 +188,21 @@
                             }
                         })
                     }
+                };
+                goods_buy_btn[i].onclick = function () {
+                    $.post(url + 'dingdan_add', {
+                        id: new Date().getTime() + "" + Math.floor(Math.random() * 899 + 100),
+                        date: new Date().toLocaleDateString(),
+                        userid: sessionStorage.userid,
+                        goodsid: gds.goods[i].Id,
+                        buynum: 1
+                    }, function (data, status) {
+                        sessionStorage.setItem('date', new Date().toLocaleDateString());
+                        console.log(data);
+                        sessionStorage.setItem('dingdanid',data.id);
+                        alert('############订单生成############');
+                        location.href = 'dingdan.html';
+                    });
                 }
             })(i)
         }

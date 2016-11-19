@@ -5,6 +5,7 @@
     <title>订单</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/base_dingdan.css">
+    <script src="js/jquery-3.1.1.min.js"></script>
     <script defer src="js/test_dingdan.js"></script>
 </head>
 <body>
@@ -33,7 +34,7 @@
     <div id="logo">
         <a href="index.html"><img height="70" src="img/logo.png"></a>
         <div>
-            <span>欢迎您：<em>用户32132132121</em></span>
+            <span>欢迎您：<em id="username">用户 </em></span>
             <a href="login.html">【退出】</a>
         </div>
         <div>
@@ -51,22 +52,28 @@
                 <span>1、确认收货地址</span>
                 <img width="1010" height="7" src="img/list_tiao.png">
                 <ul id="local_list">
-                    <li>
-                        <input type="radio" name="loc" checked>
-                        <span>黑龙江省 哈尔滨市 南岗区 建设街51号  （XX收） 18564512352</span>
-                        <span>默认地址</span>
-                        <a href="#">修改本地址</a>
+                    <li class="local_list_det">
+                        <input type="radio" name="local_ch" checked>
+                        <input class="local_inp">
+                        <span class="local_span">黑龙江省 哈尔滨市 南岗区 建设街51号 （XX收） 18564512352</span>
+                        <a class="moren_local_btn" href="#" style="right: 150px">默认地址</a>
+                        <a class="update_local_btn" href="#" style="right: 50px">修改本地址</a>
                     </li>
-                    <li>
-                        <input type="radio" name="loc">
-                        <span>黑龙江省 哈尔滨市 道里区 正阳和街道 河洲街26号X单元XX楼XXX室  （XXX收） 18564512212</span>
-                        <a href="#" style="display: none">修改本地址</a>
+                    <li class="local_list_det">
+                        <input type="radio" name="local_ch">
+                        <input class="local_inp">
+                        <span class="local_span">黑龙江省 哈尔滨市 道里区 正阳和街道 河洲街26号X单元XX楼XXX室 （XXX收） 18564512212</span>
+                        <a class="moren_local_btn" href="#" style="right: 150px">默认地址</a>
+                        <a class="update_local_btn" href="#" style="right: 50px">修改本地址</a>
                     </li>
                 </ul>
-                <button>
+            </div>
+            <div>
+                <button id="local_add_btn">
                     <img src="img/icon/add.png">
                     <span>添加新地址</span>
                 </button>
+                <input id="local_add_inp" type="text">
             </div>
         </div>
         <div id="time_mod">
@@ -93,27 +100,17 @@
             <div>
                 <span>3、确认商品清单</span>
                 <img width="1010" height="7" src="img/list_tiao.png">
-                <ul>
+                <ul id="queren_list">
                     <div>
                         <span style="width: 450px">商品信息</span>
                         <span>数量</span>
                         <span>购买单价</span>
                         <span>小计</span>
                     </div>
-                    <li>
-                        <div>
-                            <img width="105px" height="105px" src="img/personal/person_goods.png">
-                            <p style="top: 20px">商品名称： 凯筣丝汀净颜立体五色遮瑕膏5g*5 </p>
-                            <p style="top: 60px">品 牌： 凯筣丝汀(Kalisetin)</p>
-                        </div>
-                        <span style="left: 452px;top:40px">1</span>
-                        <span style="left: 607px;top:40px">￥39.90</span>
-                        <span style="left: 760px;top:40px">￥39.90</span>
-                    </li>
                 </ul>
                 <div>
                     <span>配送方式： 快递</span>
-                    <span>配送费： ￥5.00</span>
+                    <span id="queren_goods_yunfei">配送费： ￥5.00</span>
                 </div>
             </div>
             <div>
@@ -121,15 +118,15 @@
                 <span>发票名头</span><input type="text">
             </div>
             <div>
-                <p><span>共计 1 件商品，总金额：</span><span>￥39.90</span></p>
-                <p><span>总运费：</span><span>￥5.00</span></p>
-                <p><span>应付总金额：</span><span>￥44.90</span></p>
+                <p><span id="goods_num">共计 1 件商品，总金额：</span><span id="goods_price_zong">￥39.90</span></p>
+                <p><span>总运费：</span><span id="goods_yunfei_zong">￥5.00</span></p>
+                <p><span>应付总金额：</span><span id="price_zong1">￥44.90</span></p>
             </div>
         </div>
         <div>
             <a href="#">返回修改购买商品</a>
-            <span>应付总金额：<em style="font-size: 24px;color: #d41a39;">￥44.90</em></span>
-            <button>确认支付</button>
+            <span>应付总金额：<em id="price_zong2" style="font-size: 24px;color: #d41a39;">￥44.90</em></span>
+            <button id="queren_zhifu_btn">确认支付</button>
         </div>
     </div>
 </div>

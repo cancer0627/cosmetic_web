@@ -19,6 +19,7 @@
     var quanxuan_ch1 = document.getElementById('quanxuan_ch1');
     var all_goods_delete_btn = document.getElementById('all_goods_delete_btn');
     var cart_delete_btn = document.getElementsByClassName('cart_delete_btn');
+    var goods_buy_btn = document.getElementById('goods_buy_btn');
     var gd, i, j;
 
     var url = 'http://127.0.0.1:3000/';
@@ -34,7 +35,8 @@
         userid: sessionStorage.userid
     }, function (data, status) {
         gd = data;
-        if (data.goods.length == 0) {
+        console.log(data)
+        if (data.num == 0) {
             var div = document.createElement('div');
             all_goods_list.appendChild(div);
             div.style.textAlign = 'center';
@@ -42,40 +44,7 @@
             div.innerHTML = '购物车无商品！！！';
         }
         else {
-            for (i = 0; i < data.num; i++) {
-                var li = document.createElement('li');
-                all_goods_list.appendChild(li);
-                li.className = 'cart_list';
-                li.innerHTML = '<div> <input type="checkbox" name="all_goods_ch"> <span style="left: 45px">选择订单</span> <span style="left: 575px">购买数量</span> <span style="left: 695px">购买单价</span> <span style="left: 795px">小计</span> <span style="left: 890px">操作</span> </div>' +
-                    ' <div> <img class="cart_list_goods_pic" width="105" height="105" src=""> <span class="cart_list_goods_name" style="left:120px;top: 10px"></span>' +
-                    ' <span class="cart_list_goods_brand" style="left:120px;top: 50px"></span> <span class="cart_list_goods_effect" style="left:120px;top: 90px"></span>' +
-                    ' <div> <button class="btn_decrease">－ </button> <input class="num_inp" type="text" value="1"> <button class="btn_increase">＋</button> </div> <span class="cart_list_goods_price" style="left: 665px;top: 50px">￥</span> <span class="cart_list_goods_price_zong" style="left: 755px;top: 50px">￥</span> <button class="cart_delete_btn"> <img src="../img/icon/delete.png"> </button> </div>'
-            }
-            for (i = 0; i <cart_list.length; i++) {
-                for (j = i + 1; j < cart_list.length; j++) {
-                    if (cart_list[j].style.display != 'none') {
-                        if (data.goods[i].GoodsId == data.goods[j].GoodsId) {
-                            num_inp[i].value++;
-                            cart_list[j].style.display = 'none';
-                        }
-                    }
-                }
-            }
-            for(i = 0; i < cart_list.length; i++){
-                if (cart_list[i].style.display == 'none') {
-                    all_goods_list.removeChild(cart_list[i]);
-                    i--;
-                }
-                else{
-                    cart_list_goods_pic[i].src = 'img/goods/' + data.goods[i].GoodsUrl;
-                    cart_list_goods_name[i].innerHTML = '商品名称：' + data.goods[i].GoodsName;
-                    cart_list_goods_brand[i].innerHTML = '品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌：' + data.goods[i].GoodsBrand;
-                    cart_list_goods_effect[i].innerHTML = '功&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;效：' + data.goods[i].GoodsEffect;
-                    cart_list_goods_price[i].innerHTML = '￥' + data.goods[i].Price;
-                }
-            }
-            act_price1();
-            act_price2();
+            chushihua();
             quanxuan_ch1.onclick = function () {
                 if (quanxuan_ch1.checked) {
                     quanxuan_ch2.checked = true;
@@ -105,9 +74,6 @@
                     }
                 }
                 act_price2();
-            };
-            all_goods_delete_btn.onclick = function () {
-
             };
             for (j = 0; j < all_goods_ch.length; j++) {
                 (function (j) {
@@ -158,21 +124,103 @@
                             act_price2();
                         }
                     };
-                    cart_delete_btn[j].onclick = function () {
-                        $.post(url + 'cart_del', {
-                            user_id: sessionStorage.userid,
-                            goods_id: data.goods[j].GoodsId
-                        }, function (data, status) {
-                            console.log(data);
-                            all_goods_list.removeChild(cart_list[j]);
-                            act_price1();
-                            act_price2();
-                        })
-                    }
                 })(j)
             }
+            function del() {
+                for (j = 0; j < cart_list.length; j++) {
+                    (function (j) {
+                        cart_delete_btn[j].onclick = function () {
+                            $.post(url + 'cart_del', {
+                                user_id: sessionStorage.userid,
+                                goods_id: data.goods[j].GoodsId
+                            }, function (data, status) {
+                                console.log(all_goods_list.childNodes.length);
+                                all_goods_list.removeChild(cart_list[j]);
+                                //if (all_goods_list.childNodes.length == 1) {
+                                //    all_goods_list.removeChild(cart_list[0]);
+                                //} else {
+                                //    all_goods_list.removeChild(cart_list[j]);
+                                //}
+                                del();
+                            })
+                        }
+                    })(j)
+                }
+            }
+
+            del();
         }
     });
+
+    goods_buy_btn.onclick = function () {
+        var obj = new Object();
+        var arr = new Array()
+        obj.date = new Date().toLocaleDateString();
+        obj.id = new Date().getTime() + "" + Math.floor(Math.random() * 899 + 100);
+        obj.userid = sessionStorage.userid;
+        var k = 0, num = 0;
+        for (var i = 0; i < all_goods_ch.length; i++) {
+            for (j = k; j < all_goods_ch.length; j++) {
+                if (all_goods_ch[j].checked) {
+                    arr[i] = {
+                        goodsid: gd.goods[j].GoodsId,
+                        buynum: num_inp[j].value
+                    };
+                    k = j + 1;
+                    num++;
+                    break;
+                }
+            }
+        }
+        obj.num = num;
+        obj.goods = JSON.stringify(arr);
+        console.log(obj);
+
+        $.post(url + 'dingdan_add_bycart', obj, function (data, status) {
+            sessionStorage.setItem('date', new Date().toLocaleDateString());
+            console.log(data);
+            sessionStorage.setItem('dingdanid',data.id);
+            alert('############订单生成############');
+            location.href = 'dingdan.html';
+        });
+    };
+
+    function chushihua() {
+        for (i = 0; i < gd.num; i++) {
+            var li = document.createElement('li');
+            all_goods_list.appendChild(li);
+            li.className = 'cart_list';
+            li.innerHTML = '<div> <input type="checkbox" name="all_goods_ch"> <span style="left: 45px">选择订单</span> <span style="left: 575px">购买数量</span> <span style="left: 695px">购买单价</span> <span style="left: 795px">小计</span> <span style="left: 890px">操作</span> </div>' +
+                ' <div> <img class="cart_list_goods_pic" width="105" height="105" src=""> <span class="cart_list_goods_name" style="left:120px;top: 10px"></span>' +
+                ' <span class="cart_list_goods_brand" style="left:120px;top: 50px"></span> <span class="cart_list_goods_effect" style="left:120px;top: 90px"></span>' +
+                ' <div> <button class="btn_decrease">－ </button> <input class="num_inp" type="text" value="1"> <button class="btn_increase">＋</button> </div> <span class="cart_list_goods_price" style="left: 665px;top: 50px">￥</span> <span class="cart_list_goods_price_zong" style="left: 755px;top: 50px">￥</span> <button class="cart_delete_btn"> <img src="../img/icon/delete.png"> </button> </div>'
+        }
+        for (i = 0; i < cart_list.length; i++) {
+            for (j = i + 1; j < cart_list.length; j++) {
+                if (cart_list[j].style.display != 'none') {
+                    if (gd.goods[i].GoodsId == gd.goods[j].GoodsId) {
+                        num_inp[i].value++;
+                        cart_list[j].style.display = 'none';
+                    }
+                }
+            }
+        }
+        for (i = 0; i < cart_list.length; i++) {
+            if (cart_list[i].style.display == 'none') {
+                all_goods_list.removeChild(cart_list[i]);
+                i--;
+            }
+            else {
+                cart_list_goods_pic[i].src = 'img/goods/' + gd.goods[i].GoodsUrl;
+                cart_list_goods_name[i].innerHTML = '商品名称：' + gd.goods[i].GoodsName;
+                cart_list_goods_brand[i].innerHTML = '品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌：' + gd.goods[i].GoodsBrand;
+                cart_list_goods_effect[i].innerHTML = '功&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;效：' + gd.goods[i].GoodsEffect;
+                cart_list_goods_price[i].innerHTML = '￥' + gd.goods[i].Price;
+            }
+        }
+        act_price1();
+        act_price2();
+    }
 
     function act_price1() {
         var price_sum1 = 0;

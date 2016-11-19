@@ -42,13 +42,25 @@ module.exports = {
         });
     },
     list_fenlei_sel: function (par, callback) {
-        connection.query(sql.fenlei_sel, [par.sel], function (error, rows, fields) {
+        connection.query(sql.fenlei_sel, [par.sel, '%' + par.sel + '%'], function (error, rows, fields) {
             if (rows.length) {
                 par.goods = rows;
                 callback();
             }
         })
     },
+    //list_jiage_sel:function (par, callback) {
+    //    console.log(par.sel);
+    //    if(par.sel=='0-99元'){
+    //        connection.query(sql.jiage_sel, ['0','99'], function (error, rows, fields) {
+    //            if (rows.length) {
+    //                par.goods = rows;
+    //                callback();
+    //            }
+    //        })
+    //    }
+    //
+    //},
     details: function (par, callback) {
         connection.query(sql.details_sel, [par.goodsid], function (error, rows, fields) {
             if (rows.length) {
@@ -58,19 +70,109 @@ module.exports = {
         })
     },
     index_sel: function (par, callback) {
-        connection.query(sql.index_sel, ['%'+par.module+'%'], function (error, rows, fields) {
+        connection.query(sql.index_sel, ['%' + par.module + '%'], function (error, rows, fields) {
             if (rows.length) {
                 par.goods = rows;
                 callback();
             }
         })
+    },
+    cart_add: function (par, callback) {
+        connection.query(sql.details_sel, [par.goodsid], function (error, rows, fields) {
+            var para = rows[0];
+            connection.query(sql.cart_ins, [par.userid, par.goodsid, para.Name, para.Url, para.Brand, para.Effect, para.Num, para.BuyNum, para.Price], function (error, rows, fields) {
+                if (rows) {
+                    callback(true);
+                }
+                else {
+                    callback(false);
+                }
+            })
+        })
+    },
+    cart_sel: function (par, callback) {
+        connection.query(sql.cart_sel, [par.userid], function (error, rows, fields) {
+            if (rows.length) {
+                par.num = rows.length;
+                par.goods = rows;
+            }
+            else {
+                par.num = 0;
+            }
+            callback();
+        })
+    },
+    cart_del: function (par, callback) {
+        //console.log(par);
+        connection.query(sql.cart_del, [par.user_id, par.goods_id], function (error, rows, fields) {
+            callback();
+        });
+    },
+    dingdan_add: function (par, callback) {
+        connection.query(sql.details_sel, [par.goodsid], function (error, rows, fields) {
+            if (rows.length) {
+                //console.log(par.date,par.goodsid,par.userid,rows[0].Name,rows[0].Url,rows[0].Price,par.buynum,rows[0].Perferntial,'已购买')
+                connection.query(sql.dingdan_add, [parseInt(par.id),par.date, par.goodsid, par.userid, rows[0].Name, rows[0].Url, rows[0].Price, par.buynum, rows[0].Perferential, '待付款',rows[0].Brand], function (error, rows, fields) {
+                    if (rows) {
+                        connection.query(sql.dingdan_sel, [rows.insertId], function (error, rows, fields) {
+                            callback(rows[0])
+                        })
+                    }
+                });
+            }
+        });
+    },
+    dingdan_add_bycart: function (par, callback) {
+        //console.log(par)
+        var array = JSON.parse(par.goods);
+        par.arr = new Array();
+        //console.log(JSON.parse(par.goods));
+        for (var i = 0; i < array.length; i++) {
+            if (i == array.length - 1) {
+                act(par, array[i], i);
+                connection.query(sql.dingdan_sel, [parseInt(par.id)], function (error, rows, fields) {
+                    callback(rows)
+                })
+            }
+            else {
+                act(par, array[i], i);
+            }
+        }
+    },
+    dingdan_sel_byuser:function (par,callback){
+        connection.query(sql.dingdan_sel_byuser, [par.userid], function (error, rows, fields) {
+            //par.goods=;
+            //console.log(rows)
+            callback(rows);
+        })
+    },
+    dingdan_sel:function(par,callback){
+        connection.query(sql.dingdan_sel, [par.id], function (error, rows, fields) {
+            //par.goods=;
+            console.log(rows);
+            callback(rows);
+        })
     }
-    //goods_sel: function (par, callback) {
-    //    connection.query(sql.fenlei_sel, [par.fenlei], function (error, rows, fields) {
-    //        if(rows.length){
-    //            par.goods = rows;
-    //            callback();
-    //        }
-    //    })
-    //}
 };
+function act(par, arr, i) {
+    var para = {
+        goodsid: arr.goodsid,
+        buynum: arr.buynum
+    };
+    //console.log(para.goodsid);
+    connection.query(sql.details_sel, [para.goodsid], function (error, rows, fields) {
+        //console.log(rows)
+        if (rows.length) {
+            //console.log(222222222)
+            //console.log(parseInt(par.id), par.date, rows[0].Id, par.userid, rows[0].Name, rows[0].Url, rows[0].Price, para.buynum, rows[0].Perferential, '已购买')
+            var p = {
+                uid: par.userid,
+                gid: rows[0].Id
+            };
+            connection.query(sql.dingdan_add, [parseInt(par.id), par.date, rows[0].Id, par.userid, rows[0].Name, rows[0].Url, rows[0].Price, para.buynum, rows[0].Perferential, '待付款',rows[0].Brand], function (error, rows, fields) {
+                connection.query(sql.cart_del, [p.uid, p.gid], function (error, rows, fields) {
+                })
+            });
+        }
+    });
+}

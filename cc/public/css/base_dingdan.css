@@ -22,23 +22,40 @@
 #local_list > li {
     color: #333232;
     padding: 12px 0 12px 150px;
+    position: relative;
 }
 
-#local_list > li:first-child {
-    background-image: url("../img/personal/local.png");
+#local_list > li > input:first-child + input {
+    width: 500px;
+    position: absolute;
+    display: none;
 }
 
 #local_list > li > a {
-    float: right;
+    position: absolute;
     color: #333232;
-    margin-right: 50px;
+    display: none;
 }
 
-#local_list + button {
+#local_mod > div:last-child {
+    text-align: center;
+}
+
+#local_mod > div:last-child > button {
     display: inline-block;
-    left: 200px;
-    position: relative;
     background-color: #e2e2e2;
+    padding: 5px 10px;
+    border: 1px solid #b0afaf;
+}
+
+#local_mod > div:last-child > button > img {
+    float: left;
+}
+
+#local_mod > div:last-child > input {
+    display: none;
+    /*display: inline-block;*/
+    width: 300px;
     padding: 5px 10px;
     border: 1px solid #b0afaf;
 }
@@ -76,6 +93,7 @@
 
 #queren_mod ul > li {
     position: relative;
+    margin: 10px 0;
 }
 
 #queren_mod ul > li > span {

@@ -11,6 +11,7 @@
     var optimal_goods_style = document.getElementsByClassName('optimal_goods_style');
     var optimal_goods_price = document.getElementsByClassName('optimal_goods_price');
     var optimal_goods_buynum = document.getElementsByClassName('optimal_goods_buynum');
+    var optimal_goods_buy_btn = document.getElementsByClassName('optimal_goods_buy_btn');
     var module_Optimal = document.getElementById('module_Optimal');
 
     var special_list = document.getElementsByClassName('special_list');
@@ -18,6 +19,7 @@
     var special_goods_describe = document.getElementsByClassName('special_goods_describe');
     var special_goods_price = document.getElementsByClassName('special_goods_price');
     var special_goods_price_original = document.getElementsByClassName('special_goods_price_original');
+    var special_goods_buy_btn = document.getElementsByClassName('special_goods_buy_btn');
     var module_Special = document.getElementById('module_Special');
 
     var bangs1 = document.getElementById('bangs1');
@@ -54,12 +56,18 @@
                 module_Special.appendChild(li);
                 li.innerHTML = '<ul> <li class="special_goods_name" style="font-size: 18px">珂莱欧（CLIO）气垫BB</li> <li class="special_goods_describe" style="font-size: 14px">素颜水光肌肤成就明星气质</li>' +
                     '<li style="font-size: 14px"> <em style="color: #9f0404">¥</em> <em class="special_goods_price" style="color: #9f0404;font-size: 30px">159</em>' +
-                    '<em class="special_goods_price_original" style="text-decoration: line-through">￥179</em> </li><li><a href="#">点击疯抢</a></li> </ul>';
+                    '<em class="special_goods_price_original" style="text-decoration: line-through">￥179</em> </li><li><a class="special_goods_buy_btn" href="#">点击疯抢</a></li> </ul>';
                 special_list[i].style.backgroundImage = "url('../img/goods/" + data.goods[i].Url + "')";
                 special_goods_name[i].innerHTML = data.goods[i].Name;
                 special_goods_describe[i].innerHTML = data.goods[i].ShortDescribe;
                 special_goods_price[i].innerHTML = data.goods[i].Price;
                 special_goods_price_original[i].innerHTML = data.goods[i].OriginalPrice;
+                (function (i) {
+                    special_goods_buy_btn[i].onclick = function () {
+                        sessionStorage.setItem('goodsid', data.goods[i].Id);
+                        window.open('details.html');
+                    }
+                })(i)
             }
         });
         $.post(url + 'index_sel', {
@@ -76,7 +84,7 @@
                     '<li> <div> <p class="optimal_goods_baoyou">包邮政策： 满299元或2件包邮</p> <p class="optimal_goods_fuwu" style="color: #7e7e7e">服务政策：7天拆封无理由退货</p> </div>' +
                     '<div class="optimal_goods_style"> <p>商品型号：</p> <p>BR1扁平头，0.5g</p> <p>BR1扁平头，0.5g</p> </div> </li>' +
                     '<li style="margin-top:120px;color: #9f0404;font-size: 18px">￥<em class="optimal_goods_price" style="font-size: 48px;color: #9f0404">75</em></li>' +
-                    '<li style="font-size: 14px"><em class="optimal_goods_buynum" style="color: #ff7e00">1587</em>人已购买</li> <li><a href="#">去看看</a></li> </ul>'
+                    '<li style="font-size: 14px"><em class="optimal_goods_buynum" style="color: #ff7e00">1587</em>人已购买</li> <li><a class="optimal_goods_buy_btn" href="#">去看看</a></li> </ul>'
                 optimal_list[i].style.backgroundImage = "url('../img/goods/" + data.goods[i].Url + "')";
                 optimal_goods_name[i].innerHTML = data.goods[i].Name;
                 optimal_goods_describe[i].innerHTML = data.goods[i].LongDescribe;
@@ -85,6 +93,12 @@
                 optimal_goods_style[i].innerHTML = '<p>商品型号：</p> <p>' + data.goods[i].Style + '</p>';
                 optimal_goods_price[i].innerHTML = data.goods[i].Price;
                 optimal_goods_buynum[i].innerHTML = data.goods[i].BuyNum;
+                (function (i) {
+                    optimal_goods_buy_btn[i].onclick = function () {
+                        sessionStorage.setItem('goodsid', data.goods[i].Id);
+                        window.open('details.html');
+                    }
+                })(i)
             }
         });
         $.post(url + 'index_sel', {
@@ -104,6 +118,26 @@
                 xiaoliang_bangs_name[i].innerHTML = data.goods[i].Name;
                 xiaoliang_bangs_fuwu[i].innerHTML = data.goods[i].Fuwu;
                 xiaoliang_bangs_price[i].innerHTML = data.goods[i].Price;
+                (function (i) {
+                    xiaoliang_bangs_img[i].onclick = function () {
+                        sessionStorage.setItem('goodsid', data.goods[i].Id);
+                        window.open('details.html');
+                    };
+                    xiaoliang_bangs_btn[i].onclick = function () {
+                        $.post(url + 'cart_add', {
+                            goods_id: data.goods[i].Id,
+                            user_id: sessionStorage.userid
+                        }, function (data, status) {
+                            console.log(data);
+                            if (data.result) {
+                                alert('加入购物车成功！！！');
+                            }
+                            else {
+                                alert('加入购物车失败！！！');
+                            }
+                        })
+                    }
+                })(i)
             }
         });
         $.post(url + 'index_sel', {
@@ -123,6 +157,26 @@
                 shoucang_bangs_name[i].innerHTML = data.goods[i].Name;
                 shoucang_bangs_fuwu[i].innerHTML = data.goods[i].Fuwu;
                 shoucang_bangs_price[i].innerHTML = data.goods[i].Price;
+                (function (i) {
+                    shoucang_bangs_img[i].onclick = function () {
+                        sessionStorage.setItem('goodsid', data.goods[i].Id);
+                        window.open('details.html');
+                    }
+                    shoucang_bangs_btn[i].onclick = function () {
+                        $.post(url + 'cart_add', {
+                            goods_id: data.goods[i].Id,
+                            user_id: sessionStorage.userid
+                        }, function (data, status) {
+                            console.log(data);
+                            if (data.result) {
+                                alert('加入购物车成功！！！');
+                            }
+                            else {
+                                alert('加入购物车失败！！！');
+                            }
+                        })
+                    }
+                })(i)
             }
         })
     }

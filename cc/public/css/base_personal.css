@@ -5,6 +5,7 @@
     background-color: #e5e5e5;
     position: relative;
     padding: 5px 5px 20px;
+    min-height: 450px;
 }
 
 /*个人中心列表*/
