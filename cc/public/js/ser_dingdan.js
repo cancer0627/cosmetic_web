@@ -10,6 +10,9 @@
     var update_local_btn = document.getElementsByClassName('update_local_btn');
     var local_inp = document.getElementsByClassName('local_inp');
     var local_span = document.getElementsByClassName('local_span');
+    /*时间设置*/
+    var time_ch = document.getElementsByName('time_ch');
+    var time_span = document.getElementsByClassName('time_span');
     /*确认商品清单*/
     var queren_list = document.getElementById('queren_list');
     var queren_goods_list = document.getElementsByClassName('queren_goods_list');
@@ -89,7 +92,42 @@
     });
     queren_zhifu_btn.onclick = function () {
         if (gd.length) {
-            location.href = 'zhifu.html';
+            for (i = 0; i < local_list_det.length; i++) {
+                if (local_ch[i].checked) {
+                    //local_list_det[i].style.backgroundImage = 'url("img/personal/local.png")';
+                    sessionStorage.setItem('local', local_span[i].innerHTML);
+                }
+            }
+            for (i = 0; i < time_ch.length; i++) {
+                if (time_ch[i].checked) {
+                    sessionStorage.setItem('time', time_span[i].innerHTML);
+                }
+            }
+            sessionStorage.setItem('price_zong', price_zong2.innerHTML);
+            if (sessionStorage.by == 'cart') {
+                var arr = new Array();
+                for (i = 0; i < gd.length; i++) {
+                    arr[i] = gd[i].GoodsId;
+                }
+                $.post(url + 'cart_del_s', {
+                    userid: sessionStorage.userid,
+                    goodsid: JSON.stringify(arr)
+                }, function (data, status) {
+                    console.log(data);
+                    if (data.result) {
+                        alert('订单处理成功！！！');
+                        location.href = 'zhifu.html';
+                    }
+                    else {
+                        alert('订单处理失败！！！')
+                    }
+                });
+            }
+            else {
+                alert('订单处理成功！！！');
+                location.href = 'zhifu.html';
+            }
+
         }
         else {
             alert('还没有商品，赶紧去购买吧！！！')
@@ -99,17 +137,23 @@
         for (i = 0; i < local_list_det.length; i++) {
             (function (i) {
                 local_list_det[i].onmouseover = function () {
-                    moren_local_btn[i].style.display = 'initial';
+                    //moren_local_btn[i].style.display = 'initial';
                     update_local_btn[i].style.display = 'initial';
                 };
-                local_list_det[i].onmouseout = function () {
-                    moren_local_btn[i].style.display = 'none';
-                    update_local_btn[i].style.display = 'none';
-                };
+                //local_list_det[i].onmouseout = function () {
+                //    //moren_local_btn[i].style.display = 'none';
+                //    update_local_btn[i].style.display = 'none';
+                //};
                 update_local_btn[i].onclick = function () {
                     local_inp[i].style.display = 'initial';
                     local_span[i].style.display = 'none';
                     local_inp[i].focus();
+                };
+                moren_local_btn[i].onclick = function () {
+                    for (j = 0; j < moren_local_btn.legth; j++) {
+                        moren_local_btn[j].style.display = 'none'
+                    }
+                    moren_local_btn[i].style.display = 'initial';
                 };
                 local_inp[i].onchange = function () {
                     local_span[i].innerHTML = local_inp[i].value;

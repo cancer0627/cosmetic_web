@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/base_dingdan.css">
     <script src="js/jquery-3.1.1.min.js"></script>
-    <script defer src="js/test_dingdan.js"></script>
+    <script defer src="js/ser_dingdan.js"></script>
 </head>
 <body>
 <div id="t_top">
@@ -82,16 +82,16 @@
                 <img width="1010" height="7" src="img/list_tiao.png">
                 <ul>
                     <li>
-                        <input type="radio" name="tim">
-                        <span>仅工作日送货</span>
+                        <input type="radio" name="time_ch">
+                        <span class="time_span">仅工作日送货</span>
                     </li>
                     <li>
-                        <input type="radio" name="tim">
-                        <span>仅周末送货</span>
+                        <input type="radio" name="time_ch">
+                        <span class="time_span">仅周末送货</span>
                     </li>
                     <li>
-                        <input type="radio" name="tim">
-                        <span>工作日/周末/节假日均可</span>
+                        <input type="radio" name="time_ch" checked>
+                        <span class="time_span">工作日/周末/节假日均可</span>
                     </li>
                 </ul>
             </div>
@@ -124,7 +124,7 @@
             </div>
         </div>
         <div>
-            <a href="#">返回修改购买商品</a>
+            <a href="cart.html">返回修改购买商品</a>
             <span>应付总金额：<em id="price_zong2" style="font-size: 24px;color: #d41a39;">￥44.90</em></span>
             <button id="queren_zhifu_btn">确认支付</button>
         </div>

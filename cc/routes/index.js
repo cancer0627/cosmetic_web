@@ -63,7 +63,6 @@ router.post('/details', function (req, res) {
 /* index select. */
 router.post('/index_sel', function (req, res) {
     res.contentType('json');
-    console.log(req.body);
     var params = {
         userid: req.body.userid,
         module: req.body.module,
@@ -100,8 +99,17 @@ router.post('/cart_sel', function (req, res) {
 router.post('/cart_del', function (req, res) {
     res.contentType('json');
     var params = req.body;
-    //console.log(params.goods_id);
     userDao.cart_del(params, function () {
+        res.send(JSON.stringify(params));
+        res.end();
+    })
+});
+router.post('/cart_del_s', function (req, res) {
+    res.contentType('json');
+    var params = req.body;
+    //console.log(params)
+    userDao.cart_del_s(params, function (result) {
+        params.result=result;
         res.send(JSON.stringify(params));
         res.end();
     })
@@ -109,7 +117,6 @@ router.post('/cart_del', function (req, res) {
 router.post('/dingdan_add', function (req, res) {
     res.contentType('json');
     var params = req.body;
-    console.log(params);
     userDao.dingdan_add(params, function (goods) {
         params.goods = goods;
         res.send(JSON.stringify(params));
@@ -121,32 +128,36 @@ router.post('/dingdan_add_bycart', function (req, res) {
     var params = req.body;
     userDao.dingdan_add_bycart(params, function (goods) {
         params.goods = goods;
-        //console.log(params);
         res.send(JSON.stringify(params));
         res.end();
     });
 });
-router.post('/dingdan_sel_byuser',function (req,res){
+router.post('/dingdan_sel_byuser', function (req, res) {
     res.contentType('json');
     var params = req.body;
-    //console.log(params)
     userDao.dingdan_sel_byuser(params, function (goods) {
         params.goods = goods;
-        //console.log(params);
         res.send(JSON.stringify(params));
         res.end();
     });
 });
-router.post('/dingdan_sel',function(req,res){
+router.post('/dingdan_sel', function (req, res) {
     res.contentType('json');
     var params = req.body;
-    console.log(params)
     userDao.dingdan_sel(params, function (goods) {
         params.goods = goods;
-        //console.log(params);
         res.send(JSON.stringify(params));
         res.end();
     });
+});
+router.post('/dingdan_update', function (req, res) {
+    res.contentType('json');
+    var params = req.body;
+    userDao.dingdan_update(params, function (result) {
+        params.result = result;
+        res.send(JSON.stringify(params));
+        res.end();
+    })
 });
 
 module.exports = router;

@@ -5,7 +5,8 @@
     <title>支付</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/base_zhifu.css">
-    <script defer src="js/test_zhifu.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script defer src="js/ser_zhifu.js"></script>
 </head>
 <body>
 <div id="t_top">
@@ -33,7 +34,7 @@
     <div id="logo">
         <a href="index.html"><img height="70" src="img/logo.png"></a>
         <div>
-            <span>欢迎您：<em>用户32132132121</em></span>
+            <span>欢迎您：<em id="username">用户32132132121</em></span>
             <a href="login.html">【退出】</a>
         </div>
         <div>
@@ -47,9 +48,9 @@
     <hr>
     <div id="main_body">
         <p style="font-size: 30px">订单信息已确认，请您选择付款方式</p>
-        <p>应付金额：<em style="font-size: 18px;color: #d41a39">￥44.90</em>元</p>
-        <p>收货信息：黑龙江省 哈尔滨市 南岗区 建设街51号 （XX收） 18564512352 </p>
-        <p>送货时间：工作日/周末/节假日均可</p>
+        <p>应付金额：<em id="price" style="font-size: 18px;color: #d41a39">￥44.90</em>元</p>
+        <p id="local">收货信息：黑龙江省 哈尔滨市 南岗区 建设街51号 （XX收） 18564512352 </p>
+        <p id="time">送货时间：工作日/周末/节假日均可</p>
         <ul id="zhifu_sel">
             <li>
                 <input type="radio" name="zhif">

@@ -105,16 +105,33 @@ module.exports = {
     cart_del: function (par, callback) {
         //console.log(par);
         connection.query(sql.cart_del, [par.user_id, par.goods_id], function (error, rows, fields) {
+            console.log(rows);
             callback();
         });
+    },
+    cart_del_s: function (par, callback) {
+        console.log(par);
+        var arr = JSON.parse(par.goodsid);
+        console.log(arr);
+        for (var i = 0; i < arr.length; i++) {
+            act_del(par, arr, i, function (re) {
+                if (re) {
+                    callback(true)
+                }
+                else {
+                    callback(false)
+                }
+            });
+        }
     },
     dingdan_add: function (par, callback) {
         connection.query(sql.details_sel, [par.goodsid], function (error, rows, fields) {
             if (rows.length) {
                 //console.log(par.date,par.goodsid,par.userid,rows[0].Name,rows[0].Url,rows[0].Price,par.buynum,rows[0].Perferntial,'已购买')
-                connection.query(sql.dingdan_add, [parseInt(par.id),par.date, par.goodsid, par.userid, rows[0].Name, rows[0].Url, rows[0].Price, par.buynum, rows[0].Perferential, '待付款',rows[0].Brand], function (error, rows, fields) {
+                connection.query(sql.dingdan_add, [parseInt(par.id), par.date, par.goodsid, par.userid, rows[0].Name, rows[0].Url, rows[0].Price, par.buynum, rows[0].Perferential, '待付款', rows[0].Brand], function (error, rows, fields) {
                     if (rows) {
                         connection.query(sql.dingdan_sel, [rows.insertId], function (error, rows, fields) {
+                            console.log(rows);
                             callback(rows[0])
                         })
                     }
@@ -123,14 +140,13 @@ module.exports = {
         });
     },
     dingdan_add_bycart: function (par, callback) {
-        //console.log(par)
         var array = JSON.parse(par.goods);
         par.arr = new Array();
-        //console.log(JSON.parse(par.goods));
         for (var i = 0; i < array.length; i++) {
             if (i == array.length - 1) {
                 act(par, array[i], i);
                 connection.query(sql.dingdan_sel, [parseInt(par.id)], function (error, rows, fields) {
+                    console.log(rows);
                     callback(rows)
                 })
             }
@@ -139,21 +155,45 @@ module.exports = {
             }
         }
     },
-    dingdan_sel_byuser:function (par,callback){
+    dingdan_sel_byuser: function (par, callback) {
         connection.query(sql.dingdan_sel_byuser, [par.userid], function (error, rows, fields) {
-            //par.goods=;
-            //console.log(rows)
-            callback(rows);
-        })
-    },
-    dingdan_sel:function(par,callback){
-        connection.query(sql.dingdan_sel, [par.id], function (error, rows, fields) {
-            //par.goods=;
             console.log(rows);
             callback(rows);
         })
+    },
+    dingdan_sel: function (par, callback) {
+        connection.query(sql.dingdan_sel, [par.id], function (error, rows, fields) {
+            console.log(rows);
+            callback(rows);
+        })
+    },
+    dingdan_update: function (par, callback) {
+        //console.log(par)
+        connection.query(sql.dingdan_update, [par.local, par.time, '待收货', par.price, par.id], function (error, rows, fields) {
+            if (rows) {
+                console.log(rows);
+                callback(true);
+            }
+            else {
+                callback(false);
+            }
+        })
     }
 };
+function act_del(par, arr, i, cb) {
+    connection.query(sql.cart_del, [par.userid, arr[i]], function (error, rows, fields) {
+        console.log(i);
+        console.log(rows);
+        if (i == arr.length - 1) {
+            if (rows) {
+                cb(true);
+            }
+            else {
+                cb(false);
+            }
+        }
+    });
+}
 function act(par, arr, i) {
     var para = {
         goodsid: arr.goodsid,
@@ -169,9 +209,7 @@ function act(par, arr, i) {
                 uid: par.userid,
                 gid: rows[0].Id
             };
-            connection.query(sql.dingdan_add, [parseInt(par.id), par.date, rows[0].Id, par.userid, rows[0].Name, rows[0].Url, rows[0].Price, para.buynum, rows[0].Perferential, '待付款',rows[0].Brand], function (error, rows, fields) {
-                connection.query(sql.cart_del, [p.uid, p.gid], function (error, rows, fields) {
-                })
+            connection.query(sql.dingdan_add, [parseInt(par.id), par.date, rows[0].Id, par.userid, rows[0].Name, rows[0].Url, rows[0].Price, para.buynum, rows[0].Perferential, '待付款', rows[0].Brand], function (error, rows, fields) {
             });
         }
     });

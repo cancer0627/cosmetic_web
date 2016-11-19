@@ -1,6 +1,3 @@
-/**
- * Created by Administrator on 2016/11/9 0009.
- */
 //复选框
 var quanxuan_ch = document.getElementById('quanxuan_ch');
 var daishouhuo_ch = document.getElementsByName('daishouhuo_ch');

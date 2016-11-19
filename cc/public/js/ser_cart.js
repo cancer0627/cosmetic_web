@@ -175,11 +175,11 @@
         obj.num = num;
         obj.goods = JSON.stringify(arr);
         console.log(obj);
-
         $.post(url + 'dingdan_add_bycart', obj, function (data, status) {
             sessionStorage.setItem('date', new Date().toLocaleDateString());
             console.log(data);
             sessionStorage.setItem('dingdanid',data.id);
+            sessionStorage.setItem('by','cart');
             alert('############订单生成############');
             location.href = 'dingdan.html';
         });
