@@ -172,25 +172,26 @@
 }
 
 /*最近浏览列表*/
-#liulan_list {
+#liulan_goods_mod {
     text-align: center;
     margin: 20px 0;
 }
 
-#liulan_list > li {
+#liulan_goods_mod > li {
     display: inline-block;
     width: 239px;
+    margin: 0 2px;
     padding: 4px 4px 20px;
     text-align: left;
     position: relative;
     background-color: #e5e5e5;
 }
 
-#liulan_list > li > p {
+#liulan_goods_mod > li > p {
     padding: 8px 10px;
 }
 
-#liulan_list > li > span {
+#liulan_goods_mod > li > span {
     position: absolute;
     right: 20px;
     bottom: 20px;

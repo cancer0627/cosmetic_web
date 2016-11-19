@@ -36,8 +36,8 @@
         <a href="index.html"><img height="70" src="img/logo.png"></a>
         <div>
             <div>
-                <input type="text">
-                <button>搜索</button>
+                <input id="search_inp" type="text">
+                <button id="search_btn">搜索</button>
             </div>
             <div>
                 <a href="#">眼影</a> |
@@ -100,30 +100,90 @@
             <div id="person_details">
                 <div>
                     <img src="img/personal/person_img.png">
-                    <p style="top: 15px;font-size: 18px">用户########</p>
-                    <p style="top: 50px;font-size: 14px">用户ID：########</p>
+                    <p id="per_username" style="top: 15px;font-size: 18px">用户########</p>
+                    <p id="per_userid" style="top: 50px;font-size: 14px">用户ID：########</p>
                     <div>
                         <input type="text">
                         <button>搜索订单</button>
                     </div>
                 </div>
-                <div>
-                    <span style="color: #d41a39">待付款</span>
-                    <span>待发货</span>
-                    <span>待收货</span>
-                    <span>待评价</span>
-                    <span>退款</span>
+                <div id="goods_nav">
+                    <span id="goods_nav_daifukuan" style="color: #d41a39">待付款</span>
+                    <span id="goods_nav_daifahuo">待发货</span>
+                    <span id="goods_nav_daishouhuo">待收货</span>
+                    <span id="goods_nav_daipingjia">待评价</span>
+                    <span id="goods_nav_tuikuan">退款</span>
                 </div>
-                <ul id="daishouhuo_list">
-                </ul>
-                <div id="daishouhuo_sel">
-                    <input id="quanxuan_ch" type="checkbox">
-                    <span>全选</span>
-                    <button>删除订单</button>
-                    <div>
-                        <button><</button>
-                        <input type="text" value="1">
-                        <button>></button>
+                <div>
+                    <div id="daifukuan_mod" class="checked_mod">
+                        <ul id="daifukuan_list">
+                        </ul>
+                        <div id="daifukuan_sel">
+                            <input id="quanxuan_ch_daifukuan" type="checkbox">
+                            <span>全选</span>
+                            <button>删除订单</button>
+                            <div>
+                                <button><</button>
+                                <input type="text" value="1">
+                                <button>></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="daifahuo_mod" class="unchecked_mod">
+                        <ul id="daifahuo_list">
+                        </ul>
+                        <div id="daifahuo_sel">
+                            <input id="quanxuan_ch_daifahuo" type="checkbox">
+                            <span>全选</span>
+                            <button>删除订单</button>
+                            <div>
+                                <button><</button>
+                                <input type="text" value="1">
+                                <button>></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="daishouhuo_mod" class="unchecked_mod">
+                        <ul id="daishouhuo_list">
+                        </ul>
+                        <div id="daishouhuo_sel">
+                            <input id="quanxuan_ch_daishouhuo" type="checkbox">
+                            <span>全选</span>
+                            <button>删除订单</button>
+                            <div>
+                                <button><</button>
+                                <input type="text" value="1">
+                                <button>></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="daipingjia_mod" class="unchecked_mod">
+                        <ul id="daipingjia_list">
+                        </ul>
+                        <div id="daipingjia_sel">
+                            <input id="quanxuan_ch_daipingjia" type="checkbox">
+                            <span>全选</span>
+                            <button>删除订单</button>
+                            <div>
+                                <button><</button>
+                                <input type="text" value="1">
+                                <button>></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tuikuan_mod" class="unchecked_mod">
+                        <ul id="tuikuan_list">
+                        </ul>
+                        <div id="tuikuan_sel">
+                            <input id="quanxuan_ch_tuikuan" type="checkbox">
+                            <span>全选</span>
+                            <button>删除订单</button>
+                            <div>
+                                <button><</button>
+                                <input type="text" value="1">
+                                <button>></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -133,31 +193,7 @@
                 <span>热卖单品</span>
                 <img width="1010" height="7" src="img/list_tiao.png">
             </div>
-            <ul>
-                <li>
-                    <img width="239" src="img/personal/personal_hot1.png">
-                    <p style="color: #343434">净颜小筑12色水凝炫彩唇液</p>
-                    <p style="color: #9d9c9c">145人已购买</p>
-                    <span>￥<em style="color: #9f0404;font-size: 30px;">89</em></span>
-                </li>
-                <li>
-                    <img width="239" src="img/personal/personal_hot1.png">
-                    <p style="color: #343434">净颜小筑12色水凝炫彩唇液</p>
-                    <p style="color: #9d9c9c">145人已购买</p>
-                    <span>￥<em style="color: #9f0404;font-size: 30px;">89</em></span>
-                </li>
-                <li>
-                    <img width="239" src="img/personal/personal_hot1.png">
-                    <p style="color: #343434">净颜小筑12色水凝炫彩唇液</p>
-                    <p style="color: #9d9c9c">145人已购买</p>
-                    <span>￥<em style="color: #9f0404;font-size: 30px;">89</em></span>
-                </li>
-                <li>
-                    <img width="239" src="img/personal/personal_hot1.png">
-                    <p style="color: #343434">净颜小筑12色水凝炫彩唇液</p>
-                    <p style="color: #9d9c9c">145人已购买</p>
-                    <span>￥<em style="color: #9f0404;font-size: 30px;">89</em></span>
-                </li>
+            <ul id="hot_goods_mod">
             </ul>
         </div>
     </div>

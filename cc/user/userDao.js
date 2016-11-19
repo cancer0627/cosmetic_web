@@ -156,7 +156,7 @@ module.exports = {
         }
     },
     dingdan_sel_byuser: function (par, callback) {
-        connection.query(sql.dingdan_sel_byuser, [par.userid], function (error, rows, fields) {
+        connection.query(sql.dingdan_sel_byuser, [par.userid, par.type], function (error, rows, fields) {
             console.log(rows);
             callback(rows);
         })

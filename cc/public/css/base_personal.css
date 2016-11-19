@@ -1,10 +1,8 @@
-
-
 /*个人中心*/
 #main_body > p + div {
     background-color: #e5e5e5;
     position: relative;
-    padding: 5px 5px 20px;
+    padding: 5px 5px 40px 20px;
     min-height: 450px;
 }
 
@@ -103,24 +101,24 @@
     color: #343434;
 }
 
-/*待收货列表*/
-#daishouhuo_list span {
+/*列表*/
+#person_details > div:last-child > div > ul span {
     color: #343434;
 }
 
-#daishouhuo_list > li {
+#person_details > div:last-child > div > ul > li {
     border: 1px solid #9c9b9b;
     position: relative;
     padding: 10px;
     width: 730px;
 }
 
-#daishouhuo_list > li > span {
+#person_details > div:last-child > div > ul > li > span {
     margin: 0 10px 0 20px;
 }
 
 /*商品信息*/
-#daishouhuo_list > li > div {
+#person_details > div:last-child > div > ul > li > div {
     margin-left: 200px;
     position: relative;
     display: inline-block;
@@ -128,16 +126,16 @@
     height: 180px;
 }
 
-#daishouhuo_list > li > div > span, #daishouhuo_list > li > div > a {
+#person_details > div:last-child > div > ul > li > div > span, #person_details > div:last-child > div > ul > li > div > a {
     position: absolute;
     color: #343434;
 }
 
-#daishouhuo_list > li > div > a:hover {
+#person_details > div:last-child > div > ul > li > div > a:hover {
     color: #d41a39;
 }
 
-#daishouhuo_list > li > div > button {
+#person_details > div:last-child > div > ul > li > div > button {
     color: white;
     padding: 10px 25px;
     background-color: #d41a39;
@@ -146,30 +144,42 @@
     top: 120px;
 }
 
-#daishouhuo_list > li > img {
+#person_details > div:last-child > div > ul > li > img {
     position: absolute;
     bottom: 10px;
     left: 10px;
 }
 
 /*订单选择*/
-#daishouhuo_sel {
-    margin-left: 200px;
-    width: 800px;
+.checked_mod {
+    display: block;
+}
+
+.unchecked_mod {
+    display: none;
+}
+
+#person_details > div:last-child > div {
     position: relative;
 }
 
-#daishouhuo_sel > input {
+#person_details > div:last-child > div > div {
+    margin: 10px 0;
+    width: 800px;
+    position: absolute;
+}
+
+#person_details > div:last-child > div > div > input {
     display: inline-block;
     margin-left: 10px;
 }
 
-#daishouhuo_sel > span {
+#person_details > div:last-child > div > div > span {
     display: inline-block;
     color: #363636;
 }
 
-#daishouhuo_sel > button {
+#person_details > div:last-child > div > div > button {
     padding: 0 20px;
     border: 1px solid #9c9b9b;
     margin-left: 20px;
@@ -177,19 +187,19 @@
     color: #363636;
 }
 
-#daishouhuo_sel > div {
+#person_details > div:last-child > div > div > div {
     position: absolute;
     top: 0;
-    right: 40px;
+    right: 50px;
 }
 
-#daishouhuo_sel > div > button {
+#person_details > div:last-child > div > div > div > button {
     padding: 5px 7px;
     font-size: 14px;
     border: 1px solid #9c9b9b;
 }
 
-#daishouhuo_sel > div > input {
+#person_details > div:last-child > div > div > div > input {
     padding: 5px;
     font-size: 14px;
     text-align: center;

@@ -15,7 +15,7 @@ var user = {
     cart_del: 'delete from cart where UserId=? and GoodsId =?',
     dingdan_add: 'insert into dingdan (Id,Date,GoodsId,UserId,Name,Url,Price,Buynum,Youhui,Status,Brand) values (?,?,?,?,?,?,?,?,?,?,?)',
     dingdan_sel: 'select * from dingdan where Id=?',
-    dingdan_sel_byuser:'select * from dingdan where UserId=?',
+    dingdan_sel_byuser:'select * from dingdan where UserId=? and Status=?',
     dingdan_update:'update dingdan set Local=? , Time=? , Status=? , PriceZong=? where Id=?'
 };
 module.exports = user;

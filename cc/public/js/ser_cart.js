@@ -1,5 +1,6 @@
 (function () {
     var username = document.getElementById('username');
+    /*购物车*/
     var cart_list = document.getElementsByClassName('cart_list');
     var cart_goods_price = document.getElementById('cart_goods_price');
     var all_goods_num = document.getElementById('all_goods_num');
@@ -20,141 +21,197 @@
     var all_goods_delete_btn = document.getElementById('all_goods_delete_btn');
     var cart_delete_btn = document.getElementsByClassName('cart_delete_btn');
     var goods_buy_btn = document.getElementById('goods_buy_btn');
+    /*浏览商品*/
+    var liulan_goods_mod = document.getElementById('liulan_goods_mod');
+    var liulan_goods_list = document.getElementsByClassName('liulan_goods_list');
+    var liulan_goods_pic = document.getElementsByClassName('liulan_goods_pic');
+    var liulan_goods_name = document.getElementsByClassName('liulan_goods_name');
+    var liulan_goods_buynum = document.getElementsByClassName('liulan_goods_buynum');
+    var liulan_goods_price = document.getElementsByClassName('liulan_goods_price');
+    /*定义变量*/
     var gd, i, j;
-
     var url = 'http://127.0.0.1:3000/';
+    /*---------------------------------------------------------------------------------------------------------------*/
     if (sessionStorage.username == undefined) {
         alert('未登录，请先登录！！！');
         location.href = 'login.html';
     }
     else {
         username.innerHTML = sessionStorage.username;
-    }
-
-    $.post(url + 'cart_sel', {
-        userid: sessionStorage.userid
-    }, function (data, status) {
-        gd = data;
-        console.log(data)
-        if (data.num == 0) {
-            var div = document.createElement('div');
-            all_goods_list.appendChild(div);
-            div.style.textAlign = 'center';
-            div.style.padding = '50px';
-            div.innerHTML = '购物车无商品！！！';
-        }
-        else {
-            chushihua();
-            quanxuan_ch1.onclick = function () {
-                if (quanxuan_ch1.checked) {
-                    quanxuan_ch2.checked = true;
-                    for (i = 0; i < all_goods_ch.length; i++) {
-                        all_goods_ch[i].checked = true;
+        $.post(url + 'index_sel', {
+            userid: sessionStorage.userid,
+            module: 'liulan'
+        }, function (data, status) {
+            for (i = 0; i < data.goods.length; i++) {
+                var li = document.createElement('li');
+                li.className = 'liulan_goods_list';
+                liulan_goods_mod.appendChild(li);
+                li.innerHTML = '<img class="liulan_goods_pic" width="239" src="">' +
+                    '<p class="liulan_goods_name" style="color: #343434">净颜小筑12色水凝炫彩唇液</p>' +
+                    '<p class="liulan_goods_buynum" style="color: #9d9c9c">145人已购买</p>' +
+                    '<span>￥<em class="liulan_goods_price" style="color: #9f0404;font-size: 30px;">89</em></span>'
+            }
+            for (i = 0; i < liulan_goods_list.length; i++) {
+                liulan_goods_pic[i].src = '../img/goods/' + data.goods[i].Url;
+                liulan_goods_name[i].innerHTML = data.goods[i].Name;
+                liulan_goods_buynum[i].innerHTML = data.goods[i].BuyNum + '人已购买';
+                liulan_goods_price[i].innerHTML = data.goods[i].Price;
+                (function (i) {
+                    liulan_goods_pic[i].onclick = function () {
+                        sessionStorage.setItem('goodsid', data.goods[i].Id);
+                        window.open('details.html');
                     }
-                }
-                else {
-                    quanxuan_ch2.checked = false;
-                    for (i = 0; i < all_goods_ch.length; i++) {
-                        all_goods_ch[i].checked = false;
+                })(i)
+            }
+        });
+        $.post(url + 'cart_sel', {
+            userid: sessionStorage.userid
+        }, function (data, status) {
+            gd = data;
+            //console.log(data)
+            if (data.num == 0) {
+                var div = document.createElement('div');
+                all_goods_list.appendChild(div);
+                div.style.textAlign = 'center';
+                div.style.padding = '50px';
+                div.innerHTML = '购物车无商品！！！';
+            }
+            else {
+                chushihua();
+                quanxuan_ch1.onclick = function () {
+                    if (quanxuan_ch1.checked) {
+                        quanxuan_ch2.checked = true;
+                        for (i = 0; i < all_goods_ch.length; i++) {
+                            all_goods_ch[i].checked = true;
+                        }
                     }
-                }
-                act_price2();
-            };
-            quanxuan_ch2.onclick = function () {
-                if (quanxuan_ch2.checked) {
-                    quanxuan_ch1.checked = true;
-                    for (i = 0; i < all_goods_ch.length; i++) {
-                        all_goods_ch[i].checked = true;
+                    else {
+                        quanxuan_ch2.checked = false;
+                        for (i = 0; i < all_goods_ch.length; i++) {
+                            all_goods_ch[i].checked = false;
+                        }
                     }
-                }
-                else {
-                    quanxuan_ch1.checked = false;
-                    for (i = 0; i < all_goods_ch.length; i++) {
-                        all_goods_ch[i].checked = false;
+                    act_price2();
+                };
+                quanxuan_ch2.onclick = function () {
+                    if (quanxuan_ch2.checked) {
+                        quanxuan_ch1.checked = true;
+                        for (i = 0; i < all_goods_ch.length; i++) {
+                            all_goods_ch[i].checked = true;
+                        }
                     }
-                }
-                act_price2();
-            };
-            for (j = 0; j < all_goods_ch.length; j++) {
-                (function (j) {
-                    all_goods_ch[j].onclick = function () {
-                        var temp = 0;
-                        for (var i = 0; i < all_goods_ch.length; i++) {
-                            if (all_goods_ch[i].checked) {
-                                temp++;
+                    else {
+                        quanxuan_ch1.checked = false;
+                        for (i = 0; i < all_goods_ch.length; i++) {
+                            all_goods_ch[i].checked = false;
+                        }
+                    }
+                    act_price2();
+                };
+                for (j = 0; j < all_goods_ch.length; j++) {
+                    (function (j) {
+                        all_goods_ch[j].onclick = function () {
+                            var temp = 0;
+                            for (var i = 0; i < all_goods_ch.length; i++) {
+                                if (all_goods_ch[i].checked) {
+                                    temp++;
+                                }
+                                if (temp == all_goods_ch.length) {
+                                    quanxuan_ch2.checked = true;
+                                    quanxuan_ch1.checked = true;
+                                }
+                                else {
+                                    quanxuan_ch2.checked = false;
+                                    quanxuan_ch1.checked = false;
+                                }
                             }
-                            if (temp == all_goods_ch.length) {
-                                quanxuan_ch2.checked = true;
-                                quanxuan_ch1.checked = true;
+                            act_price2();
+                        };
+                        num_inp[j].onchange = function () {
+                            if (num_inp[j].value < 1 || num_inp[j].value > data.goods[j].Num) {
+                                num_inp[j].value = 1;
+                                alert('请输入0-' + data.goods[j].Num + '之间的数字');
+                                act_price1();
+                                act_price2();
+                            }
+                        };
+                        btn_decrease[j].onclick = function () {
+                            if (num_inp[j].value == 1) {
+                                alert('商品数量不能为0！！！');
+                                num_inp[j].value = 1;
                             }
                             else {
-                                quanxuan_ch2.checked = false;
-                                quanxuan_ch1.checked = false;
+                                num_inp[j].value--;
+                                act_price1();
+                                act_price2();
                             }
-                        }
-                        act_price2();
-                    };
-                    num_inp[j].onchange = function () {
-                        if (num_inp[j].value < 1 || num_inp[j].value > data.goods[j].Num) {
-                            num_inp[j].value = 1;
-                            alert('请输入0-' + data.goods[j].Num + '之间的数字');
-                            act_price1();
-                            act_price2();
-                        }
-                    };
-                    btn_decrease[j].onclick = function () {
-                        if (num_inp[j].value == 1) {
-                            alert('商品数量不能为0！！！');
-                            num_inp[j].value = 1;
-                        }
-                        else {
-                            num_inp[j].value--;
-                            act_price1();
-                            act_price2();
-                        }
-                    };
-                    btn_increase[j].onclick = function () {
-                        if (num_inp[j].value == data.goods[j].Num) {
-                            alert('已经达到库存数量！！！');
-                            num_inp[j].value = data.goods[j].Num;
-                        }
-                        else {
-                            num_inp[j].value++;
-                            act_price1();
-                            act_price2();
-                        }
-                    };
-                })(j)
-            }
-            function del() {
-                for (j = 0; j < cart_list.length; j++) {
-                    (function (j) {
-                        cart_delete_btn[j].onclick = function () {
-                            $.post(url + 'cart_del', {
-                                user_id: sessionStorage.userid,
-                                goods_id: data.goods[j].GoodsId
-                            }, function (data, status) {
-                                console.log(all_goods_list.childNodes.length);
-                                all_goods_list.removeChild(cart_list[j]);
-                                //if (all_goods_list.childNodes.length == 1) {
-                                //    all_goods_list.removeChild(cart_list[0]);
-                                //} else {
-                                //    all_goods_list.removeChild(cart_list[j]);
-                                //}
-                                del();
-                            })
-                        }
+                        };
+                        btn_increase[j].onclick = function () {
+                            if (num_inp[j].value == data.goods[j].Num) {
+                                alert('已经达到库存数量！！！');
+                                num_inp[j].value = data.goods[j].Num;
+                            }
+                            else {
+                                num_inp[j].value++;
+                                act_price1();
+                                act_price2();
+                            }
+                        };
                     })(j)
+                }
+                function del() {
+                    for (j = 0; j < cart_list.length; j++) {
+                        (function (j) {
+                            cart_delete_btn[j].onclick = function () {
+                                $.post(url + 'cart_del', {
+                                    user_id: sessionStorage.userid,
+                                    goods_id: data.goods[j].GoodsId
+                                }, function (data, status) {
+                                    console.log(all_goods_list.childNodes.length);
+                                    all_goods_list.removeChild(cart_list[j]);
+                                    del();
+                                })
+                            }
+                        })(j)
+                    }
+                }
+
+                del();
+            }
+
+        });
+    }
+    all_goods_delete_btn.onclick = function () {
+        var arr = new Array();
+        var p = 0;
+        for (i = 0; i < all_goods_ch.length; i++) {
+            if (all_goods_ch[i].checked) {
+                arr[p] = gd.goods[i].GoodsId;
+                p++;
+            }
+        }
+        //console.log(arr);
+        $.post(url + 'cart_del_s', {
+            userid: sessionStorage.userid,
+            goodsid: JSON.stringify(arr)
+        }, function (data, status) {
+            console.log(data);
+            alert('ccccccccccccc');
+            function del_s() {
+                for (i = 0; i < all_goods_ch.length; i++) {
+                    if (all_goods_ch[i].checked) {
+                        all_goods_list.removeChild(cart_list[i]);
+                        del_s();
+                    }
                 }
             }
 
-            del();
-        }
-    });
-
+            del_s();
+        })
+    };
     goods_buy_btn.onclick = function () {
         var obj = new Object();
-        var arr = new Array()
+        var arr = new Array();
         obj.date = new Date().toLocaleDateString();
         obj.id = new Date().getTime() + "" + Math.floor(Math.random() * 899 + 100);
         obj.userid = sessionStorage.userid;
@@ -178,13 +235,12 @@
         $.post(url + 'dingdan_add_bycart', obj, function (data, status) {
             sessionStorage.setItem('date', new Date().toLocaleDateString());
             console.log(data);
-            sessionStorage.setItem('dingdanid',data.id);
-            sessionStorage.setItem('by','cart');
+            sessionStorage.setItem('dingdanid', data.id);
+            sessionStorage.setItem('by', 'cart');
             alert('############订单生成############');
             location.href = 'dingdan.html';
         });
     };
-
     function chushihua() {
         for (i = 0; i < gd.num; i++) {
             var li = document.createElement('li');
