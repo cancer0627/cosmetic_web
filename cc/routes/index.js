@@ -1,12 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var userDao = require('../user/userDao');
-
-/* GET home page. */
+/*-------------------------------------------------------------------------------------------------------------------*/
 router.get('/', function (req, res, next) {
     res.render('index', {title: 'Express'});
 });
-/* login. */
+/*-------------------------------------------------------------------------------------------------------------------*/
 router.post('/login', function (req, res) {
     res.contentType('json');
     var params = {
@@ -21,7 +20,6 @@ router.post('/login', function (req, res) {
         res.end();
     })
 });
-/* register. */
 router.post('/reg', function (req, res) {
     res.contentType('json');
     var params = {
@@ -37,7 +35,6 @@ router.post('/reg', function (req, res) {
         res.end();
     });
 });
-/* list select. */
 router.post('/list_sel', function (req, res) {
     res.contentType('json');
     var params = {
@@ -49,7 +46,6 @@ router.post('/list_sel', function (req, res) {
         res.end();
     });
 });
-/* goods details. */
 router.post('/details', function (req, res) {
     res.contentType('json');
     var params = {
@@ -60,7 +56,6 @@ router.post('/details', function (req, res) {
         res.end();
     });
 });
-/* index select. */
 router.post('/index_sel', function (req, res) {
     res.contentType('json');
     var params = {
@@ -107,7 +102,6 @@ router.post('/cart_del', function (req, res) {
 router.post('/cart_del_s', function (req, res) {
     res.contentType('json');
     var params = req.body;
-    //console.log(params)
     userDao.cart_del_s(params, function (result) {
         params.result=result;
         res.send(JSON.stringify(params));
@@ -159,5 +153,13 @@ router.post('/dingdan_update', function (req, res) {
         res.end();
     })
 });
-
+router.post('/goods_update',function (req,res){
+    res.contentType('json');
+    var params = req.body;
+    userDao.goods_update(params, function (result) {
+        params.result = result;
+        res.send(JSON.stringify(params));
+        res.end();
+    })
+});
 module.exports = router;

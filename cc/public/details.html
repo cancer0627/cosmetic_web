@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/base_details.css">
     <script src="js/jquery-3.1.1.min.js"></script>
+    <script defer src="js/test_details.js"></script>
     <script defer src="js/ser_details.js"></script>
+
 </head>
 <body>
 <div id="t_top">
@@ -39,13 +41,13 @@
                 <button id="search_btn">搜索</button>
             </div>
             <div>
-                <a href="#">眼影</a> |
-                <a href="#">腮红</a> |
-                <a href="#">眉笔</a> |
-                <a href="#">修容笔</a> |
-                <a href="#">睫毛膏</a> |
-                <a href="#">彩妆套装</a> |
-                <a href="#">唇彩</a>
+                <a class="search_list" href="#">眼影</a> |
+                <a class="search_list" href="#">腮红</a> |
+                <a class="search_list" href="#">眉笔</a> |
+                <a class="search_list" href="#">修容笔</a> |
+                <a class="search_list" href="#">睫毛膏</a> |
+                <a class="search_list" href="#">彩妆套装</a> |
+                <a class="search_list" href="#">唇彩</a>
             </div>
         </div>
         <div>
@@ -75,36 +77,37 @@
         </div>
         <div id="details_mod">
             <span>正品</span>
-            <span id="details_goods_name">迪奥雪精灵亮白修护气垫粉底</span>
-            <p id="details_goods_describe">雪绒花般的亲肤底妆~迪奥雪精灵亮白修护气垫粉底，SPF50
-                PA+++高系数防晒，妆感水润透亮，质地轻薄透气，清凉触感，肌肤表面温度降低3℃！来自瑞士迪奥花园的珍稀雪绒花萃取，深入肌底阻断黑色素三阶段形成，有效调整肤色均匀.度！开启自体发光模式！</p>
+            <span id="details_goods_name"></span>
+            <p id="details_goods_describe"></p>
             <div>
                 <li style="background-color: #f9d7dd;">
                     <span style="margin-top: 13px">价格：</span>
                     <div>
-                        <span style="color: #9f0404">￥<em id="details_goods_price"
-                                style="font-size: 30px;line-height: 30px">429</em></span>
+                        <span style="color: #9f0404">￥<em id="details_goods_price" style="font-size: 30px;line-height: 30px"></em></span>
                         <span style="font-size: 14px;background-color: #04bbbb;color: #ff5400;padding: 3px;position: relative;top: -4px">满赠</span>
                         <span style="font-size: 14px;background-color: #e7aa39;color: #000;padding: 3px;position: relative;top: -4px">满减</span>
-                        <span id="details_goods_buynum" style="margin: 0;position: absolute;bottom: 10px;right: 15px;">1457人已购买</span>
+                        <span id="details_goods_buynum" style="margin: 0;position: absolute;bottom: 10px;right: 15px;"></span>
                     </div>
                 </li>
                 <li>
                     <span>配送：</span>
                     <div>
-                        <span id="details_local1">法国直邮</span>
+                        <span id="details_local1"></span>
                         <span>至</span>
-                        <select style="border: 1px solid #000">
-                            <option>哈尔滨市南岗区</option>
+                        <select style="border: 1px solid #000" name="province" id="province">
+                            <option value="请选择城市">请选择省份</option>
+                        </select>
+                        <select style="border: 1px solid #000" name="city" id="city">
+                            <option value="请选择城市">请选择城市</option>
                         </select>
                     </div>
                 </li>
                 <li>
                     <span>运费：</span>
                     <div>
-                        <span id="details_local2">法国直邮<em id="details_yunfei">50</em>元</span>
+                        <span id="details_local2"><em id="details_yunfei"></em>元</span>
                         <!--<span>购迪奥品牌商品满<em>499</em>元或-->
-                            <!--<em>2</em>件及以上商品免运费</span>-->
+                        <!--<em>2</em>件及以上商品免运费</span>-->
                     </div>
                 </li>
                 <li>
@@ -128,10 +131,13 @@
                 <li>
                     <span>数量：</span>
                     <div>
-                        <span><em id="dec_btn">－</em><input id="details_buy_num_val" type="text" value="1"><em id="inc_btn">＋</em></span>
+                        <span><em id="dec_btn">－</em><input id="details_buy_num_val" type="text" value="1"><em
+                                id="inc_btn">＋</em></span>
                         <span>件</span>
                         <span id="details_num">(库存8945件)</span><br>
-                        <span id="cart_add_btn" style="padding: 5px 15px;background-color: #f39800;font-size: 20px;color: white;margin-top:20px;margin-right:20px;">加入购物车</span><span id="dingdan_add__btn"
+                        <span id="cart_add_btn"
+                              style="padding: 5px 15px;background-color: #f39800;font-size: 20px;color: white;margin-top:20px;margin-right:20px;">加入购物车</span><span
+                            id="dingdan_add__btn"
                             style="padding: 5px 15px;margin-top:20px;background-color: #7d0000;font-size: 20px;color: white">立即购买</span>
                     </div>
                 </li>
@@ -150,67 +156,67 @@
         </div>
     </div>
     <div id="coudan">
-        <p>和以下商品凑单<em>满2件或499元免运费</em>哦！</p>
-        <div>
-            <button><img width="65" src="img/details/btn_left.png"></button>
+            <p>和以下商品凑单<em>满2件或499元免运费</em>哦！</p>
             <div>
-                <img width="202" height="192" src="img/details/coudan1.png">
-                <p>兰蔻奇迹BB气垫粉底23/PA++</p>
-                <p>¥299</p>
+                <button><img width="65" src="img/details/btn_left.png"></button>
+                <div>
+                    <img width="202" height="192" src="img/details/coudan1.png">
+                    <p>兰蔻奇迹BB气垫粉底23/PA++</p>
+                    <p>¥299</p>
+                </div>
+                <div>
+                    <img width="202" height="192" src="img/details/coudan1.png">
+                    <p>兰蔻奇迹BB气垫粉底23/PA++</p>
+                    <p>¥299</p>
+                </div>
+                <div>
+                    <img width="202" height="192" src="img/details/coudan1.png">
+                    <p>兰蔻奇迹BB气垫粉底23/PA++</p>
+                    <p>¥299</p>
+                </div>
+                <div>
+                    <img width="202" height="192" src="img/details/coudan1.png">
+                    <p>兰蔻奇迹BB气垫粉底23/PA++</p>
+                    <p>¥299</p>
+                </div>
+                <button><img width="65" src="img/details/btn_right.png"></button>
             </div>
-            <div>
-                <img width="202" height="192" src="img/details/coudan1.png">
-                <p>兰蔻奇迹BB气垫粉底23/PA++</p>
-                <p>¥299</p>
-            </div>
-            <div>
-                <img width="202" height="192" src="img/details/coudan1.png">
-                <p>兰蔻奇迹BB气垫粉底23/PA++</p>
-                <p>¥299</p>
-            </div>
-            <div>
-                <img width="202" height="192" src="img/details/coudan1.png">
-                <p>兰蔻奇迹BB气垫粉底23/PA++</p>
-                <p>¥299</p>
-            </div>
-            <button><img width="65" src="img/details/btn_right.png"></button>
         </div>
-    </div>
     <div id="picture_mod">
         <div>
-            <span>商品信息</span>
-            <span>商品信息</span>
-            <span>商品信息</span>
+            <a>商品信息</a>
+            <a href="#xiangqing">商品详情</a>
+            <a>商品信息</a>
         </div>
-        <!--<div>
+        <div>
             <p style="font-size: 24px">商品信息</p>
             <p style="font-size: 18px">Commodity information</p>
             <div>
-                <p>产品名称: Dior/迪奥 雪晶灵冰透白防晒BB霜SPF50/PA+++</p>
+                <p id="goods_name">产品名称: Dior/迪奥 雪晶灵冰透白防晒BB霜SPF50/PA+++</p>
                 <p>是否为特殊用途化妆品: 否</p>
                 <p>是否防晒: 是</p>
-                <p>规格品牌: Dior/迪奥</p>
-                <p>功效: 保湿 滋润 防晒 遮瑕 隔离</p>
+                <p id="goods_brand">规格品牌: Dior/迪奥</p>
+                <p id="goods_effect">功效: 保湿 滋润 防晒 遮瑕 隔离</p>
                 <p>保质期: 3年</p>
             </div>
             <div>
                 <p>上市时间: 2013年</p>
-                <p>颜色分类: 005（适合白皙或偏白肤色粉调） 010（适合自然偏白肤色）</p>
+                <p id="goods_style">颜色分类: 005（适合白皙或偏白肤色粉调） 010（适合自然偏白肤色）</p>
                 <p>规格类型: 正常</p>
-                <p>单品: 雪晶灵冰透白防晒BB霜SPF50/PA+++</p>
-                <p>产地: 法国</p>
+                <p id="goods_lastname">单品: 雪晶灵冰透白防晒BB霜SPF50/PA+++</p>
+                <p id="goods_local">产地: 法国</p>
                 <p>适合肤质: 任何肤质</p>
             </div>
-        </div>-->
-        <div style="text-align: center">
-            <p style="font-size: 24px">商品详情</p>
+        </div>
+        <div id="goods_pic" style="text-align: center">
+            <p><a style="font-size: 24px" id="xiangqing">商品详情</a></p>
             <p style="font-size: 18px">Goods details</p>
-            <img style="display: block" width="1010" src="img/details/goods_details1.png">
-            <img style="display: block" width="1010" src="img/details/goods_details2.png">
-            <img style="display: block" width="1010" src="img/details/goods_details3.png">
-            <img style="display: block" width="1010" src="img/details/goods_details4.png">
-            <img style="display: block" width="1010" src="img/details/goods_details5.png">
-            <img style="display: block" width="1010" src="img/details/goods_details6.png">
+            <!--<img style="display: block" width="1010" src="img/details/goods_details1.png">-->
+            <!--<img style="display: block" width="1010" src="img/details/goods_details2.png">-->
+            <!--<img style="display: block" width="1010" src="img/details/goods_details3.png">-->
+            <!--<img style="display: block" width="1010" src="img/details/goods_details4.png">-->
+            <!--<img style="display: block" width="1010" src="img/details/goods_details5.png">-->
+            <!--<img style="display: block" width="1010" src="img/details/goods_details6.png">-->
         </div>
         <img>
     </div>

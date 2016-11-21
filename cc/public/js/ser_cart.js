@@ -29,7 +29,7 @@
     var liulan_goods_buynum = document.getElementsByClassName('liulan_goods_buynum');
     var liulan_goods_price = document.getElementsByClassName('liulan_goods_price');
     /*定义变量*/
-    var gd, i, j;
+    var gd, i, j, arr_goods;
     var url = 'http://127.0.0.1:3000/';
     /*---------------------------------------------------------------------------------------------------------------*/
     if (sessionStorage.username == undefined) {
@@ -42,6 +42,7 @@
             userid: sessionStorage.userid,
             module: 'liulan'
         }, function (data, status) {
+            console.log(data);
             for (i = 0; i < data.goods.length; i++) {
                 var li = document.createElement('li');
                 li.className = 'liulan_goods_list';
@@ -68,7 +69,8 @@
             userid: sessionStorage.userid
         }, function (data, status) {
             gd = data;
-            //console.log(data)
+            arr_goods = data.goods;
+            //console.log(data);
             if (data.num == 0) {
                 var div = document.createElement('div');
                 all_goods_list.appendChild(div);
@@ -77,7 +79,57 @@
                 div.innerHTML = '购物车无商品！！！';
             }
             else {
-                chushihua();
+                var k = 0;
+                for (i = 0; i < gd.goods.length; i++) {
+                    //console.log('i' + i);
+                    if (i == 0) {
+                        arr_goods[k] = data.goods[i];
+                        var li = document.createElement('li');
+                        all_goods_list.appendChild(li);
+                        li.className = 'cart_list';
+                        li.innerHTML = '<div> <input type="checkbox" name="all_goods_ch"> <span style="left: 45px">选择订单</span> <span style="left: 575px">购买数量</span> <span style="left: 695px">购买单价</span> <span style="left: 795px">小计</span> <span style="left: 890px">操作</span> </div>' +
+                            ' <div> <img class="cart_list_goods_pic" width="105" height="105" src=""> <span class="cart_list_goods_name" style="left:120px;top: 10px"></span>' +
+                            ' <span class="cart_list_goods_brand" style="left:120px;top: 50px"></span> <span class="cart_list_goods_effect" style="left:120px;top: 90px"></span>' +
+                            ' <div> <button class="btn_decrease">－ </button> <input class="num_inp" type="text" value="1"> <button class="btn_increase">＋</button> </div> <span class="cart_list_goods_price" style="left: 665px;top: 50px">￥</span> <span class="cart_list_goods_price_zong" style="left: 755px;top: 50px">￥</span> <button class="cart_delete_btn"> <img src="../img/icon/delete.png"> </button> </div>'
+                        cart_list_goods_pic[k].src = 'img/goods/' + gd.goods[i].GoodsUrl;
+                        cart_list_goods_name[k].innerHTML = '商品名称：' + gd.goods[i].GoodsName;
+                        cart_list_goods_brand[k].innerHTML = '品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌：' + gd.goods[i].GoodsBrand;
+                        cart_list_goods_effect[k].innerHTML = '功&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;效：' + gd.goods[i].GoodsEffect;
+                        cart_list_goods_price[k].innerHTML = '￥' + gd.goods[i].Price;
+                    }
+                    else {
+                        var t = 0;
+                        for (j = 0; j < i; j++) {
+                            //console.log(j);
+                            if (arr_goods[k].GoodsId == gd.goods[i].GoodsId) {
+                                num_inp[k].value++;
+                                t = 1;
+                                break;
+                            }
+                        }
+                        if (t == 0) {
+                            k++;
+                            arr_goods[k] = data.goods[i];
+                            var li = document.createElement('li');
+                            all_goods_list.appendChild(li);
+                            li.className = 'cart_list';
+                            li.innerHTML = '<div> <input type="checkbox" name="all_goods_ch"> <span style="left: 45px">选择订单</span> <span style="left: 575px">购买数量</span> <span style="left: 695px">购买单价</span> <span style="left: 795px">小计</span> <span style="left: 890px">操作</span> </div>' +
+                                ' <div> <img class="cart_list_goods_pic" width="105" height="105" src=""> <span class="cart_list_goods_name" style="left:120px;top: 10px"></span>' +
+                                ' <span class="cart_list_goods_brand" style="left:120px;top: 50px"></span> <span class="cart_list_goods_effect" style="left:120px;top: 90px"></span>' +
+                                ' <div> <button class="btn_decrease">－ </button> <input class="num_inp" type="text" value="1"> <button class="btn_increase">＋</button> </div> <span class="cart_list_goods_price" style="left: 665px;top: 50px">￥</span> <span class="cart_list_goods_price_zong" style="left: 755px;top: 50px">￥</span> <button class="cart_delete_btn"> <img src="../img/icon/delete.png"> </button> </div>'
+                            //console.log('k' + k);
+                            //console.log('iii' + i);
+                            //console.log(gd.goods[i])
+                            cart_list_goods_pic[k].src = 'img/goods/' + gd.goods[i].GoodsUrl;
+                            cart_list_goods_name[k].innerHTML = '商品名称：' + gd.goods[i].GoodsName;
+                            cart_list_goods_brand[k].innerHTML = '品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌：' + gd.goods[i].GoodsBrand;
+                            cart_list_goods_effect[k].innerHTML = '功&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;效：' + gd.goods[i].GoodsEffect;
+                            cart_list_goods_price[k].innerHTML = '￥' + gd.goods[i].Price;
+                        }
+                    }
+                }
+                act_price1();
+                act_price2();
                 quanxuan_ch1.onclick = function () {
                     if (quanxuan_ch1.checked) {
                         quanxuan_ch2.checked = true;
@@ -110,6 +162,10 @@
                 };
                 for (j = 0; j < all_goods_ch.length; j++) {
                     (function (j) {
+                        cart_list_goods_pic[j].onclick = function () {
+                            sessionStorage.setItem('goodsid', gd.goods[j].GoodsId);
+                            window.open('details.html');
+                        };
                         all_goods_ch[j].onclick = function () {
                             var temp = 0;
                             for (var i = 0; i < all_goods_ch.length; i++) {
@@ -167,18 +223,16 @@
                                     user_id: sessionStorage.userid,
                                     goods_id: data.goods[j].GoodsId
                                 }, function (data, status) {
-                                    console.log(all_goods_list.childNodes.length);
                                     all_goods_list.removeChild(cart_list[j]);
+                                    act_price1();
                                     del();
                                 })
                             }
                         })(j)
                     }
                 }
-
                 del();
             }
-
         });
     }
     all_goods_delete_btn.onclick = function () {
@@ -186,17 +240,14 @@
         var p = 0;
         for (i = 0; i < all_goods_ch.length; i++) {
             if (all_goods_ch[i].checked) {
-                arr[p] = gd.goods[i].GoodsId;
+                arr[p] = arr_goods[i].GoodsId;
                 p++;
             }
         }
-        //console.log(arr);
         $.post(url + 'cart_del_s', {
             userid: sessionStorage.userid,
             goodsid: JSON.stringify(arr)
         }, function (data, status) {
-            console.log(data);
-            alert('ccccccccccccc');
             function del_s() {
                 for (i = 0; i < all_goods_ch.length; i++) {
                     if (all_goods_ch[i].checked) {
@@ -231,10 +282,8 @@
         }
         obj.num = num;
         obj.goods = JSON.stringify(arr);
-        console.log(obj);
         $.post(url + 'dingdan_add_bycart', obj, function (data, status) {
             sessionStorage.setItem('date', new Date().toLocaleDateString());
-            console.log(data);
             sessionStorage.setItem('dingdanid', data.id);
             sessionStorage.setItem('by', 'cart');
             alert('############订单生成############');
@@ -242,40 +291,7 @@
         });
     };
     function chushihua() {
-        for (i = 0; i < gd.num; i++) {
-            var li = document.createElement('li');
-            all_goods_list.appendChild(li);
-            li.className = 'cart_list';
-            li.innerHTML = '<div> <input type="checkbox" name="all_goods_ch"> <span style="left: 45px">选择订单</span> <span style="left: 575px">购买数量</span> <span style="left: 695px">购买单价</span> <span style="left: 795px">小计</span> <span style="left: 890px">操作</span> </div>' +
-                ' <div> <img class="cart_list_goods_pic" width="105" height="105" src=""> <span class="cart_list_goods_name" style="left:120px;top: 10px"></span>' +
-                ' <span class="cart_list_goods_brand" style="left:120px;top: 50px"></span> <span class="cart_list_goods_effect" style="left:120px;top: 90px"></span>' +
-                ' <div> <button class="btn_decrease">－ </button> <input class="num_inp" type="text" value="1"> <button class="btn_increase">＋</button> </div> <span class="cart_list_goods_price" style="left: 665px;top: 50px">￥</span> <span class="cart_list_goods_price_zong" style="left: 755px;top: 50px">￥</span> <button class="cart_delete_btn"> <img src="../img/icon/delete.png"> </button> </div>'
-        }
-        for (i = 0; i < cart_list.length; i++) {
-            for (j = i + 1; j < cart_list.length; j++) {
-                if (cart_list[j].style.display != 'none') {
-                    if (gd.goods[i].GoodsId == gd.goods[j].GoodsId) {
-                        num_inp[i].value++;
-                        cart_list[j].style.display = 'none';
-                    }
-                }
-            }
-        }
-        for (i = 0; i < cart_list.length; i++) {
-            if (cart_list[i].style.display == 'none') {
-                all_goods_list.removeChild(cart_list[i]);
-                i--;
-            }
-            else {
-                cart_list_goods_pic[i].src = 'img/goods/' + gd.goods[i].GoodsUrl;
-                cart_list_goods_name[i].innerHTML = '商品名称：' + gd.goods[i].GoodsName;
-                cart_list_goods_brand[i].innerHTML = '品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌：' + gd.goods[i].GoodsBrand;
-                cart_list_goods_effect[i].innerHTML = '功&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;效：' + gd.goods[i].GoodsEffect;
-                cart_list_goods_price[i].innerHTML = '￥' + gd.goods[i].Price;
-            }
-        }
-        act_price1();
-        act_price2();
+
     }
 
     function act_price1() {
@@ -288,7 +304,6 @@
     }
 
     function act_price2() {
-        console.log(gd);
         var price_sum2 = 0, goods_num = 0;
         for (i = 0; i < all_goods_ch.length; i++) {
             if (all_goods_ch[i].checked) {

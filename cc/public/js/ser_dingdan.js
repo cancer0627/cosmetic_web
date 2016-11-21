@@ -29,9 +29,9 @@
     var price_zong1 = document.getElementById('price_zong1');
     var price_zong2 = document.getElementById('price_zong2');
     var queren_zhifu_btn = document.getElementById('queren_zhifu_btn');
-
+    /*定义变量*/
     var i, j, gd, url = 'http://127.0.0.1:3000/';
-
+    /*---------------------------------------------------------------------------------------------------------------*/
     username.innerHTML = '用户' + sessionStorage.username;
     for (i = 0; i < local_list_det.length; i++) {
         if (local_ch[i].checked) {
@@ -58,7 +58,6 @@
     $.post(url + 'dingdan_sel', {
         id: sessionStorage.dingdanid
     }, function (data, status) {
-        console.log(data);
         gd = data.goods;
         var yunfei = 0, sum = 0, num = 0;
         for (i = 0; i < gd.length; i++) {
@@ -94,7 +93,6 @@
         if (gd.length) {
             for (i = 0; i < local_list_det.length; i++) {
                 if (local_ch[i].checked) {
-                    //local_list_det[i].style.backgroundImage = 'url("img/personal/local.png")';
                     sessionStorage.setItem('local', local_span[i].innerHTML);
                 }
             }
@@ -113,7 +111,6 @@
                     userid: sessionStorage.userid,
                     goodsid: JSON.stringify(arr)
                 }, function (data, status) {
-                    console.log(data);
                     if (data.result) {
                         alert('订单处理成功！！！');
                         location.href = 'zhifu.html';
@@ -127,7 +124,6 @@
                 alert('订单处理成功！！！');
                 location.href = 'zhifu.html';
             }
-
         }
         else {
             alert('还没有商品，赶紧去购买吧！！！')
@@ -137,13 +133,8 @@
         for (i = 0; i < local_list_det.length; i++) {
             (function (i) {
                 local_list_det[i].onmouseover = function () {
-                    //moren_local_btn[i].style.display = 'initial';
                     update_local_btn[i].style.display = 'initial';
                 };
-                //local_list_det[i].onmouseout = function () {
-                //    //moren_local_btn[i].style.display = 'none';
-                //    update_local_btn[i].style.display = 'none';
-                //};
                 update_local_btn[i].onclick = function () {
                     local_inp[i].style.display = 'initial';
                     local_span[i].style.display = 'none';

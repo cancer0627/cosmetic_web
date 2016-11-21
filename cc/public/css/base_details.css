@@ -86,7 +86,6 @@
 }
 
 #main_body > #details_mod + div {
-    /*margin-top: 20px;*/
     padding: 50px;
     display: block;
     text-align: left;
@@ -94,7 +93,7 @@
 
 /*分享*/
 #details_mod + div > a {
-    margin: 10px 30px 10px 0px;
+    margin: 10px 30px 10px 0;
 }
 
 #details_mod + div > span {
@@ -151,7 +150,7 @@
     background-color: #9d9c9c;
 }
 
-#coudan + div > div:first-child > span {
+#coudan + div > div:first-child > a {
     display: inline-block;
     padding: 10px 25px;
 }
@@ -173,13 +172,17 @@
     padding: 10px 0;
 }
 
+#picture_mod > div > p > a {
+    display: inline-block;
+}
+
 #picture_mod > div:first-child + div {
     text-align: center;
 }
 
 #picture_mod > div:first-child + div > div {
     text-align: left;
-    margin: 0 40px;
+    margin: 0 100px;
 
 }
 

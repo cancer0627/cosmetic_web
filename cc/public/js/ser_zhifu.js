@@ -8,6 +8,9 @@
     var web_sel = document.getElementById('web_sel');
     var card_sel_btn = document.getElementById('card_sel_btn');
     var web_sel_btn = document.getElementById('web_sel_btn');
+    /*变量定义*/
+    var url = 'http://127.0.0.1:3000/';
+    /*---------------------------------------------------------------------------------------------------------------*/
     card_sel.lastChild.previousSibling.style.display = 'none';
     web_sel.lastChild.previousSibling.style.display = 'none';
     card_sel_btn.onclick = function () {
@@ -26,8 +29,6 @@
             web_sel.lastChild.previousSibling.style.display = 'none';
         }
     };
-    /*变量定义*/
-    var url = 'http://127.0.0.1:3000/';
     /*---------------------------------------------------------------------------------------------------------------*/
     username.innerHTML = '用户' + sessionStorage.username;
     price.innerHTML = sessionStorage.price_zong;

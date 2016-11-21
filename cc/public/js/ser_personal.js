@@ -1,9 +1,11 @@
 (function () {
     var person_details = document.getElementById('person_details');
-    var search_btn = document.getElementById('search_btn');
-    var search_input = document.getElementById('search_inp');
     var per_username = document.getElementById('per_username');
     var per_userid = document.getElementById('per_userid');
+    /*搜索框*/
+    var search_btn = document.getElementById('search_btn');
+    var search_input = document.getElementById('search_input');
+    var search_list = document.getElementsByClassName('search_list');
     /*待付款订单*/
     var daifukuan_dingdan_date = document.getElementsByClassName('daifukuan_dingdan_date');
     var daifukuan_dingdan_num = document.getElementsByClassName('daifukuan_dingdan_num');
@@ -36,7 +38,7 @@
     var hot_goods_buynum = document.getElementsByClassName('hot_goods_buynum');
     var hot_goods_price = document.getElementsByClassName('hot_goods_price');
     /*定义变量*/
-    var url = 'http://127.0.0.1:3000/';
+    var url = 'http://127.0.0.1:3000/', i;
     /*---------------------------------------------------------------------------------------------------------------*/
     if (sessionStorage.username == undefined) {
         alert('未登录，请先登录！！！');
@@ -61,7 +63,7 @@
             for (i = 0; i < hot_goods_list.length; i++) {
                 hot_goods_pic[i].src = '../img/goods/' + data.goods[i].Url;
                 hot_goods_name[i].innerHTML = data.goods[i].Name;
-                hot_goods_buynum[i].innerHTML = data.goods[i].BuyNum+'人已购买';
+                hot_goods_buynum[i].innerHTML = data.goods[i].BuyNum + '人已购买';
                 hot_goods_price[i].innerHTML = data.goods[i].Price;
                 (function (i) {
                     hot_goods_pic[i].onclick = function () {
@@ -75,8 +77,7 @@
             userid: sessionStorage.userid,
             type: '待付款'
         }, function (data, status) {
-            console.log(data);
-            for (var i = 0; i < data.goods.length; i++) {
+            for (i = 0; i < data.goods.length; i++) {
                 var li = document.createElement('li');
                 li.className = 'daifukuan_goods';
                 daifukuan_list.appendChild(li);
@@ -100,9 +101,8 @@
             userid: sessionStorage.userid,
             type: '待收货'
         }, function (data, status) {
-            console.log(data);
             gd = data;
-            for (var i = 0; i < data.goods.length; i++) {
+            for (i = 0; i < data.goods.length; i++) {
                 var li = document.createElement('li');
                 li.className = 'daishouhuo_goods';
                 daishouhuo_list.appendChild(li);
@@ -122,6 +122,14 @@
                 daishouhuo_dingdan_pic[i].src = 'img/goods/' + data.goods[i].Url;
             }
         })
+    }
+    for (i = 0; i < search_list.length; i++) {
+        (function (i) {
+            search_list[i].onclick = function () {
+                sessionStorage.setItem('fenlei', $.trim(search_list[i].innerHTML));
+                location.href = 'list.html';
+            }
+        })(i)
     }
     search_btn.onclick = function () {
         sessionStorage.setItem('fenlei', $.trim(search_input.value));

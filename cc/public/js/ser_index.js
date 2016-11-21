@@ -2,6 +2,7 @@
     /*搜索框*/
     var search_input = document.getElementById('search_input');
     var search_btn = document.getElementById('search_btn');
+    var search_list = document.getElementsByClassName('search_list');
     /*optimal*/
     var optimal_list = document.getElementsByClassName('optimal_list');
     var optimal_goods_name = document.getElementsByClassName('optimal_goods_name');
@@ -41,7 +42,10 @@
     /*样式*/
     var sales_bang = document.getElementById('sales_bang');
     var bangs = document.getElementsByClassName('bangs');
-    console.log(bangs);
+    /*定义变量*/
+    var url = 'http://127.0.0.1:3000/';
+    var i, j, gd_special, gd_optimal, gd_xiaoliang, gd_shoucang;
+    /*---------------------------------------------------------------------------------------------------------------*/
     sales_bang.childNodes[1].childNodes[1].onclick = function () {
         sales_bang.childNodes[1].childNodes[2].className = '';
         sales_bang.childNodes[1].childNodes[1].className = 'listed';
@@ -58,14 +62,19 @@
         }
         bangs[0].classList.add('bangs_listed');
     };
-    /*定义变量*/
-    var url = 'http://127.0.0.1:3000/';
-    var i, j, gd_special, gd_optimal, gd_xiaoliang, gd_shoucang;
     /*---------------------------------------------------------------------------------------------------------------*/
     if (sessionStorage.length == 0) {
         location.href = 'login.html';
     }
     else {
+        for (i = 0; i < search_list.length; i++) {
+            (function (i) {
+                search_list[i].onclick = function () {
+                    sessionStorage.setItem('fenlei', $.trim(search_list[i].innerHTML));
+                    location.href = 'list.html';
+                }
+            })(i)
+        }
         search_btn.onclick = function () {
             sessionStorage.setItem('fenlei', $.trim(search_input.value));
             location.href = 'list.html';
@@ -161,7 +170,6 @@
                             goods_id: gd_xiaoliang.goods[i].Id,
                             user_id: sessionStorage.userid
                         }, function (data, status) {
-                            console.log(data);
                             if (data.result) {
                                 alert('加入购物车成功！！！');
                             }
@@ -199,11 +207,11 @@
                         window.open('details.html');
                     };
                     shoucang_bangs_btn[i].onclick = function () {
+                        console.log(gd_shoucang.goods[i].Id);
                         $.post(url + 'cart_add', {
                             goods_id: gd_shoucang.goods[i].Id,
                             user_id: sessionStorage.userid
                         }, function (data, status) {
-                            console.log(data);
                             if (data.result) {
                                 alert('加入购物车成功！！！');
                             }
