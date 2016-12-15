@@ -46,8 +46,8 @@
 
 /*module_Optimal*/
 #module_Optimal > li {
-    width: 984px;
-    height: 465px;
+    width: 985px;
+    height: 500px;
     position: relative;
     margin: 0 auto 35px;
 }
@@ -56,8 +56,8 @@
     color: #6c6c6c;
     background-color: #eceaed;
     float: right;
-    width: 425px;
-    height: 415px;
+    width: 435px;
+    height: 450px;
     box-shadow: -3px 3px 5px #aaa;
     padding: 25px;
 }

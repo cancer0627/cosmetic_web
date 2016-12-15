@@ -168,7 +168,7 @@
             var li = document.createElement('li');
             li.className = 'goods_list';
             goods_div.appendChild(li);
-            li.innerHTML = '<img class="goods_img" width="239" height="233" src=""><p class="goods_name"></p><div>' +
+            li.innerHTML = '<img class="goods_img" width="239" height="239" src=""><p class="goods_name"></p><div>' +
                 '<p>¥<em class="goods_price" style="color: #9f0404;font-size: 30px"></em></p><div><p class="goods_buy_num"></p>' +
                 '<img src="../img/list/list_xing.png"></div></div><div> ' +
                 '<button class="cart_add_btn">加入购物车</button><button class="goods_buy_btn">立即购买</button></div>';

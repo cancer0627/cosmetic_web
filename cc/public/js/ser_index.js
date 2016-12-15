@@ -118,8 +118,8 @@
                 li.innerHTML = '<ul><li class="optimal_goods_name" style="text-align: center;font-size: 18px;color: #6c6c6c"></li>' +
                     '<li class="optimal_goods_describe" style="font-size: 14px;line-height: 30px;color: #6c6c6c"></li>' +
                     '<li><div><p class="optimal_goods_baoyou"></p><p class="optimal_goods_fuwu" style="color: #7e7e7e"></p></div>' +
-                    '<div class="optimal_goods_style"></div></li><img width="509" height="465" class="optimal_goods_pic" src="">' +
-                    '<li style="margin-top:120px;color: #9f0404;font-size: 18px">￥<em class="optimal_goods_price" style="font-size: 48px;color: #9f0404"></em></li>' +
+                    '<div class="optimal_goods_style"></div></li><img width="500" height="500" class="optimal_goods_pic" src="">' +
+                    '<li style="margin-top:160px;color: #9f0404;font-size: 18px">￥<em class="optimal_goods_price" style="font-size: 48px;color: #9f0404"></em></li>' +
                     '<li style="font-size: 14px"><em class="optimal_goods_buynum" style="color: #ff7e00"></em>人已购买</li>' +
                     '<li><a class="optimal_goods_buy_btn" href="#">去看看</a></li></ul>';
             }
@@ -149,7 +149,7 @@
                 var li = document.createElement('li');
                 li.className = 'xiaoliang_bangs';
                 bangs1.appendChild(li);
-                li.innerHTML = '<img class="xiaoliang_bangs_img" width="239" height="233" src="">' +
+                li.innerHTML = '<img class="xiaoliang_bangs_img" width="239" height="239" src="">' +
                     '<p class="xiaoliang_bangs_name" style="font-size: 12px;color: #343434;"></p>' +
                     '<p class="xiaoliang_bangs_fuwu" style="font-size: 12px;color: #757474;"></p>' +
                     '<p style="font-size: 12px;color: #9f0404;">¥<em class="xiaoliang_bangs_price" style="color: #9f0404;font-size: 30px"></em></p>' +
@@ -190,7 +190,7 @@
                 var li = document.createElement('li');
                 li.className = 'shoucang_bangs';
                 bangs2.appendChild(li);
-                li.innerHTML = '<img class="shoucang_bangs_img" width="239" height="233" src="">' +
+                li.innerHTML = '<img class="shoucang_bangs_img" width="239" height="239" src="">' +
                     '<p class="shoucang_bangs_name" style="font-size: 12px;color: #343434;">兰蔻奇迹BB气垫粉底23/PA++</p>' +
                     '<p class="shoucang_bangs_fuwu" style="font-size: 12px;color: #757474;">7天拆封无理由退货</p>' +
                     '<p style="font-size: 12px;color: #9f0404;">¥<em class="shoucang_bangs_price" style="color: #9f0404;font-size: 30px">299</em></p>' +
