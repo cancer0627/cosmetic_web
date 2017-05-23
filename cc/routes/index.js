@@ -10,7 +10,7 @@ router.post('/login', function (req, res) {
     res.contentType('json');
     var params = {
         username: req.body.username,
-        userpwd: req.body.userpwd
+        userpassword: req.body.userpassword
     };
     userDao.login(params, function (result, id, name) {
         params.result = result;
@@ -23,35 +23,14 @@ router.post('/login', function (req, res) {
 router.post('/reg', function (req, res) {
     res.contentType('json');
     var params = {
-        usertel: req.body.usertel,
+        tel: req.body.tel,
         username: req.body.username,
-        userpwd: req.body.userpwd,
-        usermail: req.body.usermail
+        userpassword: req.body.userpassword,
+        email: req.body.email
     };
     userDao.reg(params, function (result, id) {
         params.result = result;
         params.userid = id;
-        res.send(JSON.stringify(params));
-        res.end();
-    });
-});
-router.post('/list_sel', function (req, res) {
-    res.contentType('json');
-    var params = {
-        userid: req.body.user_id,
-        sel: req.body.sel
-    };
-    userDao.list_fenlei_sel(params, function () {
-        res.send(JSON.stringify(params));
-        res.end();
-    });
-});
-router.post('/details', function (req, res) {
-    res.contentType('json');
-    var params = {
-        goodsid: req.body.goodsid
-    };
-    userDao.details(params, function () {
         res.send(JSON.stringify(params));
         res.end();
     });
@@ -68,12 +47,47 @@ router.post('/index_sel', function (req, res) {
         res.end();
     });
 });
-router.post('/cart_add', function (req, res) {
+router.post('/goods_order', function (req, res) {
     res.contentType('json');
     var params = {
-        goodsid: req.body.goods_id,
-        userid: req.body.user_id
+        userid: req.body.userid,
+        order: req.body.order,
+        goods: new Array()
     };
+    userDao.goods_order(params, function () {
+        res.send(JSON.stringify(params));
+        res.end();
+    });
+});
+router.post('/list_sel_all', function (req, res) {
+    res.contentType('json');
+    var params = req.body;
+    userDao.list_sel_all(params, function () {
+        res.send(JSON.stringify(params));
+        res.end();
+    });
+});
+router.post('/list_sel_order', function (req, res) {
+    res.contentType('json');
+    var params = req.body;
+    userDao.list_sel_order(params, function () {
+        res.send(JSON.stringify(params));
+        res.end();
+    });
+});
+router.post('/details', function (req, res) {
+    res.contentType('json');
+    var params = {
+        goodsid: req.body.goodsid
+    };
+    userDao.details(params, function () {
+        res.send(JSON.stringify(params));
+        res.end();
+    });
+});
+router.post('/cart_add', function (req, res) {
+    res.contentType('json');
+    var params = req.body;
     userDao.cart_add(params, function (result) {
             params.result = result;
             res.send(JSON.stringify(params));
@@ -83,10 +97,9 @@ router.post('/cart_add', function (req, res) {
 });
 router.post('/cart_sel', function (req, res) {
     res.contentType('json');
-    var params = {
-        userid: req.body.userid
-    };
-    userDao.cart_sel(params, function () {
+    var params = req.body;
+    userDao.cart_sel(params, function (goods) {
+        params.goods = goods;
         res.send(JSON.stringify(params));
         res.end();
     })
@@ -101,9 +114,12 @@ router.post('/cart_del', function (req, res) {
 });
 router.post('/cart_del_s', function (req, res) {
     res.contentType('json');
-    var params = req.body;
+    var params = {
+        userid: req.body.userid,
+        gid: req.body.goodsid
+    }
     userDao.cart_del_s(params, function (result) {
-        params.result=result;
+        params.result = result;
         res.send(JSON.stringify(params));
         res.end();
     })
@@ -111,11 +127,12 @@ router.post('/cart_del_s', function (req, res) {
 router.post('/dingdan_add', function (req, res) {
     res.contentType('json');
     var params = req.body;
-    userDao.dingdan_add(params, function (goods) {
-        params.goods = goods;
-        res.send(JSON.stringify(params));
-        res.end();
-    })
+    userDao.dingdan_add(params, function (result) {
+            params.result = result;
+            res.send(JSON.stringify(params));
+            res.end();
+        }
+    );
 });
 router.post('/dingdan_add_bycart', function (req, res) {
     res.contentType('json');
@@ -153,11 +170,110 @@ router.post('/dingdan_update', function (req, res) {
         res.end();
     })
 });
-router.post('/goods_update',function (req,res){
+router.post('/dingdan_shouhuo', function (req, res) {
+    res.contentType('json');
+    var params = req.body;
+    userDao.dingdan_shouhuo(params, function (result) {
+        params.result = result;
+        res.send(JSON.stringify(params));
+        res.end();
+    })
+});
+router.post('/goods_update', function (req, res) {
     res.contentType('json');
     var params = req.body;
     userDao.goods_update(params, function (result) {
         params.result = result;
+        res.send(JSON.stringify(params));
+        res.end();
+    })
+});
+router.post('/comment_sel', function (req, res) {
+    res.contentType('json');
+    var params = req.body;
+    userDao.comment_sel(params, function () {
+        console.log(params);
+        res.send(JSON.stringify(params));
+        res.end();
+    })
+});
+router.post('/comment_add', function (req, res) {
+    res.contentType('json');
+    var params = req.body;
+    userDao.comment_add(params, function (result) {
+        //console.log(params);
+        params.result = result;
+        res.send(JSON.stringify(params));
+        res.end();
+    })
+});
+router.post('/like_add', function (req, res) {
+    res.contentType('json');
+    var params = req.body;
+    userDao.like_add(params, function (result) {
+        //console.log(params);
+        params.result = result;
+        res.send(JSON.stringify(params));
+        res.end();
+    })
+});
+router.post('/like_update_act', function (req, res) {
+    res.contentType('json');
+    var params = req.body;
+    userDao.like_update_act(params, function (result) {
+        //console.log(params);
+        params.result = result;
+        res.send(JSON.stringify(params));
+        res.end();
+    })
+});
+
+router.post('/like_update_l', function (req, res) {
+    res.contentType('json');
+    var params = req.body;
+    userDao.like_update_l(params, function (result) {
+        //console.log(params);
+        params.result = result;
+        res.send(JSON.stringify(params));
+        res.end();
+    })
+});
+router.post('/like_update_b', function (req, res) {
+    res.contentType('json');
+    var params = req.body;
+    userDao.like_update_b(params, function (result) {
+        //console.log(params);
+        params.result = result;
+        res.send(JSON.stringify(params));
+        res.end();
+    })
+});
+router.post('/like_sel_act', function (req, res) {
+    res.contentType('json');
+    var params = req.body;
+    userDao.like_sel_act(params, function (result) {
+        //console.log(params);
+        //params.result = result;
+        res.send(JSON.stringify(params));
+        res.end();
+    })
+});
+router.post('/tuijian', function (req, res) {
+    res.contentType('json');
+    var params = req.body;
+    userDao.tuijian(params, function (result) {
+        //console.log(params);
+        //params.result = result;
+        res.send(JSON.stringify(params));
+        res.end();
+    })
+});
+router.post('/tuijian_article', function (req, res) {
+    res.contentType('json');
+    var params = req.body;
+    userDao.tuijian_article(params, function (result) {
+        //console.log(params);
+        //params.result = result;
         res.send(JSON.stringify(params));
         res.end();
     })
