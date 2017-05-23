@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title id="title">迪奥雪精灵亮白修护气垫粉底</title>
+    <title id="title"></title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/base_details.css">
     <script src="js/jquery-3.1.1.min.js"></script>
-    <script defer src="js/test_details.js"></script>
+    <!--<script defer src="js/test_details.js"></script>-->
     <script defer src="js/ser_details.js"></script>
 
 </head>
@@ -14,7 +14,6 @@
 <div id="t_top">
     <div id="top">
         <span>欢迎来到美妆街！</span>
-        <span>本网站商品全部为正品，支持防伪码验证，支持官网查询，假一赔十！</span>
         <div>
             <a href="login.html">会员登录</a>
             <span> | </span>
@@ -22,13 +21,7 @@
             <span> | </span>
             <a href="personal.html">订单查询</a>
             <span> | </span>
-            <div>
-                <span>我的美妆</span>
-                <div></div>
-                <a href="personal.html" class="personal">个人中心</a>
-            </div>
-            <span> | </span>
-            <a href="#"><span>美妆收藏</span><img width="13" src="img/icon/favourite.png"> </a>
+            <a href="personal.html">我的美妆</a>
         </div>
     </div>
 </div>
@@ -57,11 +50,10 @@
     <div id="n_nav">
         <div id="nav">
             <a href="index.html">首页</a>
-            <a href="activity.html">彩妆品牌团</a>
+            <a href="activity.html">调查问卷</a>
             <a href="list.html" style="background-color: #d41a39">底妆</a>
-            <a href="#">眼部彩妆</a>
-            <a href="#">唇部彩妆</a>
-            <a href="#">修容品</a>
+            <a href="personal.html">我的美妆</a>
+            <a href="learn.html">学习模块</a>
         </div>
     </div>
     <div id="main_body">
@@ -72,7 +64,6 @@
                 <img id="details_pic1" width="105" height="105" src="img/details/details1.png">
                 <img id="details_pic2" width="105" height="105" src="img/details/details2.png">
                 <img id="details_pic3" width="105" height="105" src="img/details/details3.png">
-                <img id="details_pic4" width="105" height="105" src="img/details/details4.png">
             </div>
         </div>
         <div id="details_mod">
@@ -81,60 +72,31 @@
             <p id="details_goods_describe"></p>
             <div>
                 <li style="background-color: #f9d7dd;">
-                    <span style="margin-top: 13px">价格：</span>
+                    <span style="margin-top: 11px">价格：</span>
                     <div>
-                        <span style="color: #9f0404">￥<em id="details_goods_price" style="font-size: 30px;line-height: 30px"></em></span>
-                        <span style="font-size: 14px;background-color: #04bbbb;color: #ff5400;padding: 3px;position: relative;top: -4px">满赠</span>
-                        <span style="font-size: 14px;background-color: #e7aa39;color: #000;padding: 3px;position: relative;top: -4px">满减</span>
-                        <span id="details_goods_buynum" style="margin: 0;position: absolute;bottom: 10px;right: 15px;"></span>
-                    </div>
-                </li>
-                <li>
-                    <span>配送：</span>
-                    <div>
-                        <span id="details_local1"></span>
-                        <span>至</span>
-                        <select style="border: 1px solid #000" name="province" id="province">
-                            <option value="请选择城市">请选择省份</option>
-                        </select>
-                        <select style="border: 1px solid #000" name="city" id="city">
-                            <option value="请选择城市">请选择城市</option>
-                        </select>
+                        <span style="color: #9f0404">￥<em id="details_goods_price"
+                                                          style="font-size: 30px;line-height: 30px"></em></span>
+                        <span id="details_goods_buynum"
+                              style="margin: 0;position: absolute;bottom: 10px;right: 15px;"></span>
                     </div>
                 </li>
                 <li>
                     <span>运费：</span>
                     <div>
                         <span id="details_local2"><em id="details_yunfei"></em>元</span>
-                        <!--<span>购迪奥品牌商品满<em>499</em>元或-->
-                        <!--<em>2</em>件及以上商品免运费</span>-->
                     </div>
                 </li>
                 <li>
-                    <span>优惠：</span>
-                    <div id="details_youhui">
-                        <span>购迪奥品牌彩妆满<em>599</em>元送掉化妆包一个</span>
-                        <span>满<em>799</em>元送迪奥彩妆试用装一套</span>
-                        <span>购法国直邮商品满<em>599</em>元可立减现金<em>59</em>元</span>
-                        <span>满<em>799</em>元立减现金<em>99</em>元</span>
-                        <span>以上优惠不可同时参与。</span>
-                    </div>
+                    <span>规格：</span>
+                    <div id="details_style"></div>
                 </li>
                 <li>
-                    <span>颜色分类：</span>
-                    <div id="details_style" style="margin-left: 70px">
-                        <span style="border: 1px solid #f39800;margin-bottom: 10px">005，15g*2 适合白皙肤色</span><br>
-                        <span style="border: 1px solid #f39800;margin-bottom: 10px">010，15g*2 适合自然偏黄肤色</span><br>
-                        <span style="border: 1px solid #f39800">020，15g*2 适合需要遮瑕肤色</span>
-                    </div>
-                </li>
-                <li>
-                    <span>数量：</span>
+                    <span style="line-height: 38px;">数量：</span>
                     <div>
                         <span><em id="dec_btn">－</em><input id="details_buy_num_val" type="text" value="1"><em
                                 id="inc_btn">＋</em></span>
                         <span>件</span>
-                        <span id="details_num">(库存8945件)</span><br>
+                        <span id="details_num">(库存件)</span><br>
                         <span id="cart_add_btn"
                               style="padding: 5px 15px;background-color: #f39800;font-size: 20px;color: white;margin-top:20px;margin-right:20px;">加入购物车</span><span
                             id="dingdan_add__btn"
@@ -144,81 +106,40 @@
             </div>
         </div>
         <div>
-            <a href="#">
-                <img src="img/details/details_collect.png">
-                <span>收藏美妆</span>
-            </a>
-            <a href="#">
-                <img src="img/details/details_share.png">
-                <span>分享美妆</span>
-            </a>
-            <span style="margin-left: 300px">支付方式：</span><span>支付宝</span><span>微信钱包</span><span>信用卡</span><span>银行卡等</span>
+            <span>支付方式：</span><span>支付宝</span><span>微信钱包</span><span>信用卡</span><span>银行卡等</span>
         </div>
     </div>
-    <div id="coudan">
-            <p>和以下商品凑单<em>满2件或499元免运费</em>哦！</p>
-            <div>
-                <button><img width="65" src="img/details/btn_left.png"></button>
-                <div>
-                    <img width="202" height="192" src="img/details/coudan1.png">
-                    <p>兰蔻奇迹BB气垫粉底23/PA++</p>
-                    <p>¥299</p>
-                </div>
-                <div>
-                    <img width="202" height="192" src="img/details/coudan1.png">
-                    <p>兰蔻奇迹BB气垫粉底23/PA++</p>
-                    <p>¥299</p>
-                </div>
-                <div>
-                    <img width="202" height="192" src="img/details/coudan1.png">
-                    <p>兰蔻奇迹BB气垫粉底23/PA++</p>
-                    <p>¥299</p>
-                </div>
-                <div>
-                    <img width="202" height="192" src="img/details/coudan1.png">
-                    <p>兰蔻奇迹BB气垫粉底23/PA++</p>
-                    <p>¥299</p>
-                </div>
-                <button><img width="65" src="img/details/btn_right.png"></button>
-            </div>
-        </div>
     <div id="picture_mod">
         <div>
-            <a>商品信息</a>
-            <a href="#xiangqing">商品详情</a>
-            <a>商品信息</a>
+            <div id="tuijian_mod"></div>
+            <div id="tuijian_article_mod"></div>
         </div>
         <div>
             <p style="font-size: 24px">商品信息</p>
             <p style="font-size: 18px">Commodity information</p>
             <div>
-                <p id="goods_name">产品名称: Dior/迪奥 雪晶灵冰透白防晒BB霜SPF50/PA+++</p>
-                <p>是否为特殊用途化妆品: 否</p>
-                <p>是否防晒: 是</p>
-                <p id="goods_brand">规格品牌: Dior/迪奥</p>
-                <p id="goods_effect">功效: 保湿 滋润 防晒 遮瑕 隔离</p>
-                <p>保质期: 3年</p>
+                <p id="goods_name">产品名称：</p>
+                <p id="goods_brand">规格品牌：</p>
+                <p id="goods_effect">功效：</p>
+                <p>保质期：3年</p>
             </div>
             <div>
-                <p>上市时间: 2013年</p>
-                <p id="goods_style">颜色分类: 005（适合白皙或偏白肤色粉调） 010（适合自然偏白肤色）</p>
-                <p>规格类型: 正常</p>
-                <p id="goods_lastname">单品: 雪晶灵冰透白防晒BB霜SPF50/PA+++</p>
-                <p id="goods_local">产地: 法国</p>
-                <p>适合肤质: 任何肤质</p>
+                <p>上市时间：2013年</p>
+                <p id="goods_style">颜色分类：</p>
+                <p>规格类型：正常</p>
+                <p id="goods_local">产地：</p>
+                <p id="goods_suit">适合肤质：</p>
             </div>
         </div>
-        <div id="goods_pic" style="text-align: center">
-            <p><a style="font-size: 24px" id="xiangqing">商品详情</a></p>
-            <p style="font-size: 18px">Goods details</p>
-            <!--<img style="display: block" width="1010" src="img/details/goods_details1.png">-->
-            <!--<img style="display: block" width="1010" src="img/details/goods_details2.png">-->
-            <!--<img style="display: block" width="1010" src="img/details/goods_details3.png">-->
-            <!--<img style="display: block" width="1010" src="img/details/goods_details4.png">-->
-            <!--<img style="display: block" width="1010" src="img/details/goods_details5.png">-->
-            <!--<img style="display: block" width="1010" src="img/details/goods_details6.png">-->
+        <div style="text-align: center">
+            <p><a style="font-size: 24px" id="xiangqing">评论列表</a></p>
+            <p style="font-size: 18px">Comments List</p>
+            <div id="comment_inp">
+                <textarea></textarea>
+                <a id="sub_btn">提交</a>
+            </div>
+            <ul id="comment_list" style="text-align: left"></ul>
         </div>
-        <img>
     </div>
 </div>
 <div id="f_footer">

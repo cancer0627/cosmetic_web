@@ -37,12 +37,15 @@
     $.post(url + 'dingdan_update', {
         local: sessionStorage.local,
         time: sessionStorage.time,
-        id: sessionStorage.dingdanid,
-        price: parseInt(sessionStorage.price_zong.replace('￥', ''))
+        id: sessionStorage.dingdanid
     }, function (data, status) {
-        console.log(data);
         if (data.result) {
-            alert('支付成功！！！');
+            $.post(url + 'goods_update', {
+                goodsarr: sessionStorage.goods
+            }, function (data, status) {
+                console.log(data);
+                alert('支付成功！！！');
+            })
         }
         else {
             alert('支付失败')

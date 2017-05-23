@@ -1,4 +1,5 @@
 (function () {
+    var reg_btn = document.getElementById('sub_btn');
     var phone_input = document.getElementById('phone_input');
     var yanz_phone_btn = document.getElementById('yanz_phone_btn');
     var yanz_input = document.getElementById('yanz_input');
@@ -10,7 +11,6 @@
     var email_input = document.getElementById('email_input');
     var pic_input = document.getElementById('pic_input');
     var pic_yanzheng = document.getElementsByClassName('yanzheng')[0];
-    var reg_btn = document.getElementById('reg_btn');
     /*定义变量*/
     var yanz_num, temp = 0, code;
     var inp = new Array();
@@ -159,16 +159,26 @@
     function sendCmd(type) {
         var u = url + type;
         $.post(u, {
-            usertel: phone_input.value,
+            tel: phone_input.value,
             username: name_input.value,
-            userpwd: pwd_input.value,
-            usermail: email_input.value
+            userpassword: pwd_input.value,
+            email: email_input.value
         }, function (data, status) {
             if (data.result) {
                 sessionStorage.setItem('userid', data.userid);
                 sessionStorage.setItem('username', data.username);
-                alert('注册成功！！！');
-                location.href = 'personal.html';
+                $.post(url + 'like_add', {
+                    userid:data.userid
+                }, function (data, status) {
+                    console.log(data);
+                    if(data.result){
+                        alert('注册成功！！！');
+                        //location.href = 'index.html';
+                    }
+                    else{
+                        alert('注册失败！！！');
+                    }
+                })
             }
             else {
                 alert('注册失败！！！');

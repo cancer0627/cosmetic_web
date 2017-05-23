@@ -6,14 +6,13 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/base_personal.css">
     <script src="js/jquery-3.1.1.min.js"></script>
-    <script defer src="js/test_personal.js"></script>
+    <!--<script defer src="js/test_personal.js"></script>-->
     <script defer src="js/ser_personal.js"></script>
 </head>
 <body>
 <div id="t_top">
     <div id="top">
         <span>欢迎来到美妆街！</span>
-        <span>本网站商品全部为正品，支持防伪码验证，支持官网查询，假一赔十！</span>
         <div>
             <a href="login.html">会员登录</a>
             <span> | </span>
@@ -21,13 +20,7 @@
             <span> | </span>
             <a href="personal.html">订单查询</a>
             <span> | </span>
-            <div>
-                <span>我的美妆</span>
-                <div></div>
-                <a href="personal.html" class="personal">个人中心</a>
-            </div>
-            <span> | </span>
-            <a href="#"><span>美妆收藏</span><img width="13" src="img/icon/favourite.png"> </a>
+            <a href="personal.html">我的美妆</a>
         </div>
     </div>
 </div>
@@ -56,11 +49,10 @@
     <div id="n_nav">
         <div id="nav">
             <a href="index.html">首页</a>
-            <a href="activity.html">彩妆品牌团</a>
-            <a href="list.html" style="background-color: #d41a39">底妆</a>
-            <a href="#">眼部彩妆</a>
-            <a href="#">唇部彩妆</a>
-            <a href="#">修容品</a>
+            <a href="activity.html">调查问卷</a>
+            <a href="list.html">底妆</a>
+            <a href="personal.html" style="background-color: #d41a39">我的美妆</a>
+            <a href="learn.html">学习模块</a>
         </div>
     </div>
     <div id="main_body">
@@ -68,34 +60,16 @@
         <div>
             <div id="personal_list">
                 <p>我的美妆</p>
-                <li>
-                    <img width="23" height="22" src="img/icon/personal_icon1.png">
-                    <a href="#">订单详情</a>
-                </li>
-                <li>
-                    <img width="23" height="22" src="img/icon/personal_icon2.png">
-                    <a href="#">我的收藏</a>
-                </li>
-                <li>
-                    <img width="23" height="22" src="img/icon/personal_icon3.png">
-                    <a href="#">绑定的手机</a>
-                </li>
-                <li>
-                    <img width="23" height="22" src="img/icon/personal_icon4.png">
-                    <a href="#">售后服务</a>
-                </li>
-                <li>
-                    <img width="23" height="22" src="img/icon/personal_icon5.png">
-                    <a href="#">我的收货地址</a>
-                </li>
-                <li>
-                    <img width="23" height="22" src="img/icon/personal_icon6.png">
-                    <a href="#">我的红包</a>
-                </li>
-                <li>
-                    <img width="23" height="22" src="img/icon/personal_icon7.png">
-                    <a href="#">账户余额</a>
-                </li>
+                <ul>
+                    <li>
+                        <img width="23" height="22" src="img/icon/personal_icon1.png">
+                        <a href="#">订单详情</a>
+                    </li>
+                    <li>
+                        <img width="23" height="22" src="img/icon/personal_icon2.png">
+                        <a href="personal_update.html">个人信息</a>
+                    </li>
+                </ul>
             </div>
             <div id="person_details">
                 <div>
@@ -108,94 +82,34 @@
                     </div>
                 </div>
                 <div id="goods_nav">
-                    <span id="goods_nav_daifukuan" style="color: #d41a39">待付款</span>
-                    <span id="goods_nav_daifahuo">待发货</span>
+                    <span id="goods_nav_daifukuan" style="color: #d41a39">待支付</span>
                     <span id="goods_nav_daishouhuo">待收货</span>
                     <span id="goods_nav_daipingjia">待评价</span>
-                    <span id="goods_nav_tuikuan">退款</span>
                 </div>
                 <div>
                     <div id="daifukuan_mod" class="checked_mod">
                         <ul id="daifukuan_list">
                         </ul>
-                        <div id="daifukuan_sel">
-                            <input id="quanxuan_ch_daifukuan" type="checkbox">
-                            <span>全选</span>
-                            <button>删除订单</button>
-                            <div>
-                                <button><</button>
-                                <input type="text" value="1">
-                                <button>></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="daifahuo_mod" class="unchecked_mod">
-                        <ul id="daifahuo_list">
-                        </ul>
-                        <div id="daifahuo_sel">
-                            <input id="quanxuan_ch_daifahuo" type="checkbox">
-                            <span>全选</span>
-                            <button>删除订单</button>
-                            <div>
-                                <button><</button>
-                                <input type="text" value="1">
-                                <button>></button>
-                            </div>
-                        </div>
                     </div>
                     <div id="daishouhuo_mod" class="unchecked_mod">
                         <ul id="daishouhuo_list">
                         </ul>
-                        <div id="daishouhuo_sel">
-                            <input id="quanxuan_ch_daishouhuo" type="checkbox">
-                            <span>全选</span>
-                            <button>删除订单</button>
-                            <div>
-                                <button><</button>
-                                <input type="text" value="1">
-                                <button>></button>
-                            </div>
-                        </div>
                     </div>
                     <div id="daipingjia_mod" class="unchecked_mod">
                         <ul id="daipingjia_list">
                         </ul>
-                        <div id="daipingjia_sel">
-                            <input id="quanxuan_ch_daipingjia" type="checkbox">
-                            <span>全选</span>
-                            <button>删除订单</button>
-                            <div>
-                                <button><</button>
-                                <input type="text" value="1">
-                                <button>></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="tuikuan_mod" class="unchecked_mod">
-                        <ul id="tuikuan_list">
-                        </ul>
-                        <div id="tuikuan_sel">
-                            <input id="quanxuan_ch_tuikuan" type="checkbox">
-                            <span>全选</span>
-                            <button>删除订单</button>
-                            <div>
-                                <button><</button>
-                                <input type="text" value="1">
-                                <button>></button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="hot_goods">
+        <!--<div id="hot_goods">
             <div>
                 <span>热卖单品</span>
                 <img width="1010" height="7" src="img/list_tiao.png">
             </div>
             <ul id="hot_goods_mod">
             </ul>
-        </div>
+        </div>-->
     </div>
 </div>
 <div id="f_footer">

@@ -30,7 +30,7 @@
     var price_zong2 = document.getElementById('price_zong2');
     var queren_zhifu_btn = document.getElementById('queren_zhifu_btn');
     /*定义变量*/
-    var i, j, gd, url = 'http://127.0.0.1:3000/';
+    var i, j, gd, url = 'http://127.0.0.1:3000/', goods_arr = [];
     /*---------------------------------------------------------------------------------------------------------------*/
     username.innerHTML = '用户' + sessionStorage.username;
     for (i = 0; i < local_list_det.length; i++) {
@@ -59,6 +59,7 @@
         id: sessionStorage.dingdanid
     }, function (data, status) {
         gd = data.goods;
+        console.log(gd);
         var yunfei = 0, sum = 0, num = 0;
         for (i = 0; i < gd.length; i++) {
             var li = document.createElement('li');
@@ -72,15 +73,15 @@
                 '<span class="queren_goods_price_zong" style="left: 760px;top:40px">￥0</span>';
         }
         for (i = 0; i < queren_goods_list.length; i++) {
-            queren_goods_pic[i].src = "img/goods/" + gd[i].Url;
-            queren_goods_name[i].innerHTML = '商品名称：' + gd[i].Name;
-            queren_goods_brand[i].innerHTML = '品牌：' + gd[i].Brand;
-            queren_goods_buynum[i].innerHTML = gd[i].Buynum;
-            queren_goods_price[i].innerHTML = '￥' + gd[i].Price;
-            queren_goods_price_zong[i].innerHTML = '￥' + gd[i].Price * gd[i].Buynum;
-            yunfei = 5;
-            sum += gd[i].Price * gd[i].Buynum;
-            num += gd[i].Buynum;
+            queren_goods_pic[i].src = "img/goods/" + gd[i].goods.url;
+            queren_goods_name[i].innerHTML = '商品名称：' + gd[i].goods.gname;
+            queren_goods_brand[i].innerHTML = '品牌：' + gd[i].goods.brand;
+            queren_goods_buynum[i].innerHTML = gd[i].num;
+            queren_goods_price[i].innerHTML = '￥' + gd[i].goods.price;
+            queren_goods_price_zong[i].innerHTML = '￥' + gd[i].price;
+            yunfei += gd[i].goods.freight;
+            sum += gd[i].price;
+            num += gd[i].num;
         }
         queren_goods_yunfei.innerHTML = '配送费：￥' + yunfei;
         goods_num.innerHTML = '共计' + num + '件商品，总金额：';
@@ -101,19 +102,36 @@
                     sessionStorage.setItem('time', time_span[i].innerHTML);
                 }
             }
+            for (i = 0; i < gd.length; i++) {
+                goods_arr[i] = {
+                    id: gd[i].dgid,
+                    num: gd[i].num
+                };
+            }
             sessionStorage.setItem('price_zong', price_zong2.innerHTML);
+            var arr = new Array();
+            for (i = 0; i < gd.length; i++) {
+                arr[i] = gd[i].dgid;
+            }
             if (sessionStorage.by == 'cart') {
-                var arr = new Array();
-                for (i = 0; i < gd.length; i++) {
-                    arr[i] = gd[i].GoodsId;
-                }
                 $.post(url + 'cart_del_s', {
                     userid: sessionStorage.userid,
                     goodsid: JSON.stringify(arr)
                 }, function (data, status) {
                     if (data.result) {
-                        alert('订单处理成功！！！');
-                        location.href = 'zhifu.html';
+                        $.post(url+'like_update_b',{
+                            goodsid: JSON.stringify(arr),
+                            userid: sessionStorage.userid
+                        },function (data,status){
+                            if(data.result){
+                                sessionStorage.setItem('goods', JSON.stringify(goods_arr));
+                                alert('订单处理成功！！！');
+                                location.href = 'zhifu.html';
+                            }
+                            else {
+                                alert('订单处理失败！！！')
+                            }
+                        });
                     }
                     else {
                         alert('订单处理失败！！！')
@@ -121,8 +139,19 @@
                 });
             }
             else {
-                alert('订单处理成功！！！');
-                location.href = 'zhifu.html';
+                $.post(url+'like_update_b',{
+                    goodsid: JSON.stringify(arr),
+                    userid: sessionStorage.userid
+                },function (data,status){
+                    if(data.result){
+                        sessionStorage.setItem('goods', JSON.stringify(goods_arr));
+                        alert('订单处理成功！！！');
+                        location.href = 'zhifu.html';
+                    }
+                    else {
+                        alert('订单处理失败！！！')
+                    }
+                });
             }
         }
         else {

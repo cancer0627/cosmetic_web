@@ -2,9 +2,9 @@
     /*选择列表*/
     var select_div = document.getElementById('select_div');
     var pinpai_sel1 = select_div.childNodes[1].childNodes[3].childNodes;
-    var pinpai_sel2 = select_div.childNodes[1].childNodes[5].childNodes;
+    //var pinpai_sel2 = select_div.childNodes[1].childNodes[5].childNodes;
     var gongxiao_sel1 = select_div.childNodes[3].childNodes[3].childNodes;
-    var gongxiao_sel2 = select_div.childNodes[3].childNodes[5].childNodes;
+    //var gongxiao_sel2 = select_div.childNodes[3].childNodes[5].childNodes;
     var fuzhi_sel = select_div.childNodes[5].childNodes[3].childNodes;
     var jiage_sel = select_div.childNodes[7].childNodes[3].childNodes;
     var paixv_sel = select_div.childNodes[9].childNodes[3].childNodes;
@@ -25,68 +25,75 @@
     var goods_buy_btn = document.getElementsByClassName('goods_buy_btn');
     /*定义变量*/
     var url = "http://127.0.0.1:3000/";
-    var pinpai = '', gongxiao = '', i, j, gds;
+    var pinpai = '', gongxiao = '', fuzhi = '', jiage = [0, 10000], jiage_arr, order = '', order_arr, kind = '', i, j, k, gds, dingdanid;
     /*---------------------------------------------------------------------------------------------------------------*/
-    /*品牌效果*/
+    /*品牌*/
     for (i = 0; i < pinpai_sel1.length; i++) {
         (function (i) {
             pinpai_sel1[i].onclick = function () {
+                for (j = 0; j < pinpai_sel1.length; j++) {
+                    pinpai_sel1[j].className = '';
+                }
                 pinpai_sel1[i].classList.toggle('selected');
-                pinpai += pinpai_sel1[i].innerHTML;
+                pinpai = pinpai_sel1[i].innerHTML;
+                goods_div.innerHTML = '';
+                $.post(url + 'list_sel_order', {
+                    userid: sessionStorage.userid,
+                    brand: pinpai,
+                    kind: kind,
+                    tag: gongxiao,
+                    suit: fuzhi,
+                    min: parseInt(jiage[0]),
+                    max: parseInt(jiage[1]),
+                    order: order
+                }, act)
             }
         })(i);
     }
-    for (i = 0; i < pinpai_sel2.length; i++) {
-        (function (i) {
-            pinpai_sel2[i].onclick = function () {
-                pinpai_sel2[i].classList.toggle('selected');
-                pinpai += pinpai_sel2[i].innerHTML;
-            }
-        })(i);
-    }
-    pinpai_btn.onclick = function () {
-        if (select_div.childNodes[1].childNodes[5].style.display == 'none') {
-            select_div.childNodes[1].childNodes[5].style.display = 'inline-block';
-            pinpai_btn.innerHTML = '展开▲';
-        }
-        else {
-            select_div.childNodes[1].childNodes[5].style.display = 'none';
-            pinpai_btn.innerHTML = '展开▼';
-        }
-    };
-    /*功效效果*/
+    /*功效*/
     for (i = 0; i < gongxiao_sel1.length; i++) {
         (function (i) {
             gongxiao_sel1[i].onclick = function () {
+                for (j = 0; j < gongxiao_sel1.length; j++) {
+                    gongxiao_sel1[j].className = '';
+                }
                 gongxiao_sel1[i].classList.toggle('selected');
-                gongxiao += gongxiao_sel1[i].innerHTML;
+                gongxiao = gongxiao_sel1[i].innerHTML;
+                goods_div.innerHTML = '';
+                $.post(url + 'list_sel_order', {
+                    userid: sessionStorage.userid,
+                    brand: pinpai,
+                    kind: kind,
+                    tag: gongxiao,
+                    suit: fuzhi,
+                    min: parseInt(jiage[0]),
+                    max: parseInt(jiage[1]),
+                    order: order
+                }, act)
             }
         })(i);
     }
-    for (i = 0; i < gongxiao_sel2.length; i++) {
-        (function (i) {
-            gongxiao_sel2 [i].onclick = function () {
-                gongxiao_sel2 [i].classList.toggle('selected');
-                gongxiao += gongxiao_sel2 [i].innerHTML;
-            }
-        })(i);
-    }
-    gongxiao_btn.onclick = function () {
-        if (select_div.childNodes[3].childNodes[5].style.display == 'none') {
-            select_div.childNodes[3].childNodes[5].style.display = 'inline-block';
-            pinpai_btn.innerHTML = '展开▲';
-        }
-        else {
-            select_div.childNodes[3].childNodes[5].style.display = 'none';
-            pinpai_btn.innerHTML = '展开▼';
-        }
-    };
     /*肤质*/
     for (i = 0; i < fuzhi_sel.length; i++) {
         (function (i) {
             if (fuzhi_sel[i].tagName == 'SPAN') {
                 fuzhi_sel[i].onclick = function () {
+                    for (j = 0; j < fuzhi_sel.length; j++) {
+                        fuzhi_sel[j].className = '';
+                    }
                     fuzhi_sel[i].classList.toggle('selected');
+                    fuzhi = fuzhi_sel[i].innerHTML;
+                    goods_div.innerHTML = '';
+                    $.post(url + 'list_sel_order', {
+                        userid: sessionStorage.userid,
+                        brand: pinpai,
+                        kind: kind,
+                        tag: gongxiao,
+                        suit: fuzhi,
+                        min: parseInt(jiage[0]),
+                        max: parseInt(jiage[1]),
+                        order: order
+                    }, act)
                 }
             }
         })(i);
@@ -96,7 +103,23 @@
         (function (i) {
             if (jiage_sel[i].tagName == 'SPAN') {
                 jiage_sel[i].onclick = function () {
+                    jiage_arr = ['0,99', '99,199', '199,399', '399,559', '560,10000'];
+                    jiage = jiage_arr[(i - 1) / 2].split(',');
+                    for (j = 0; j < jiage_sel.length; j++) {
+                        jiage_sel[j].className = '';
+                    }
                     jiage_sel[i].classList.toggle('selected');
+                    goods_div.innerHTML = '';
+                    $.post(url + 'list_sel_order', {
+                        userid: sessionStorage.userid,
+                        brand: pinpai,
+                        kind: kind,
+                        tag: gongxiao,
+                        suit: fuzhi,
+                        min: parseInt(jiage[0]),
+                        max: parseInt(jiage[1]),
+                        order: order
+                    }, act)
                 }
             }
         })(i);
@@ -110,51 +133,81 @@
                         paixv_sel[j].className = '';
                     }
                     paixv_sel[i].className = 'selected';
+                    order_arr = ['', 'price', 'bnum', 'lnum', 'sdate'];
+                    order = order_arr[(i - 1) / 2];
+                    console.log(order);
+                    goods_div.innerHTML = '';
+                    $.post(url + 'list_sel_order', {
+                        userid: sessionStorage.userid,
+                        brand: pinpai,
+                        kind: kind,
+                        tag: gongxiao,
+                        suit: fuzhi,
+                        min: parseInt(jiage[0]),
+                        max: parseInt(jiage[1]),
+                        order: order
+                    }, act)
                 }
             }
         })(i);
     }
     /*---------------------------------------------------------------------------------------------------------------*/
     if (sessionStorage.username) {
-        if (sessionStorage.fenlei) {
-            for (i = 0; i < goods_div.childNodes.length; i++) {
-                goods_div.removeChild(goods_div.childNodes[0]);
-            }
-            $.post(url + 'list_sel', {
-                user_id: sessionStorage.userid,
-                sel: sessionStorage.fenlei
+        goods_div.innerHTML = '';
+        if (sessionStorage.sel) {
+            $.post(url + 'list_sel_all', {
+                userid: sessionStorage.userid,
+                sel: sessionStorage.sel
             }, act)
+        }
+        else if (sessionStorage.fenlei) {
+            kind = sessionStorage.fenlei;
+            $.post(url + 'list_sel_order', {
+                userid: sessionStorage.userid,
+                brand: pinpai,
+                kind: kind,
+                tag: gongxiao,
+                suit: fuzhi,
+                min: parseInt(jiage[0]),
+                max: parseInt(jiage[1]),
+                order: order
+            }, act);
         }
         else {
-            for (i = 0; i < goods_div.childNodes.length; i++) {
-                goods_div.removeChild(goods_div.childNodes[0]);
-            }
-            $.post(url + 'list_sel', {
-                user_id: sessionStorage.userid,
-                sel: '底妆'
-            }, act)
+            kind = '';
+            $.post(url + 'list_sel_order', {
+                userid: sessionStorage.userid,
+                brand: pinpai,
+                kind: kind,
+                tag: gongxiao,
+                suit: fuzhi,
+                min: parseInt(jiage[0]),
+                max: parseInt(jiage[1]),
+                order: order
+            }, act);
         }
+
         for (i = 0; i < search_list.length; i++) {
             (function (i) {
                 search_list[i].onclick = function () {
-                    var n = goods_div.childNodes.length;
-                    for (j = 0; j < n; j++) {
-                        goods_div.removeChild(goods_div.childNodes[0]);
-                    }
-                    $.post(url + 'list_sel', {
-                        user_id: sessionStorage.userid,
-                        sel: $.trim(search_list[i].innerHTML)
-                    }, act);
+                    goods_div.innerHTML = '';
+                    $.post(url + 'list_sel_order', {
+                        userid: sessionStorage.userid,
+                        brand: pinpai,
+                        kind: $.trim(search_list[i].innerHTML),
+                        tag: gongxiao,
+                        suit: fuzhi,
+                        min: parseInt(jiage[0]),
+                        max: parseInt(jiage[1]),
+                        order: order
+                    }, act)
                 }
             })(i)
         }
         search_btn.onclick = function () {
-            var n = goods_div.childNodes.length;
-            for (var i = 0; i < n; i++) {
-                goods_div.removeChild(goods_div.childNodes[0]);
-            }
-            $.post(url + 'list_sel', {
-                user_id: sessionStorage.userid,
+            goods_div.innerHTML = '';
+            $.post(url + 'list_sel_all', {
+                userid: sessionStorage.userid,
                 sel: $.trim(search_input.value)
             }, act)
         };
@@ -168,31 +221,33 @@
             var li = document.createElement('li');
             li.className = 'goods_list';
             goods_div.appendChild(li);
-            li.innerHTML = '<img class="goods_img" width="239" height="239" src=""><p class="goods_name"></p><div>' +
+            li.innerHTML = '<img class="goods_img" width="239" height="239" src=""><p class="goods_name goodsname"></p><div>' +
                 '<p>¥<em class="goods_price" style="color: #9f0404;font-size: 30px"></em></p><div><p class="goods_buy_num"></p>' +
                 '<img src="../img/list/list_xing.png"></div></div><div> ' +
                 '<button class="cart_add_btn">加入购物车</button><button class="goods_buy_btn">立即购买</button></div>';
-            goods_img[i].src = '../img/goods/' + data.goods[i].Url;
-            goods_name[i].innerHTML = data.goods[i].Name;
-            goods_price[i].innerHTML = data.goods[i].Price;
-            goods_buy_num[i].innerHTML = data.goods[i].BuyNum + '人已购买';
-            if (gds.goods[i].Num == 0) {
+            goods_img[i].src = '../img/goods/' + data.goods[i].url;
+            goods_name[i].innerHTML = data.goods[i].gname;
+            goods_price[i].innerHTML = data.goods[i].price;
+            goods_buy_num[i].innerHTML = data.goods[i].bnum + '人已购买';
+            if (gds.goods[i].num == 0) {
                 cart_add_btn[i].style.backgroundColor = '#ccc';
                 goods_buy_btn[i].style.backgroundColor = '#ccc';
             }
             (function (i) {
                 goods_img[i].onclick = function () {
-                    sessionStorage.setItem('goodsid', gds.goods[i].Id);
+                    sessionStorage.setItem('goodsid', gds.goods[i].ID);
                     window.open('details.html');
                 };
                 cart_add_btn[i].onclick = function () {
-                    if (gds.goods[i].Num == 0) {
+                    if (gds.goods[i].num == 0) {
                         alert('库存不足！！！');
                     }
                     else {
                         $.post(url + 'cart_add', {
-                            goods_id: gds.goods[i].Id,
-                            user_id: sessionStorage.userid
+                            goodsid: gds.goods[i].ID,
+                            userid: sessionStorage.userid,
+                            price: gds.goods[i].price,
+                            bnum: 1
                         }, function (data, status) {
                             if (data.result) {
                                 alert('加入购物车成功！！！');
@@ -204,24 +259,47 @@
                     }
                 };
                 goods_buy_btn[i].onclick = function () {
+                    /*sessionStorage.setItem('dingdanid', new Date().getTime() + "" + Math.floor(Math.random() * 899 + 100));
+                     sessionStorage.setItem('userid', sessionStorage.userid);
+                     sessionStorage.setItem('goodsid', gds.goods[i].ID);
+                     sessionStorage.setItem('price', gds.goods[i].price);
+                     sessionStorage.setItem('freight', gds.goods[i].freight);
+                     sessionStorage.setItem('url', gds.goods[i].url);
+                     sessionStorage.setItem('brand', gds.goods[i].brand);
+                     sessionStorage.setItem('goodsname', gds.goods[i].gname);
+                     sessionStorage.setItem('date', new Date().toLocaleDateString());
+                     sessionStorage.setItem('status', '待支付');
+                     location.href = 'dingdan.html';*/
+                    dingdanid = new Date().getTime() + "" + Math.floor(Math.random() * 899 + 100);
                     $.post(url + 'dingdan_add', {
-                        id: new Date().getTime() + "" + Math.floor(Math.random() * 899 + 100),
-                        date: new Date().toLocaleDateString(),
+                        dingdanid: dingdanid,
+                        goodsid: gds.goods[i].ID,
                         userid: sessionStorage.userid,
-                        goodsid: gds.goods[i].Id,
-                        buynum: 1
+                        date: new Date().toLocaleDateString(),
+                        bnum: 1,
+                        status: '待支付',
+                        price: gds.goods[i].price,
+                        address: '',
+                        time: ''
                     }, function (data, status) {
-                        sessionStorage.setItem('date', new Date().toLocaleDateString());
-                        sessionStorage.setItem('dingdanid', data.id);
-                        $.post(url + 'goods_update', {
-                            goodsid: data.goodsid,
-                            buynum: data.buynum
-                        }, function (data, status) {
-                            if (data.result) {
-                                alert('############订单生成############');
-                                location.href = 'dingdan.html';
-                            }
-                        });
+                        //sessionStorage.setItem('date', new Date().toLocaleDateString());
+                        sessionStorage.setItem('dingdanid', dingdanid);
+                        if (data.result) {
+                            //alert('订单生成！！！');
+                            location.href = 'dingdan.html';
+                        }
+                        else {
+                            alert('订单生成失败！！！');
+                        }
+                        /*$.post(url + 'goods_update', {
+                         goodsid: data.goodsid,
+                         bnum: data.bnum
+                         }, function (data, status) {
+                         if (data.result) {
+                         alert('############订单生成############');
+                         location.href = 'dingdan.html';
+                         }
+                         });*/
                     });
                 }
             })(i)

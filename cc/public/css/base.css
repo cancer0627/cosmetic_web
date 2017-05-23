@@ -12,6 +12,10 @@
     outline: none;
 }
 
+a {
+    cursor: pointer;
+}
+
 /*顶部*/
 #t_top {
     width: 100%;
@@ -312,4 +316,21 @@
     padding: 25px 35px;
     color: #434242;
     font-size: 15px;
+}
+
+/*按钮*/
+#sub_btn {
+    display: inline-block;
+    background-color: #d41a39;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+}
+
+.goodsname {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 219px;
 }

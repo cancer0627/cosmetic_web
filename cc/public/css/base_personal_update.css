@@ -1,0 +1,21 @@
+#person_details ul{
+    margin: 20px 0 20px 200px;
+}
+#person_details ul li{
+    margin-bottom: 55px;
+    overflow: hidden;
+}
+#person_details ul span{
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    float: left;
+    font-size: 18px;
+    line-height: 32px;
+}
+#person_details ul input{
+    float: left;
+    border: 1px solid #000;
+    font-size: 15px;
+    padding: 5px;
+}

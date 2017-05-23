@@ -16,7 +16,6 @@
 #main_body > #select_div > li > div {
     display: inline-block;
     margin-left: 75px;
-    width: 770px;
 }
 
 #main_body > #select_div > li > div > span {
@@ -91,10 +90,6 @@
 #goods_div > li > div > div > p {
     color: #9d9c9c;
     font-size: 12px;
-}
-
-#goods_div > li > div:last-child {
-
 }
 
 #goods_div > li > div:last-child > button:first-child {

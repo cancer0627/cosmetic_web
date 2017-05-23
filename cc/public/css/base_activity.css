@@ -2,14 +2,19 @@
     padding: 30px 15px 10px;
 }
 
-#main_body > ul {
-    padding: 30px 0 60px;
+#main_body > #question_list{
+    padding: 30px 0;
 }
-
-#main_body > ul > li > a {
-    display: block;
-    height: 339px;
-    width: 1002px;
-    margin: 30px auto;
-    background-image: url("../img/activity/activity1.png");
+#main_body > #question_list >li{
+    padding: 30px 0;
+}
+#main_body > #question_list >li h3{
+    margin: 0 0 10px;
+}
+#main_body > #question_list >li .ans{
+    border: 1px solid #000;
+}
+#main_body .tip{
+    margin-top: 20px;
+    color: #d41a39;
 }
